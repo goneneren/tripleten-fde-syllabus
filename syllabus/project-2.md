@@ -21,7 +21,8 @@ Students evolve the reference platform to support AI data ingestion and hybrid r
 - Database connection pooling, migration tooling, repository layer, and test harness.
 - Docker Compose with PostgreSQL (including `pgvector`), read-replica simulation helper, and Redis.
 - API contract tests and integration tests for idempotency, N+1 behavior, cache freshness, and migration safety.
-- Optional AWS checkpoint: RDS/read-replica comparison or instructor-led demo if credits are available.
+- Deterministic enterprise-data scenario pack with messy documents, duplicate IDs, slow listings, and held-out grading cases.
+- Instructor-led RDS/read-replica comparison for decision-level context only; students do not provision AWS resources.
 - Seeded flawed AI migration or repository artifact, expected-issue list, and review rubric.
 
 ## Learning Objectives
@@ -50,7 +51,7 @@ Students evolve the reference platform to support AI data ingestion and hybrid r
 - Students implement unstructured parsing and hybrid search; additional complex service splits are optional.
 - Default tools are mandatory for grading: `pgvector` for vector storage and `FastEmbed` for local embeddings. Alternatives are only permitted as un-graded optional extensions.
 - NoSQL, GraphQL, partitioning, sharding, and gRPC implementation are decision-level only unless a separate lab is supplied.
-- AWS RDS is optional and must have a local fallback.
+- No cloud deployment or public endpoint is permitted. AWS RDS is decision-level only; the graded path is the local PostgreSQL read-replica simulation.
 - The starter repo must provide database plumbing, migration tooling, replica simulation, tests, flawed AI artifact, expected issues, and rubric before launch.
 
 ## Submission & Assessment Criteria

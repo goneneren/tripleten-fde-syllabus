@@ -58,12 +58,15 @@ For an **AI Forward Deployed Engineer** program, submissions must simulate real-
 3. Create Pull Request & Fill PR Template (Architecture diagram, test results, Loom video link)
        |
        v
-4. Submit PR Link to TripleTen LMS / Platform
+4. For Project 5 only: after the open PR has a green CI run and local acceptance evidence, deploy the protected AWS endpoint for the 14-day assessment window; record verifier, cost, and teardown evidence
+       |
+       v
+5. Submit PR Link to TripleTen LMS / Platform
        |
        +---> [Automated CI Check] (GitHub Actions: Linting, Pytest, Security scan)
        |
        v
-5. Code Reviewer Assigned -> Line-by-Line Code Review
+6. Code Reviewer Assigned -> Line-by-Line Code Review
        |
        +---> APPROVED? ---------> Project Phase Completed 🎉
        |
@@ -75,9 +78,10 @@ Every project submission must contain:
 1. **Codebase**: Modular Python packages (not single 1,000-line notebooks), Docker Compose configurations for local-first testing, `.env.example`.
 2. **Automated Tests**: Pytest coverage for core utilities, tool parsing, API endpoints, and evaluation metrics (CI smoke tests).
 3. **System Documentation (`README.md`)**: System architecture overview, setup instructions, cost & performance telemetry basics.
-4. **Client-Facing Video Walkthrough (Loom, 3–5 min)**:
+4. **Client-Facing Video Walkthrough (Loom)**:
    - Students present their solution as if pitching or delivering to an enterprise client stakeholder (demonstrates communication, technical scoping, and live system demonstration).
-   - *For Project 5*, this demonstration must occur on the live public cloud endpoint, not `localhost`.
+   - Projects 1-4 use a 5-minute local demonstration. They do not expose public endpoints; Project 1 explicitly forbids one.
+   - *For Project 5*, the 15-minute capstone defense must demonstrate the temporary protected AWS endpoint, cost telemetry, and teardown plan; reviewer access is supplied separately and the endpoint is not an unauthenticated public demo.
 
 ---
 
@@ -90,6 +94,8 @@ Code reviews use a dual-tier rubric format strictly evaluating the `[CORE]` requ
 * **Code Architecture**: Modular separation of concerns within the seeded monolith.
 * **Error Handling & Security**: No hardcoded API keys, graceful handling of API rate limits/timeouts (circuit breakers), OWASP LLM mitigation.
 * **Testing & Dockerization**: `docker compose up` builds cleanly locally; test suite passes without errors.
+* **Scenario Resilience**: Required behavior passes published local scenario packs; held-out packs are evaluated by the course grader.
+* **P5 Deployment, Cost, and Teardown**: For Project 5 only, the course verifier confirms the protected endpoint, required security controls, cost tags, 14-day assessment window, scheduled GPU controls, and complete teardown. An unapproved cost overrun or incomplete teardown remains incomplete until the instructor remediates it; it does not create a student payment obligation.
 
 ### 2. Recommendations (Nice-to-Have / Senior Level)
 * **Optimization**: Latency reduction techniques (streaming responses, prompt compression, async execution).
