@@ -14,7 +14,8 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 - Implement LLM-as-a-judge evaluation pipelines using Ragas.
 - Perform PEFT/LoRA fine-tuning for a specialized task.
 - Monitor quality signals, cost, latency, failures, and user-visible behavior using Arize Phoenix.
-- Deploy the Docker Compose stack to a live cloud instance (e.g., AWS EC2) as a mandatory capstone delivery requirement.
+- Deploy the locally accepted Docker Compose stack to a temporary, protected AWS endpoint as a mandatory capstone delivery requirement.
+- Apply a production-minded deployment boundary: TLS, application authentication, rate limits, least-privilege access, secrets outside Git, and a documented teardown.
 - Defend model-serving, provider, architecture, safety, and evaluation trade-offs.
 
 ## Tech Setup
@@ -51,8 +52,11 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 
 ## Delivery Limits
 
-- The $200 program budget is primarily allocated to provision a live cloud instance (e.g., AWS EC2 `g4dn.xlarge`) to host this capstone project for the duration of the 6-week build.
-- GPU access is strictly limited; fine-tuning tasks use highly optimized small-parameter models (e.g., Qwen/Llama 3B via Unsloth) or run on provided cloud notebooks if local VRAM is insufficient.
+- The total per-student allocation is $200: $20 maximum for approved LLM API calls and $180 maximum for AWS. Students use a course-managed AWS account and the fixed region, IAM role, launch templates, and budget controls supplied by the program.
+- The public endpoint runs on a CPU instance; a `g4dn.xlarge` GPU is launched only for scheduled model-serving or fine-tuning sessions and stopped immediately after each session. It is not an always-on six-week host.
+- The endpoint is temporary and protected: TLS, application authentication, request rate limits, an inbound security-group rule for HTTPS only, no public SSH, and no real personal or regulated data are required. Secrets stay in managed parameters or host configuration, never Git.
+- The $180 planning estimate, deployment sequence, access model, monitoring, and teardown evidence are defined in [Project 5 AWS Deployment](project-5-aws-deployment.md). Prices are planning assumptions and must be refreshed in AWS Pricing Calculator before each cohort.
+- GPU access is strictly limited; fine-tuning tasks use highly optimized small-parameter models (e.g., Qwen/Llama 3B via Unsloth) in the scheduled GPU sessions. Local VRAM is not a prerequisite for P1-P4.
 - Required retrieval is `pgvector` plus keyword search AND cross-encoder reranking.
 - Students implement one bounded multi-agent LangGraph flow.
 - CI evals are limited to smoke cases with cached fixtures; larger LLM-as-judge evals run manually.
@@ -62,7 +66,7 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 ## Submission & Assessment Criteria
 
 - **Automated Tests**: CI pipeline must pass (LLM smoke evaluation gates).
-- **Required Artifacts**: PR containing the LangGraph multi-agent flow, the Ragas evaluation suite, and a live endpoint URL pointing to the cloud-deployed instance.
+- **Required Artifacts**: PR containing the LangGraph multi-agent flow, the Ragas evaluation suite, the protected AWS endpoint URL and access instructions for reviewers, a cost report, and teardown evidence.
 - **Client Defense (Capstone)**: A 15-minute live or Loom video defense demonstrating the working application in the cloud, explaining the multi-agent architecture, interpreting the LLM-as-a-judge Ragas metrics, and justifying the model fine-tuning results.
 - **Pass/Fail Rubric**: Must be explicitly supplied in the `projects/` directory, defining Must-Have criteria for the defense and evaluation metrics.
 

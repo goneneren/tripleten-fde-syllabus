@@ -3,7 +3,7 @@
 This module map adapts the 5 shared enterprise projects (used across both SE and FDE tracks) specifically for the **AI Forward Deployed Engineer (AI FDE)** role. 
 
 **Core Concept: Same Repository, Different Focus**
-FDE students use the exact same starter repositories and environments as SE students. However, the grading scope is shifted: heavy backend infrastructure (Kubernetes, Kafka, Terraform) is relegated to `[POSITIONING]` (decision-level knowledge), while applied AI, containerization, and evaluation are elevated to `[CORE]` required implementations. **FDEs operate strictly within `docker-compose` instead of local Kubernetes (`kind`).**
+FDE students use the exact same starter repositories and environments as SE students. However, the grading scope is shifted: heavy backend infrastructure (Kubernetes, Kafka, Terraform) is relegated to `[POSITIONING]` (decision-level knowledge), while applied AI, containerization, and evaluation are elevated to `[CORE]` required implementations. **Projects 1-4 operate strictly within `docker-compose` instead of local Kubernetes (`kind`); Project 5 deploys that locally accepted stack to a temporary protected AWS endpoint under the documented $180 infrastructure cap.**
 
 ### Program Comparison: AI FDE vs. System Engineering
 
@@ -13,11 +13,11 @@ FDE students use the exact same starter repositories and environments as SE stud
 | **P2: Polyglot Data Tier** | Postgres, Redis, gRPC, Auth | gRPC boundaries, Redis replication, Idempotency | Unstructured ETL, Chunking, Pgvector Data Prep |
 | **P3: Operations & Resilience** | K8s (`kind`), CI/CD, Event Bus | Terraform/OpenTofu, Kafka, Chaos Lab | Docker Compose, Local LLM Serving (vLLM), API Resiliency (Retries) |
 | **P4: Security & Compliance** | IAM, Secrets, LLM Adapter | K8s Secrets, RBAC, CI Security Gates | OWASP LLM, Guardrails, PII Redaction, Prompt Injection Defense |
-| **P5: Autonomous AI System** | RAG, LangGraph, Telemetry | Basic RAG, CI Smoke Evals, Telemetry | Advanced RAG, Multi-Agent LangGraph, LLM-as-a-Judge, Fine-Tuning |
+| **P5: Autonomous AI System** | RAG, LangGraph, Telemetry | Basic RAG, CI Smoke Evals, Telemetry | Advanced RAG, Multi-Agent LangGraph, LLM-as-a-Judge, Fine-Tuning, protected AWS deployment |
 
 ## Labels
 
-- `[CORE]` - Required FDE project work students build, operate, document, or defend using Docker Compose.
+- `[CORE]` - Required FDE project work students build, operate, document, or defend using Docker Compose. P5 also includes its documented temporary protected AWS deployment after local acceptance.
 - `[SUPPORTING]` - Just-in-time theory or practice that supports the core FDE work.
 - `[OPTIONAL]` - Useful extension or deeper review.
 - `[POSITIONING]` - Strategic knowledge (marketing-visible, architectural evaluation) without forcing implementation. Infrastructure like K8s or Terraform falls here for FDEs.
@@ -84,6 +84,7 @@ Projects/
     ├── LLM-as-Judge Calibration & Ragas Metrics [AI]
     ├── PEFT Fine-Tuning (LoRA) for Specialized Tasks [AI]
     ├── Chapter 15.3 AI Observability (Arize Phoenix / Tracing) [CORE]
+    ├── Bounded AWS Deployment, Cost Controls, and Teardown Evidence [CORE]
     ├── Chapter 20.2 Final Architecture Review [CORE]
     └── Chapter 20.3 Portfolio & Employment Readiness [OPTIONAL]
 ```

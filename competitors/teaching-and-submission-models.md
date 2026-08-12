@@ -58,12 +58,15 @@ For an **AI Forward Deployed Engineer** program, submissions must simulate real-
 3. Create Pull Request & Fill PR Template (Architecture diagram, test results, Loom video link)
        |
        v
-4. Submit PR Link to TripleTen LMS / Platform
+4. For Project 5 only: after local acceptance, deploy the protected AWS endpoint, record cost and teardown evidence
+       |
+       v
+5. Submit PR Link to TripleTen LMS / Platform
        |
        +---> [Automated CI Check] (GitHub Actions: Linting, Pytest, Security scan)
        |
        v
-5. Code Reviewer Assigned -> Line-by-Line Code Review
+6. Code Reviewer Assigned -> Line-by-Line Code Review
        |
        +---> APPROVED? ---------> Project Phase Completed 🎉
        |
@@ -75,9 +78,10 @@ Every project submission must contain:
 1. **Codebase**: Modular Python packages (not single 1,000-line notebooks), Docker Compose configurations for local-first testing, `.env.example`.
 2. **Automated Tests**: Pytest coverage for core utilities, tool parsing, API endpoints, and evaluation metrics (CI smoke tests).
 3. **System Documentation (`README.md`)**: System architecture overview, setup instructions, cost & performance telemetry basics.
-4. **Client-Facing Video Walkthrough (Loom, 3–5 min)**:
+4. **Client-Facing Video Walkthrough (Loom)**:
    - Students present their solution as if pitching or delivering to an enterprise client stakeholder (demonstrates communication, technical scoping, and live system demonstration).
-   - *For Project 5*, this demonstration must occur on the live public cloud endpoint, not `localhost`.
+   - Projects 1-4 use a 3-5 minute local demonstration. Project 1 must not expose a public endpoint.
+   - *For Project 5*, the 15-minute capstone defense must demonstrate the temporary protected AWS endpoint, cost telemetry, and teardown plan; reviewer access is supplied separately and the endpoint is not an unauthenticated public demo.
 
 ---
 

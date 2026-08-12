@@ -48,7 +48,7 @@ Students diagnose a provided monolith-based enterprise reference platform runnin
 
 ## Delivery Limits
 
-- No cloud deployment is required (strictly Docker Compose).
+- No cloud deployment or public endpoint is permitted. The full project, including the demonstration, runs locally through Docker Compose.
 - No production feature work is required.
 - Students do not build the reference platform from scratch.
 - Students repair exactly two observability defects; extra instrumentation is optional.

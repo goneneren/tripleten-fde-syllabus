@@ -15,14 +15,14 @@ Unlike traditional curriculum models that teach theory first and assign a small 
 
 ### Program-Wide Delivery Model & Constraints:
 1. **5 Major Projects across 22 Weeks**: Total workload calculated at ~452 hours across 5 sequential build phases.
-2. **Local-First Development, Cloud-Native Capstone**: Projects 1-4 run entirely locally via **Docker Compose** using open-source tools (Ollama/vLLM, PostgreSQL/Pgvector, Redis, LangGraph, Arize Phoenix) to ensure rapid iteration and zero unexpected costs. However, for the Project 5 Capstone, a $200 budget per student is allocated to provision a live cloud instance (e.g., an AWS EC2 GPU instance) and deploy their final multi-agent architecture to the public web.
+2. **Local-First Development, Bounded AWS Capstone**: Projects 1-4 run and are graded entirely locally via **Docker Compose**. Project 1 must not expose a public endpoint. Project 5 first passes the same local Docker Compose acceptance path, then deploys a temporary, protected endpoint in a course-managed AWS account. The per-student program budget is capped at $200: $20 for approved LLM API usage and $180 for AWS infrastructure. The AWS GPU is scheduled for bounded model-serving or fine-tuning sessions; it is never an always-on six-week host.
 3. **Clear Pass/Fail Scope & Seeded Defect Labs**: Starter scaffolds include realistic enterprise legacy code, seeded bugs, performance bottlenecks, and architectural gaps that students must diagnose, audit, refactor, and fix.
 4. **Reference Program Benchmark**: Aligned with TripleTen's 5-Project Systems Engineering paradigm located at [`C:\repos\tripleten-systemengineering-projects\projects\v05-5-projects-22-weeks-local-and-aws-simplified`](file:///C:/repos/tripleten-systemengineering-projects/projects/v05-5-projects-22-weeks-local-and-aws-simplified).
 
 ### Hardware & System Prerequisites
 Due to the focus on local deployment of open-weight LLMs (Ollama/vLLM) and containerized vector databases, students must meet the following hardware minimums:
 - **RAM**: 16GB minimum (32GB strongly recommended for smooth multi-container orchestration).
-- **GPU/VRAM**: 8GB VRAM minimum for local inference, or reliance on the $200 external API budget/provided cloud notebooks if local VRAM is insufficient.
+- **GPU/VRAM**: 8GB VRAM is strongly recommended for local inference. It is not a Project 1-4 cloud fallback requirement: those projects provide mock, small-model, or approved local fallback paths. The $20 API allowance is reserved for Project 5; scheduled AWS GPU sessions are reserved for Project 5 model-serving or fine-tuning work.
 - **OS**: macOS (M-series preferred), Linux, or Windows (WSL2 required).
 
 ### Curriculum Content Taxonomy:
@@ -66,10 +66,7 @@ An AI FDE must be able to:
 
 ## 📋 Syllabus Evolution & Versions
 
-1. **Competitor-Based 2-Week Sprint Version**:
-   - Documented in [`syllabus/based-on-competitors-2w-sprints.md`](file:///c:/repos/tripleten-fde-syllabus/syllabus/based-on-competitors-2w-sprints.md).
-   - 11 two-week sprints based on traditional bootcamp sprint pacing.
-2. **TripleTen 5-Project, 22-Week Project-First Version (Current Target)**:
+1. **TripleTen 5-Project, 22-Week Project-First Version (Current Target)**:
    - Documented in [`syllabus/`](file:///c:/repos/tripleten-fde-syllabus/syllabus/).
    - 5 major real-world enterprise projects with problem-driven JIT learning maps.
 
@@ -84,13 +81,14 @@ tripleten-fde-syllabus/
 │   ├── competitor-curriculums.md       # Analysis of existing AI / SE / ML Bootcamps
 │   └── teaching-and-submission-models.md # Analysis of teaching methodologies & submission workflows
 ├── syllabus/                           # Core 22-week curriculum design
-│   ├── based-on-competitors-2w-sprints.md # Version 1: Competitor 2-week sprint model
+│   ├── README.md                       # Program principles, roadmap, and graduation criteria
 │   ├── overview-and-module-map.md      # 5-Project module map, hours calculation, and JIT roadmap
 │   ├── project-1.md                    # Project 1 Brief: System Diagnostics & Enterprise API Scaling
 │   ├── project-2.md                    # Project 2 Brief: Data Layer, Vector Search & Hybrid RAG
 │   ├── project-3.md                    # Project 3 Brief: Resilience, Microservices & Local LLM Serving
 │   ├── project-4.md                    # Project 4 Brief: Zero-Trust Security, Guardrails & Governance
-│   └── project-5.md                    # Project 5 Brief: Autonomous Multi-Agent Platform & Defense
+│   ├── project-5.md                    # Project 5 Brief: Autonomous Multi-Agent Platform & Defense
+│   └── project-5-aws-deployment.md     # P5 AWS estimate, deployment workflow, and teardown contract
 └── projects/                           # Starter code specs, seeded defects, & rubric definitions
 ```
 
@@ -98,5 +96,6 @@ tripleten-fde-syllabus/
 
 ## 🤖 Guidelines for AI Assistants & Contributors
 - **Adhere to the Project-First Philosophy**: Always ground theoretical topics in concrete project tasks and real-world problem scenarios.
-- **Maintain Local-First Compatibility**: Every core required project task must run locally using Docker Compose without requiring paid cloud infrastructure or GPU dependencies.
+- **Maintain the Delivery Boundary**: Projects 1-4 must run and pass locally using Docker Compose; Project 1 must not expose a public endpoint. Project 5 must pass locally before its required, temporary protected AWS deployment. Do not add cloud requirements to Projects 1-4 or turn the P5 GPU into an always-on service.
+- **Keep the Capstone Budget Bounded**: Treat $200 as the total per-student allocation: $20 maximum for approved LLM API calls and $180 maximum for AWS. Use the estimate, access controls, security baseline, and teardown process in [`syllabus/project-5-aws-deployment.md`](syllabus/project-5-aws-deployment.md).
 - **Enforce High-Touch Quality**: Ensure grading rubrics contain clear *Must-Have* criteria and *Recommendations*, alongside Loom video client demonstration requirements.

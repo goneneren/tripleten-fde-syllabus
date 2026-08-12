@@ -19,7 +19,7 @@ Our methodology solves this by **reusing the exact same 5 project starter reposi
 Both SE and FDE students clone the identical GitHub repository (e.g., `tripleten-systemengineering-project-1`). 
 
 - **System Engineering (SE) Students** are graded on their ability to build robust backend infrastructure (Kubernetes, Kafka, Terraform, CI/CD).
-- **Forward Deployed Engineer (FDE) Students** are graded on their ability to deploy applied AI (Docker Compose, Local LLMs, Guardrails, Hybrid RAG, Multi-Agent Workflows).
+- **Forward Deployed Engineer (FDE) Students** are graded on their ability to deploy applied AI (Docker Compose, Local LLMs, Guardrails, Hybrid RAG, Multi-Agent Workflows, and a bounded AWS capstone deployment).
 
 ---
 
@@ -35,7 +35,11 @@ Here is how the 5 shared projects are adapted for each student persona:
 | **P2: Polyglot Data Tier** | **Core:** gRPC service boundaries, Redis replication, Idempotency. | **Core:** Unstructured Document ETL, Chunking, Pgvector Data Prep. |
 | **P3: Operations & Resilience** | **Core:** Local Kubernetes (`kind`), Terraform/OpenTofu, Kafka, Chaos Lab. | **Core:** Docker Compose, Local LLM Serving (vLLM/Ollama), API Resiliency (Retries). |
 | **P4: Security & Compliance** | **Core:** Kubernetes Secrets, RBAC, CI Security Gates. | **Core:** OWASP LLM, Output Guardrails, PII Redaction, Prompt Injection Defense. |
-| **P5: Autonomous AI System** | **Core:** Basic RAG, CI Smoke Evals, Telemetry. | **Core:** Advanced RAG, Multi-Agent LangGraph, LLM-as-a-Judge, Fine-Tuning. |
+| **P5: Autonomous AI System** | **Core:** Basic RAG, CI Smoke Evals, Telemetry. | **Core:** Advanced RAG, Multi-Agent LangGraph, LLM-as-a-Judge, Fine-Tuning, protected AWS deployment. |
+
+### FDE Delivery Boundary
+
+FDE Projects 1-4 are built, tested, graded, and demonstrated locally with Docker Compose; Project 1 has no public endpoint. Project 5 must first pass local acceptance, then students deploy a temporary protected endpoint in a course-managed AWS account. The P5 deployment is capped at $180 of AWS infrastructure plus $20 of approved API usage per student, with scheduled GPU sessions rather than an always-on GPU service.
 
 ---
 
