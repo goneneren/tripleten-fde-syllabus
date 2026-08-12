@@ -9,7 +9,7 @@ This document analyzes leading bootcamps, online programs, and industry courses 
 
 | Competitor / Program | Duration & Intensity | Core Focus | Target Audience | Notable Strengths | Key Gaps / Limitations |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **TripleTen (Existing SE/DS)** | 5–9 months (~15–20h/wk) | Full-Stack SE or Data Science | Career Changers | Sprint structure, high completion rate, rigorous code reviews, automated LMS | Lacks specialized enterprise GenAI / Agentic / MLOps focus in current core track |
+| **TripleTen (Existing SE/DS)** | 5–9 months (~15–20h/wk) | Full-Stack SE or Data Science | Career Changers | Project-based structure, high completion rate, rigorous code reviews, automated LMS | Lacks specialized enterprise GenAI / Agentic / MLOps focus in current core track |
 | **General Assembly (AI Engineer)** | 10–12 weeks (Full-time) / 24 wks | Applied AI & Prompting | SE / Analysts | Strong brand recognition, career services, live lectures | Focuses heavily on high-level APIs; lacks deep MLOps/LLMOps & production cloud infra |
 | **Springboard (AI & ML Bootcamp)** | 6 months (~15–20h/wk) | ML Engineering & DL | Experienced Programmers | 1-on-1 mentor support, capstone focus | Traditional ML focus (scikit-learn, TensorFlow); weak on modern RAG/Agents & FDE client skills |
 | **CoRise / Maven (AI Engineering)** | 4–6 weeks (Short courses) | RAG, Agents, LLMOps | Working Software Engineers | Cut-throat relevant tech stack, industry-expert instructors | Too short for career transition; assumes pre-existing senior SE skills |
@@ -45,9 +45,9 @@ Recent bootcamps and short-courses have shifted away from standard ML (regressio
 
 ## 3. Positioning TripleTen's AI FDE Program
 
-To stand out in the market, TripleTen's 22-Week AI FDE Program must combine **TripleTen's proven pedagogical engine** (sprints, code reviewers, interactive platform, tutors) with **Enterprise AI Engineering**:
+To stand out in the market, TripleTen's 22-Week AI FDE Program must combine **TripleTen's proven pedagogical engine** (JIT theory, code reviewers, interactive platform, tutors) with **Enterprise AI Engineering**:
 
-```
+```text
 +-------------------------------------------------------------------------+
 |                      TRIPLETEN AI FDE POSITIONING                       |
 +-------------------------------------------------------------------------+
@@ -56,7 +56,7 @@ To stand out in the market, TripleTen's 22-Week AI FDE Program must combine **Tr
 |                              |   Fine-Tuning)     |   Eval, MLOps, Cloud)|
 +-------------------------------------------------------------------------+
 |                                    |                                    |
-|   Supported by 2-Week Sprints + Code Reviews + Tutors + Capstones       |
+|    Supported by 5-Project Build Phases + Code Reviews + Tutors          |
 +-------------------------------------------------------------------------+
 ```
 
