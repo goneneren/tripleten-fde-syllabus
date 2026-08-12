@@ -11,7 +11,7 @@ FDE students use the exact same starter repositories and environments as SE stud
 | :--- | :--- | :--- | :--- |
 | **P1: Diagnostics & Scaling** | Monolith, Prom/Grafana, Load Tester | Traces, DB Bottlenecks, Load Testing | API Diagnostics, LLM Mock Latency, Observability |
 | **P2: Polyglot Data Tier** | Postgres, Redis, gRPC, Auth | gRPC boundaries, Redis replication, Idempotency | Unstructured ETL, Chunking, Pgvector Data Prep |
-| **P3: Operations & Resilience** | K8s (`kind`), CI/CD, Event Bus | Terraform/OpenTofu, Kafka, Chaos Lab | Docker Compose, Local LLM Serving (vLLM/Ollama), API Resiliency (Retries) |
+| **P3: Operations & Resilience** | K8s (`kind`), CI/CD, Event Bus | Terraform/OpenTofu, Kafka, Chaos Lab | Docker Compose, Local LLM Serving (vLLM), API Resiliency (Retries) |
 | **P4: Security & Compliance** | IAM, Secrets, LLM Adapter | K8s Secrets, RBAC, CI Security Gates | OWASP LLM, Guardrails, PII Redaction, Prompt Injection Defense |
 | **P5: Autonomous AI System** | RAG, LangGraph, Telemetry | Basic RAG, CI Smoke Evals, Telemetry | Advanced RAG, Multi-Agent LangGraph, LLM-as-a-Judge, Fine-Tuning |
 
@@ -48,7 +48,7 @@ Projects/
 │   ├── Chapter 6.1 Replication & Read Replicas [POSITIONING]
 │   ├── Chapter 6.3 Caching with Redis [CORE]
 │   ├── Unstructured Data Extraction & Document Chunking [AI]
-│   ├── Local Embedding Generation (FastEmbed / sentence-transformers) [AI]
+│   ├── Local Embedding Generation (FastEmbed) [AI]
 │   ├── Hybrid Retrieval Systems (pgvector + BM25) [AI]
 │   └── Chapter 18.1 Use Case & Architecture [SUPPORTING]
 ├── Project 3: Resilience, Microservices & Local LLM Serving (Weeks 8-12)
@@ -59,7 +59,7 @@ Projects/
 │   ├── Chapter 9.3 Alerting SLOs & the Failure Lab [CORE]
 │   ├── Chapter 10.2 Partial-Failure Patterns & LLM API Retries [CORE]
 │   ├── Chapter 11.2 Kafka at Working Level [POSITIONING]
-│   ├── Local LLM Model Serving: Ollama & vLLM via Docker [AI]
+│   ├── Local LLM Model Serving: vLLM via Docker [AI]
 │   ├── LLM Provider Adapters, Rate Limits, and Circuit Breakers [AI]
 │   └── Chapter 19.1 Deploy & Observe (Local LLM API Endpoint) [CORE]
 ├── Project 4: Zero-Trust Security, Guardrails & Governance (Weeks 13-16)

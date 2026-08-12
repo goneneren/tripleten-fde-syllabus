@@ -2,7 +2,7 @@
 
 ## 🎯 Program Vision & Parameters
 - **Role Target**: AI Forward Deployed Engineer (AI FDE)
-- **Program Duration**: 22 Weeks (~440 Hours Total Study & Project Work)
+- **Program Duration**: 22 Weeks (~452 Hours Total Study & Project Work)
 - **Student Commitment**: ~20 Hours / Week
 - **Pedagogical Model**: **Project-First & Problem-Driven** (Organized around **5 Major Real-World Enterprise Projects** with Just-In-Time theory)
 - **Format**: Asynchronous project-first work combined with live instructor/tutor support, rigorous code reviews, office hours, and client defense.
@@ -14,7 +14,7 @@
 Unlike traditional curriculum models that teach theory first and assign a small project at the end, TripleTen's **Project-First Approach** introduces real-world enterprise problems **upfront**. Students learn technical concepts **Just-In-Time (JIT)** as they encounter and solve concrete engineering challenges in their projects.
 
 ### Program-Wide Delivery Model & Constraints:
-1. **5 Major Projects across 22 Weeks**: Total workload calculated at ~438-440 hours across 5 sequential build phases.
+1. **5 Major Projects across 22 Weeks**: Total workload calculated at ~452 hours across 5 sequential build phases.
 2. **Local-First with Controlled API Usage**: Core infrastructure runs locally via **Docker Compose** using open-source tools (Ollama/vLLM, PostgreSQL/Pgvector, Redis, LangGraph, Arize Phoenix). However, a $200 budget per student is allocated for explicitly permitted paid API usage (e.g., OpenAI/Anthropic) for specific RAG/Agent tasks.
 3. **Clear Pass/Fail Scope & Seeded Defect Labs**: Starter scaffolds include realistic enterprise legacy code, seeded bugs, performance bottlenecks, and architectural gaps that students must diagnose, audit, refactor, and fix.
 4. **Reference Program Benchmark**: Aligned with TripleTen's 5-Project Systems Engineering paradigm located at [`C:\repos\tripleten-systemengineering-projects\projects\v05-5-projects-22-weeks-local-and-aws-simplified`](file:///C:/repos/tripleten-systemengineering-projects/projects/v05-5-projects-22-weeks-local-and-aws-simplified).

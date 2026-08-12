@@ -8,7 +8,7 @@ Students evolve the reference platform to support AI data ingestion and hybrid r
 
 - Design REST APIs with clear resources, status codes, versioning, and evolution paths.
 - Extract text and tables from complex enterprise documents (PDF, HTML) using Unstructured.io.
-- Generate dense vector embeddings locally using FastEmbed or sentence-transformers.
+- Generate dense vector embeddings locally using FastEmbed (sentence-transformers as fallback).
 - Implement hybrid retrieval combining `pgvector` (dense) and BM25 (sparse) search.
 - Use simulated read replicas and Redis caching while explaining lag, freshness, and invalidation.
 - Compare GraphQL, NoSQL, partitioning, and managed data services at decision level.
@@ -38,7 +38,7 @@ Students evolve the reference platform to support AI data ingestion and hybrid r
 - REST design, API versioning, and API evolution.
 - AI-Native Development, Data Preparation, Chunking Strategies.
 - Relational production patterns, migrations, repositories, `pgvector`, and transaction boundaries.
-- Local Embedding Models (FastEmbed, sentence-transformers).
+- Local Embedding Models (FastEmbed default, sentence-transformers fallback).
 - Hybrid Retrieval (Dense Vector + BM25 Sparse Search).
 - Data replication, read replicas, Redis caching, cache invalidation, and freshness.
 - gRPC, protobufs, service boundaries, and DDD (Positioning).

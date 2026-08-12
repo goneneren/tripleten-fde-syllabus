@@ -2,12 +2,12 @@
 
 ## Project Description
 
-Students operate the platform in a production-like local environment using strictly Docker Compose (eschewing local Kubernetes for FDEs to focus on AI ops). They deploy local LLM inference engines (vLLM/Ollama), run CI gates, configure one SLO alert, implement LLM API retry and circuit breaker patterns, and run one failure lab. Terraform/OpenTofu, Kafka, and Kubernetes remain decision-level/positioning topics.
+Students operate the platform in a production-like local environment using strictly Docker Compose (eschewing local Kubernetes for FDEs to focus on AI ops). They deploy local LLM inference engines (vLLM default, Ollama fallback), run CI gates, configure one SLO alert, implement LLM API retry and circuit breaker patterns, and run one failure lab. Terraform/OpenTofu, Kafka, and Kubernetes remain decision-level/positioning topics.
 
 ## Skills
 
 - Package and run services with Docker and Docker Compose Orchestration.
-- Deploy local LLM serving infrastructure (vLLM / Ollama) alongside traditional backend services.
+- Deploy local LLM serving infrastructure (vLLM, with Ollama fallback) alongside traditional backend services.
 - Build or complete CI/CD gates for tests, deployment checks, and rollback awareness.
 - Design one SLO-based alert tied to user impact (e.g., LLM generation timeout).
 - Implement event-driven reliability and LLM API resiliency (Retries, Circuit Breakers, Fallbacks).
@@ -18,7 +18,7 @@ Students operate the platform in a production-like local environment using stric
 
 - Containerized platform services from earlier projects.
 - Docker Compose scaffold that students modify instead of writing from scratch.
-- Local LLM Provider Adapter (Ollama/vLLM Docker containers).
+- Local LLM Provider Adapter (vLLM Docker container, Ollama fallback).
 - CI/CD pipeline with tests, security checks, deployment stages, and teardown validation.
 - Prometheus, Grafana, logs, one SLO alert rule scaffold, and one reversible failure-lab script.
 - Redpanda or single-node Kafka via Docker Compose for the selected resilience pattern (Positioning focus for FDE).

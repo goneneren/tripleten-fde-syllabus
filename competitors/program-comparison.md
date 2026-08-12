@@ -26,7 +26,7 @@ By utilizing the **Unified Project Strategy** (where students inherit complex, s
 ### TripleTen 5-Project FDE vs. Springboard
 | TripleTen Strategy (5-Project Seeded Repo) | Pros of Our Strategy | Cons of Our Strategy |
 | :--- | :--- | :--- |
-| **Applied AI over Deep Learning Math** | Aligns with 95% of current enterprise job openings which need RAG/Agents, not custom neural net architectures. | Students won't learn the calculus behind gradient descent or how to build a transformer from scratch. |
+| **Applied AI over Deep Learning Math** | Aligns with the majority of current enterprise job openings which need RAG/Agents, not custom neural net architectures. | Students won't learn the calculus behind gradient descent or how to build a transformer from scratch. |
 | **Local LLM Serving (vLLM/Ollama)** (Project 3) | Teaches students how to deploy and operate open-weight models, a critical skill for privacy-conscious enterprises. | Requires heavier local hardware (or provided cloud environments) compared to running a basic scikit-learn random forest. |
 | **Iterative 5-Project Structure** | Forces students to maintain and upgrade the same infrastructure across 22 weeks, learning API evolution. | Less freedom to choose a completely random "passion project" for a capstone. |
 

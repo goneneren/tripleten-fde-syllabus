@@ -1,7 +1,7 @@
 # Benchmark Analysis: The AI Forward Deployed Engineer (AI FDE) Role
 
 ## Executive Summary
-The **AI Forward Deployed Engineer (AI FDE)** is one of the highest-demand technical roles emerging in the AI ecosystem. Pioneered by **Palantir** and rapidly adopted by frontier AI companies (**OpenAI**, **Anthropic**, **Scale AI**, **Databricks**, **C3.ai**), the AI FDE acts as an embedded technical strategist and production engineer who takes cutting-edge AI capabilities and deploys them into messy, complex, real-world enterprise environments.
+The **AI Forward Deployed Engineer (AI FDE)** is a rapidly growing technical role emerging in the AI ecosystem. Pioneered by **Palantir** and rapidly adopted by frontier AI companies (**OpenAI**, **Anthropic**, **Scale AI**, **Databricks**, **C3.ai**), the AI FDE acts as an embedded technical strategist and production engineer who takes cutting-edge AI capabilities and deploys them into messy, complex, real-world enterprise environments.
 
 Unlike traditional Data Scientists (who build/train standalone models) or pure Full-Stack Engineers (who build web interfaces), an AI FDE must possess a **tri-fold capability set**:
 1. **Applied AI Expertise**: RAG, LLM orchestration, Agentic frameworks, Fine-tuning, Vector DBs, Evaluation/Guardrails.
@@ -56,7 +56,7 @@ Unlike traditional Data Scientists (who build/train standalone models) or pure F
 ---
 
 ## Implications for a 22-Week (20h/week) Bootcamp Syllabus
-To prepare a student in 440 total hours (22 weeks × 20h):
+To prepare a student in ~452 total hours (22 weeks × ~20.5h):
 1. **Skip Abstract ML Math Theory**: Focus on practical application, API engineering, model utilization, and software architecture rather than training neural networks from scratch.
 2. **Prioritize Production over Chatbots**: Move beyond toy Streamlit chatbots. Require robust APIs, persistent vector stores, automated tests, logging, telemetry, and containerized deployments.
 3. **Embed Client-Facing Artifacts**: Force students to submit PR descriptions, system architecture diagrams, API documentation (Swagger/OpenAPI), and video walkthroughs (simulating client demos).

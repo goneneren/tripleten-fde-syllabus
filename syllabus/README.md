@@ -1,6 +1,6 @@
 # AI Forward Deployed Engineer (AI FDE) Syllabus: 5-Project Program
 
-## 22-Week Bootcamp Program | ~20 Hours / Week Commitment (~440 Hours Total)
+## 22-Week Bootcamp Program | ~20 Hours / Week Commitment (~452 Hours Total)
 
 ---
 
@@ -62,7 +62,7 @@ Students deploy local LLM inference engines (`vLLM` or `Ollama`) within a strict
 Students secure the AI system against the OWASP LLM Top 10. They build a STRIDE threat model, implement output guardrails (`Guardrails AI`), configure PII redaction, and map educational compliance controls (EU AI Act & HIPAA).
 
 ### [Project 5: Autonomous Multi-Agent Platform & Defense](project-5.md)
-The capstone. Students build a multi-agent tool flow using `LangGraph` with human-in-the-loop sandboxing. They run CI evaluations, calibrate LLM-as-a-judge metrics with `Ragas`, fine-tune a specialized model via LoRA, and deploy the full stack to a cloud instance (AWS EC2).
+The capstone. Students build a multi-agent tool flow using `LangGraph` with human-in-the-loop sandboxing. They run CI evaluations, calibrate LLM-as-a-judge metrics with `Ragas`, and fine-tune a specialized model via LoRA. (Optional/Positioning: deploy the full stack to a cloud instance like AWS EC2).
 
 ---
 

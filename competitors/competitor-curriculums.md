@@ -63,4 +63,4 @@ To stand out in the market, TripleTen's 22-Week AI FDE Program must combine **Tr
 ### Key Differentiators:
 1. **End-to-End Enterprise Deliverables**: Projects are framed as customer client engagements (e.g., "Deploy an internal RAG & Agent system for a healthcare provider with strict PII & RBAC guidelines").
 2. **Production-First Code Standards**: Every project requires clean modular code, unit testing, Dockerization, and a video client walkthrough.
-3. **Structured 22-Week Timeline**: 20 hours/week provides 440 hours of focused depth—far deeper than 4-week short courses, yet manageable for working adults or dedicated career switchers.
+3. **Structured 22-Week Timeline**: 20.5 hours/week provides ~452 hours of focused depth—far deeper than 4-week short courses, yet manageable for working adults or dedicated career switchers.

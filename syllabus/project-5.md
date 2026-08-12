@@ -13,19 +13,19 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 - Build CI-safe evaluation cases with cached prompt/response fixtures.
 - Implement LLM-as-a-judge evaluation pipelines using Ragas.
 - Perform PEFT/LoRA fine-tuning for a specialized task.
-- Monitor quality signals, cost, latency, failures, and user-visible behavior using Arize Phoenix or similar tracing.
-- Deploy the Docker Compose stack to a basic cloud instance (e.g., AWS EC2) as a final capstone delivery requirement.
+- Monitor quality signals, cost, latency, failures, and user-visible behavior using Arize Phoenix.
+- [Positioning] Deploy the Docker Compose stack to a basic cloud instance (e.g., AWS EC2) as an optional capstone delivery requirement.
 - Defend model-serving, provider, architecture, safety, and evaluation trade-offs.
 
 ## Tech Setup
 
 - Secured version of the platform extending Project 4.
-- Paid LLM API provider adapter or local inference engine (vLLM/Ollama).
+- Paid LLM API provider adapter or local inference engine (vLLM default).
 - PostgreSQL with `pgvector` plus simple keyword search and local cross-encoder for hybrid retrieval.
 - LangGraph scaffold for multi-agent tool-execution flow.
 - Tool-execution sandbox, step limits, token budgets, request budgets, and human-in-the-loop checkpoint pattern.
 - Evaluation dataset with CI smoke cases, cached fixtures, and larger Ragas evaluation path.
-- PEFT/LoRA fine-tuning scaffold (Unsloth/HuggingFace) for a narrow specialized task.
+- PEFT/LoRA fine-tuning scaffold (Unsloth) for a narrow specialized task.
 - Cost/latency telemetry template and AI observability dashboard scaffold (Arize Phoenix).
 - Seeded flawed AI eval artifact, expected-issue list, and review rubric.
 
@@ -47,7 +47,7 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 - Agentic frameworks, state graphs, tool sandboxing, and human oversight.
 - Evaluation pipelines, LLM-as-judge calibration, CI smoke gates, cached fixtures, and failure coverage.
 - PEFT Fine-Tuning (LoRA) for Specialized Tasks.
-- AI observability (Arize Phoenix / Tracing), cost telemetry, latency telemetry, portfolio readiness, and hostile defense preparation.
+- AI observability (Arize Phoenix), cost telemetry, latency telemetry, portfolio readiness, and hostile defense preparation.
 
 ## Delivery Limits
 
@@ -56,6 +56,7 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 - Students implement one bounded multi-agent LangGraph flow.
 - CI evals are limited to smoke cases with cached fixtures; larger LLM-as-judge evals run manually.
 - The starter repo, `pgvector` setup, provider adapter, LangGraph scaffold, tool sandbox template, eval fixtures, fine-tuning script, telemetry template, flawed AI artifact, expected issues, and rubric must be provided before launch.
+- Default tools are mandatory for grading: `vLLM` for model serving, `Arize Phoenix` for tracing, and `Unsloth` for fine-tuning must be explicitly chosen as the single defaults in the final repository scaffold.
 
 ## Submission & Assessment Criteria
 
