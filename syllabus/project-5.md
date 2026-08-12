@@ -64,13 +64,6 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 - The starter repo, `pgvector` setup, provider adapter, LangGraph scaffold, tool sandbox template, eval fixtures, fine-tuning script, telemetry template, flawed AI artifact, expected issues, and rubric must be provided before launch.
 - Default tools are mandatory for grading: `vLLM` for scheduled local/GPU model-serving evidence, `Arize Phoenix` for tracing, and `Unsloth` for fine-tuning must be explicitly chosen as the single defaults in the final repository scaffold. The protected AWS endpoint is API-backed by design.
 
-## Submission & Assessment Criteria
-
-- **Automated Tests**: CI pipeline must pass (LLM smoke evaluation gates).
-- **Required Artifacts**: PR containing the LangGraph multi-agent flow, the Ragas evaluation suite, held-out scenario results, the protected AWS endpoint URL and access instructions for reviewers, scheduled vLLM evidence, a verifier report, a cost report, and teardown evidence.
-- **Client Defense (Capstone)**: A 15-minute live or Loom video defense demonstrating the working application in the cloud, explaining the multi-agent architecture, interpreting the LLM-as-a-judge Ragas metrics, and justifying the model fine-tuning results.
-- **Pass/Fail Rubric**: Must be explicitly supplied in the `projects/` directory, defining Must-Have criteria for the defense and evaluation metrics.
-
 ## Workload
 
 | Field | Hours |

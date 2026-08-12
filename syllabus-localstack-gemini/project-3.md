@@ -61,13 +61,6 @@ Students operate the platform in a production-like local environment using stric
 - Extra Kafka depth, multiple queue providers, and full chaos suites are optional or scaffolded.
 - The Docker Compose scaffold, LocalStack configuration, CI config, failure script, dashboards, flawed AI artifact, expected issues, and rubric must be provided before launch.
 
-## Submission & Assessment Criteria
-
-- **Automated Tests**: CI pipeline must pass (deployment gates, LocalStack SQS queue tests, rollback awareness).
-- **Required Artifacts**: PR containing the AWS SDK / LLM API resilience pattern (e.g., Retry / Circuit Breaker with SQS DLQ handling) and the SLO alert configuration.
-- **Client Defense**: A 5-minute Loom video walking through the simulated SQS/LLM failure lab and showing how the system degrades gracefully based on telemetry.
-- **Pass/Fail Rubric**: Must be explicitly supplied in the `projects/` directory, defining Must-Have criteria for the circuit breaker and DLQ implementation.
-
 ## Workload
 
 | Field | Hours |

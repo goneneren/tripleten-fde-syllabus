@@ -63,13 +63,6 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 - The $180 planning estimate, deployment sequence, access model, monitoring, and teardown evidence are defined in [Project 5 AWS Deployment](project-5-aws-deployment.md).
 - Default tools are mandatory for grading: `LocalStack` for local AWS pre-flight verification, `vLLM` for scheduled local/GPU model-serving evidence, `Arize Phoenix` for tracing, and `Unsloth` for fine-tuning must be explicitly chosen as single defaults in the repository scaffold.
 
-## Submission & Assessment Criteria
-
-- **Automated Tests**: CI pipeline must pass (LLM smoke evaluation gates, LocalStack pre-flight integration checks).
-- **Required Artifacts**: PR containing the LangGraph multi-agent flow, the Ragas evaluation suite, held-out scenario results, LocalStack `awslocal` pre-flight log, protected AWS endpoint URL and access instructions for reviewers, scheduled vLLM evidence, a verifier report, a cost report, and teardown evidence.
-- **Client Defense (Capstone)**: A 15-minute live or Loom video defense demonstrating the working application in the cloud, explaining the multi-agent architecture, interpreting the LLM-as-a-judge Ragas metrics, and justifying the model fine-tuning results.
-- **Pass/Fail Rubric**: Must be explicitly supplied in the `projects/` directory, defining Must-Have criteria for the defense and evaluation metrics.
-
 ## Workload
 
 | Field | Hours |

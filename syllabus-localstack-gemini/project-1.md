@@ -64,13 +64,6 @@ Students diagnose a provided monolith-based enterprise reference platform runnin
 - Students repair exactly two observability defects; extra instrumentation is optional.
 - The platform, LocalStack container, `boto3` client factory and its CI gate, load generator, dashboards, broken trace, bad metric, capacity notebook, flawed AI artifact, expected findings, and rubric must be provided before launch.
 
-## Submission & Assessment Criteria
-
-- **Automated Tests**: CI pipeline must pass (linting, basic integration tests validating LocalStack S3 connectivity).
-- **Required Artifacts**: PR containing the two observability fixes (FastAPI + `boto3` trace propagation) and the finalized ADR for API scaling.
-- **Client Defense**: A 5-minute Loom video demonstrating the reproducible load test and explaining the telemetry findings on the dashboard (including AWS SDK spans).
-- **Pass/Fail Rubric**: Must be explicitly supplied in the `projects/` directory prior to launch, defining Must-Have criteria for the ADR.
-
 ## Workload
 
 | Field | Hours |

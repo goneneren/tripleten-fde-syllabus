@@ -54,13 +54,6 @@ Students evolve the reference platform to support AI data ingestion and hybrid r
 - No cloud deployment or public endpoint is permitted. AWS RDS is decision-level only; the graded path is the local PostgreSQL read-replica simulation.
 - The starter repo must provide database plumbing, migration tooling, replica simulation, tests, flawed AI artifact, expected issues, and rubric before launch.
 
-## Submission & Assessment Criteria
-
-- **Automated Tests**: CI pipeline must pass (ETL tests, vector retrieval unit tests).
-- **Required Artifacts**: PR containing the Unstructured pipeline script and hybrid search API endpoint.
-- **Client Defense**: A 5-minute Loom video demonstrating the extraction of a messy PDF into the vector database and executing a successful hybrid query.
-- **Pass/Fail Rubric**: Must be explicitly supplied in the `projects/` directory, defining Must-Have accuracy standards for the chunking logic.
-
 ## Workload
 
 | Field | Hours |

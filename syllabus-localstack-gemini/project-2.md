@@ -61,13 +61,6 @@ Students evolve the reference platform to support AI document ingestion and hybr
 - This is the first project in which students write `boto3` service logic themselves; Project 1 provides it pre-built.
 - The starter repo must provide LocalStack initialization, the `boto3` client factory and its CI gate, database plumbing, migration tooling, tests, flawed AI artifact, expected issues, and rubric before launch.
 
-## Submission & Assessment Criteria
-
-- **Automated Tests**: CI pipeline must pass (LocalStack S3 upload tests, Unstructured extraction ETL tests, vector retrieval unit tests).
-- **Required Artifacts**: PR containing the LocalStack S3 event-handler pipeline script and the hybrid search API endpoint.
-- **Client Defense**: A 5-minute Loom video demonstrating the upload of a messy PDF to LocalStack S3, processing via `Unstructured`, and executing a successful hybrid search query against `pgvector`.
-- **Pass/Fail Rubric**: Must be explicitly supplied in the `projects/` directory, defining Must-Have criteria for chunking logic and S3 integration.
-
 ## Workload
 
 | Field | Hours |
