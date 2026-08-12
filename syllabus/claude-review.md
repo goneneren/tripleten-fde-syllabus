@@ -1,54 +1,36 @@
 # Claude Review: AI FDE Syllabus (v2) & Cross-Document Consistency
 
-_Round 2 — reviewed against commit `3831e26` ("fix: resolve claude and codex review findings for syllabus launch-readiness"), which addressed round-1 findings from this file and from `codex-review.md`._
+_Round 3 — reviewed against commit `c79ea82` ("fix: resolve round 2 review findings: hours, local-first, default tools, claims"), which addressed round-2 findings from this file._
 
-## ✅ Confirmed resolved from Round 1
+## ✅ Confirmed resolved this round
 
-| Round 1 finding | Status |
+| Round 2 finding | Status |
 |---|---|
-| Qdrant/MinIO claimed but never used | Removed from [AGENTS.md](../AGENTS.md)'s stack list — now matches what the project briefs actually build |
-| gRPC Core/Positioning ambiguity (P2) | Fixed — Tech Setup now explicitly says "read-only scaffold... Positioning-level for FDEs" |
-| P5 missing platform continuity | Fixed — Tech Setup now says "Secured version of the platform extending Project 4" |
-| `[FDE-SPECIFIC]` vs `[AI]` taxonomy drift | Fixed — module map now uses `[AI]` throughout, matches AGENTS.md |
-| v1 legacy syllabus mistaken for current | Fixed — deprecation banners added to both [based-on-competitors-2w-sprints.md](based-on-competitors-2w-sprints.md) and [teaching-and-submission-models.md](../competitors/teaching-and-submission-models.md) |
-| Hardware/setup gap in v2 docs | Fixed — new "Hardware & System Prerequisites" section in AGENTS.md |
-| P5's hours/week under-allocation (Round 1's top finding) | **Well fixed** — P5 moved from 7wk/105.5h (−25% vs. budget) to 6wk/120h, now *exactly* on budget. P3 also improved from +20% over to −4% (gained a week). |
+| ~440h total was stale after P5's workload bump | Fixed — AGENTS.md, [syllabus/README.md](README.md), and both competitor docs now consistently say **~452h** (matches actual sum: 67+86.5+96+82.75+120=452.25) |
+| Uneven "pin a default tool" fixes (P2/P3/P4/P5) | Fixed — every project's Skills/Tech Setup/Theory Topics/Delivery Limits now consistently name a default + fallback (FastEmbed, vLLM, Guardrails AI, Unsloth) within its own file |
+| Uncited "95% of enterprise job openings" stat | Softened to "the majority of" in [program-comparison.md](../competitors/program-comparison.md) |
 
-## 🔴 New issue introduced by the fix itself: total hours claim now stale
+## 🔴 Still open: P5's "make cloud optional" fix is incomplete and now self-contradictory
 
-P5's workload bump (105.5h → 120h, +14.5h) wasn't propagated to the program-level total. AGENTS.md still says *"22 Weeks (~440 Hours Total)"* / *"~438-440 hours."* Actual sum is now:
+[project-5.md](project-5.md)'s Skill bullet now reads: *"[Positioning] Deploy... to a basic cloud instance... as an **optional** capstone delivery requirement"* — "optional requirement" is a contradiction in terms on its own. Worse, nothing downstream was updated to match "optional":
+- Same file's **Submission & Assessment Criteria** still requires *"a live endpoint URL pointing to the cloud-deployed instance"* and a defense *"demonstrating the working application in the cloud."*
+- [syllabus/README.md](README.md)'s **Graduation Criteria** (bullet 5, untouched) still says students must *"successfully deploy the Project 5 Capstone architecture to the cloud and defend the LLM telemetry metrics."*
 
-67 + 86.5 + 96 + 82.75 + 120 = **452.25h** (~2.8% over the stated ceiling)
+So the doc now disagrees with itself: one line calls cloud deployment optional/positioning, three other places still gate submission/graduation on it. This is the same underlying tension from round 2, just relocated rather than resolved.
 
-Easy fix, but currently wrong.
+## 🔴 Still open: AGENTS.md's dead reference to the deleted legacy syllabus
 
-## 🔴 New issue: the P5 cloud-deployment fix breaks the program's own "local-first" promise
+Flagged after the reorg, still unfixed. [AGENTS.md](../AGENTS.md) still says (in "Syllabus Evolution & Versions") and repeats in its repo-structure diagram: `syllabus/based-on-competitors-2w-sprints.md` — that file was deleted in the reorg commit. Both references are dead links.
 
-To address a "cloud deployment underrepresented" finding, [project-5.md](5-projects-22-weeks/project-5.md) added this as a **Skill**:
-> "Deploy the Docker Compose stack to a basic cloud instance (e.g., AWS EC2) as a **final capstone delivery requirement**."
+## 🟡 New: default-tool fix didn't propagate to README prose
 
-That's an unconditional mandatory-cloud requirement — not a fallback like P2's optional AWS RDS checkpoint. It directly contradicts:
-- AGENTS.md's own Guidelines section (unchanged): *"Maintain Local-First Compatibility: **Every core required project task must run locally**... without requiring paid cloud infrastructure."*
-- The marketed differentiator repeated in [executive-overview.md](../executive-overview.md) and [program-comparison.md](../competitors/program-comparison.md): *"no mandatory cloud subscriptions."*
-- It's also not reflected anywhere in the [overview-and-module-map.md](5-projects-22-weeks/overview-and-module-map.md) chapter list for Project 5.
+[syllabus/README.md](README.md)'s Project 3 summary still reads *"deploy local LLM inference engines (`vLLM` or `Ollama`)"* — presenting them as equal alternatives again. This contradicts both the roadmap table directly above it in the same file (correctly shows "vLLM" only) and [project-3.md](project-3.md)'s own pinned default. The fix landed in the project brief but not in the README that summarizes it.
 
-This over-corrects: it trades one finding for a contradiction with a bigger, more load-bearing program claim. Making EC2 deployment optional/positioning (mirroring how P2 handles AWS RDS) would satisfy "cloud is represented" without breaking the local-first guarantee.
+## 🟢 Low-priority nits (cosmetic, not urgent)
 
-## 🟡 Uneven follow-through: "pin a default tool" fix applied inconsistently
-
-- **P2**: pins pgvector/FastEmbed in Delivery Limits — but the Skills bullet above it still reads "FastEmbed **or** sentence-transformers," text not synced.
-- **P3**: pins vLLM in Delivery Limits — but Skills and Tech Setup still list "vLLM / Ollama" as an undifferentiated pair.
-- **P4**: doesn't actually name a tool — just says one "must be explicitly chosen" later. Weaker than P2/P3, defers rather than resolves.
-- **P5**: untouched — still offers OpenAI/Anthropic-or-local, vLLM/Ollama, *and* Unsloth/HuggingFace as open alternatives, in the one project where reproducible grading matters most.
-
-## 🟡 Partial fix: rubric gap is more honestly labeled, not closed
-
-All 5 projects now have a "Submission & Assessment Criteria" section (good — concrete PR artifacts, Loom format, defense length). But every one of them ends with *"Pass/Fail Rubric: must be explicitly supplied in the `projects/` directory"* — i.e., the actual Must-Have grading criteria still don't exist; they're just now explicitly flagged as pending instead of silently absent. The new [projects/README.md](../projects/README.md) is a placeholder describing what will go there, not the rubric itself.
-
-## 🟢 Untouched, still open (low urgency)
-
-- [program-comparison.md](../competitors/program-comparison.md)'s uncited "95% of current enterprise job openings" stat.
+- README's roadmap table hours/week column is slightly off: Project 2 shows "21h/wk" (86.5h ÷ 4wk ≈ 21.6), Project 4 shows "20h/wk" (82.75h ÷ 4wk ≈ 20.7).
+- [projects/README.md](../projects/README.md) is still just a placeholder — every project's "Pass/Fail Rubric" line still defers to a rubric file that doesn't exist yet. Not a regression, just still unwritten.
 
 ---
 
-**Bottom line:** the pacing fix (P5 hours) was the best outcome of this round — it's now exact. The two things to fix next: sync the ~440h total in AGENTS.md to the new 452.25h actual, and roll back P5's mandatory-EC2 requirement to optional/positioning so it stops contradicting the program's own local-first claim.
+**Bottom line:** the two structural fixes (hours total, tool defaults) landed cleanly. The cloud-deployment question is the one that keeps almost getting fixed — pick one answer (mandatory-with-fallback, or fully optional/positioning) and make it consistent across project-5.md's Skills/Submission Criteria *and* the README's Graduation Criteria in the same pass. The AGENTS.md dead link is a one-line delete that's been carried over twice now.

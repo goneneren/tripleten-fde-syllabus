@@ -1,31 +1,32 @@
 # Codex Review: AI FDE Program Syllabus
 
-## Second-Round Assessment
+## Current Assessment
 
-The first-round fixes are substantial, but not all findings are closed. Two high-severity inconsistencies remain, plus two medium or low readiness gaps.
+The reorganized syllabus is substantially improved. The 452-hour total and most current project defaults are now aligned, but several consistency and launch-readiness issues remain.
 
 ## Findings
 
-- **High: Program workload now exceeds the stated 440-hour target.** Project 5 was increased to `120` hours ([`project-5.md`](5-projects-22-weeks/project-5.md)), but the project total is now `452.25` hours: P1 `67` + P2 `86.5` + P3 `96` + P4 `82.75` + P5 `120`. This is `12.25` hours over the stated target in [`AGENTS.md`](../AGENTS.md). Weekly pacing also remains uneven: P1 `22.33`, P2 `21.62`, P3 `19.2`, P4 `20.69`, and P5 `17.58` hours per week.
+- **High: Project 5 cloud deployment remains mandatory in assessment.** The Project 5 skill marks cloud deployment as optional/positioning ([`project-5.md`](project-5.md)), but its required artifacts still demand a live cloud endpoint and its defense must demonstrate the application in the cloud ([`project-5.md`](project-5.md)). The main README also requires successful cloud deployment for graduation ([`README.md`](README.md)). This remains inconsistent with the local-first core policy in [`AGENTS.md`](../AGENTS.md).
 
-- **High: Project 5 introduces a direct local-first contradiction.** Project 5 now requires deployment to a cloud instance and a live cloud endpoint ([`project-5.md`](5-projects-22-weeks/project-5.md)), while the governing guidance still says every core task must run locally without paid cloud infrastructure ([`AGENTS.md`](../AGENTS.md)). The module map says FDEs operate strictly within Docker Compose ([`overview-and-module-map.md`](5-projects-22-weeks/overview-and-module-map.md)), and the executive overview describes the FDE track as Docker Compose and local-LLM focused ([`executive-overview.md`](../executive-overview.md)). This is a new regression, not merely an unresolved old finding.
+- **High: Root guidance references a removed legacy file.** The repository no longer contains `syllabus/based-on-competitors-2w-sprints.md`, but [`AGENTS.md`](../AGENTS.md) still references it in the syllabus history and repository sitemap. This creates a stale path for anyone following the documented version history.
 
-- **Medium: Assessment structure improved, but actual rubrics are still absent.** Each project now documents tests, artifacts, and a client defense. However, every project still says its Pass/Fail rubric must be supplied later in `projects/`, while [`projects/README.md`](../projects/README.md) explicitly describes that directory as a placeholder. The repository is more assessment-ready as a blueprint, but not launch-ready as a complete grading package.
+- **Medium: The companion review report contains broken links after reorganization.** [`claude-review.md`](claude-review.md) still links to the removed `5-projects-22-weeks/` directory and to the removed legacy sprint file. Its findings are also historical snapshots and do not reflect the current optional-cloud wording or pinned tool changes.
 
-- **Medium: Reproducibility is improved but not fully deterministic.** Project 2 now selects `pgvector` and `FastEmbed` as grading defaults ([`project-2.md`](5-projects-22-weeks/project-2.md)), and Project 3 selects vLLM ([`project-3.md`](5-projects-22-weeks/project-3.md)). Project 4 still leaves `Guardrails AI` versus `NeMo Guardrails` to a future scaffold choice ([`project-4.md`](5-projects-22-weeks/project-4.md)), while Project 5 still permits multiple fine-tuning and tracing paths ([`project-5.md`](5-projects-22-weeks/project-5.md)). This is acceptable for planning, but not yet sufficient for reproducible grading.
+- **Medium: The actual grading rubrics are still missing.** The project briefs document submission artifacts and assessment structure, but still defer the Must-Have rubrics to the `projects/` directory ([`project-1.md`](project-1.md), [`project-5.md`](project-5.md)). [`projects/README.md`](../projects/README.md) remains a placeholder rather than an actual grading package.
 
-- **Low: Competitor documents remain weakly sourced.** The unsupported "95% of current enterprise job openings" claim remains in [`program-comparison.md`](../competitors/program-comparison.md), alongside uncited market claims such as "highest-demand" in [`fde-role-benchmark.md`](../competitors/fde-role-benchmark.md). The documents are consistent as positioning material, but not evidence-backed competitive research.
+- **Medium: Project 2 fallback wording is contradictory.** Its Skills and Theory sections describe `sentence-transformers` as a fallback ([`project-2.md`](project-2.md)), but Delivery Limits say alternatives are only permitted as ungraded optional extensions ([`project-2.md`](project-2.md)). A hardware-constrained fallback cannot simultaneously be outside graded scope without an explicit grading rule.
 
-## Resolved Since Round One
+- **Low: Competitor claims remain uncited.** The precise "95% of current enterprise job openings" claim was softened to "the majority," but the competitor documents still provide no sources or methodology for market claims ([`program-comparison.md`](../competitors/program-comparison.md)). The documents are consistent as positioning material, but not evidence-backed competitive research.
 
-- Legacy 11-sprint documents now carry deprecation warnings.
-- The `projects/` placeholder and delivery role are documented.
-- The `[AI]` taxonomy is now consistent with the root guidance.
-- P2 gRPC scope and P2/P3 default tools are clearer.
-- Project 5 now explicitly continues from Project 4.
-- Project-specific submission and client-defense sections were added.
-- Hardware and controlled API-budget guidance was added.
+## Resolved Since Previous Round
+
+- The program-level workload now consistently reports approximately 452 hours.
+- Project 5 cloud deployment is marked optional in its Skills section.
+- Default tools are now pinned for the main grading paths: `pgvector`/`FastEmbed`, vLLM, Guardrails AI, Arize Phoenix, and Unsloth.
+- The syllabus files are now organized directly under `syllabus/`, with [`README.md`](README.md) as the entry point.
+- Legacy sprint content was removed from the active file inventory.
+- Project 5 continuity from Project 4 and the project-specific assessment sections are documented.
 
 ## Review Scope
 
-This second-round review was performed against the clean `main` checkout at commit `3831e26`. No files were modified during the review; this report replaces the prior `codex-review.md` assessment.
+This review was performed against the clean `main` checkout at commit `c79ea82`. No files were modified during the review; this report replaces the prior `codex-review.md` assessment.
