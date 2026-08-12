@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Students harden one core platform workflow and add a narrow grounded AI feature using a paid/local LLM API through a provider adapter. They complete one STRIDE threat model (focusing on AI risks), apply RBAC to one endpoint, configure one CI security gate, make one secrets-management improvement, add AI Output Guardrails (PII redaction, hallucination checks), and produce educational control mapping for EU AI Act and HIPAA-style safeguards.
+Students harden one core platform workflow and add a narrow grounded AI feature using a local model or deterministic provider emulator through a provider adapter. They complete one STRIDE threat model (focusing on AI risks), apply RBAC to one endpoint, configure one CI security gate, make one secrets-management improvement, add AI Output Guardrails (PII redaction, hallucination checks), and produce educational control mapping for EU AI Act and HIPAA-style safeguards. A paid provider path is optional and ungraded until Project 5.
 
 ## Skills
 
@@ -22,8 +22,8 @@ Students harden one core platform workflow and add a narrow grounded AI feature 
 - OIDC/RBAC middleware scaffold for one endpoint.
 - Kubernetes Secrets plus OpenBao or Vault dev server for secrets-management concepts (Positioning).
 - CI security checks such as Gitleaks, Trivy, dependency scanning, or gated deployment.
-- Paid/Local LLM API provider adapter, with Guardrails AI scaffold.
-- PII redaction scaffold, request audit log, prompt/response fixture cache, and API budget controls.
+- Local LLM or deterministic provider-emulator adapter, with Guardrails AI scaffold.
+- PII redaction scaffold, request audit log, prompt/response fixture cache, and request/token controls.
 - STRIDE template, compliance-control matrix, security review template, and audit-evidence template.
 - Seeded flawed AI STRIDE/compliance artifact, expected-issue list, and review rubric.
 
@@ -53,9 +53,10 @@ Students harden one core platform workflow and add a narrow grounded AI feature 
 
 - Compliance work is educational control mapping, not legal readiness or certification.
 - Production Vault or Keycloak operations are not required.
+- No cloud deployment or public endpoint is permitted; the graded AI path uses the local model or deterministic provider emulator. Paid provider use is an ungraded extension and does not use the Project 5 API allowance.
 - Students complete one STRIDE workflow, protect one RBAC endpoint, configure one CI security gate, make one secrets improvement, and add one grounded AI guardrail boundary.
 - Default tools are mandatory for grading: `Guardrails AI` must be explicitly chosen as the single default in the final repository scaffold (`NeMo Guardrails` permitted as fallback only).
-- LLM API usage must have request/token limits, cached fixtures, and audit logging.
+- Any optional paid-provider experiment must have request/token limits, cached fixtures, and audit logging.
 - The identity dev setup, STRIDE template, compliance matrix, security gate scaffold, grounded AI adapter, flawed AI artifact, expected issues, and rubric must be provided before launch.
 
 ## Submission & Assessment Criteria

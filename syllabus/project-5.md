@@ -21,7 +21,7 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 ## Tech Setup
 
 - Secured version of the platform extending Project 4.
-- Paid LLM API provider adapter or local inference engine (vLLM default).
+- Paid LLM API provider adapter for the protected AWS endpoint; vLLM for scheduled local/GPU model-serving evidence.
 - PostgreSQL with `pgvector` plus simple keyword search and local cross-encoder for hybrid retrieval.
 - LangGraph scaffold for multi-agent tool-execution flow.
 - Tool-execution sandbox, step limits, token budgets, request budgets, and human-in-the-loop checkpoint pattern.
@@ -52,21 +52,22 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 
 ## Delivery Limits
 
-- The total per-student allocation is $200: $20 maximum for approved LLM API calls and $180 maximum for AWS. Students use a course-managed AWS account and the fixed region, IAM role, launch templates, and budget controls supplied by the program.
-- The public endpoint runs on a CPU instance; a `g4dn.xlarge` GPU is launched only for scheduled model-serving or fine-tuning sessions and stopped immediately after each session. It is not an always-on six-week host.
-- The endpoint is temporary and protected: TLS, application authentication, request rate limits, an inbound security-group rule for HTTPS only, no public SSH, and no real personal or regulated data are required. Secrets stay in managed parameters or host configuration, never Git.
+- The total per-student allocation is $200: $20 maximum for approved LLM API calls and $180 maximum for AWS. Each student receives one dedicated course-managed AWS sandbox in the fixed region; account, resource, and cost-allocation tags are required.
+- The protected endpoint runs on a CPU instance for a 14-calendar-day assessment window. A `g4dn.xlarge` GPU is launched only through booked, program-controlled sessions for local model-serving evidence or fine-tuning and is stopped automatically after each session. It is not an always-on six-week host.
+- The protected endpoint requires a program-issued hostname with a publicly trusted TLS certificate, per-reviewer authentication tokens, a maximum request body of 128 KiB, and a rate limit of 30 requests per minute per token. Its security group allows public HTTPS only; administration uses Session Manager, not public SSH. Secrets stay in managed parameters or host configuration, never Git.
+- The launch templates require IMDSv2, block container access to link-local instance metadata, use a least-privilege instance profile, and restrict application egress to approved provider and required AWS service endpoints. Application logs exclude prompts and secrets; trace/evaluation payloads use synthetic data, retain for at most seven days, and are deleted at teardown.
 - The $180 planning estimate, deployment sequence, access model, monitoring, and teardown evidence are defined in [Project 5 AWS Deployment](project-5-aws-deployment.md). Prices are planning assumptions and must be refreshed in AWS Pricing Calculator before each cohort.
 - GPU access is strictly limited; fine-tuning tasks use highly optimized small-parameter models (e.g., Qwen/Llama 3B via Unsloth) in the scheduled GPU sessions. Local VRAM is not a prerequisite for P1-P4.
 - Required retrieval is `pgvector` plus keyword search AND cross-encoder reranking.
 - Students implement one bounded multi-agent LangGraph flow.
 - CI evals are limited to smoke cases with cached fixtures; larger LLM-as-judge evals run manually.
 - The starter repo, `pgvector` setup, provider adapter, LangGraph scaffold, tool sandbox template, eval fixtures, fine-tuning script, telemetry template, flawed AI artifact, expected issues, and rubric must be provided before launch.
-- Default tools are mandatory for grading: `vLLM` for model serving, `Arize Phoenix` for tracing, and `Unsloth` for fine-tuning must be explicitly chosen as the single defaults in the final repository scaffold.
+- Default tools are mandatory for grading: `vLLM` for scheduled local/GPU model-serving evidence, `Arize Phoenix` for tracing, and `Unsloth` for fine-tuning must be explicitly chosen as the single defaults in the final repository scaffold. The protected AWS endpoint is API-backed by design.
 
 ## Submission & Assessment Criteria
 
 - **Automated Tests**: CI pipeline must pass (LLM smoke evaluation gates).
-- **Required Artifacts**: PR containing the LangGraph multi-agent flow, the Ragas evaluation suite, the protected AWS endpoint URL and access instructions for reviewers, a cost report, and teardown evidence.
+- **Required Artifacts**: PR containing the LangGraph multi-agent flow, the Ragas evaluation suite, held-out scenario results, the protected AWS endpoint URL and access instructions for reviewers, scheduled vLLM evidence, a verifier report, a cost report, and teardown evidence.
 - **Client Defense (Capstone)**: A 15-minute live or Loom video defense demonstrating the working application in the cloud, explaining the multi-agent architecture, interpreting the LLM-as-a-judge Ragas metrics, and justifying the model fine-tuning results.
 - **Pass/Fail Rubric**: Must be explicitly supplied in the `projects/` directory, defining Must-Have criteria for the defense and evaluation metrics.
 
@@ -75,5 +76,6 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 | Field | Hours |
 | :--- | ---: |
 | Theory time | 25.5 |
-| Project work time | 94.5 |
+| Local platform, scenario, and evaluation work time | 78.5 |
+| AWS deployment, defense, and teardown work time | 16 |
 | Workload calc | 120 |

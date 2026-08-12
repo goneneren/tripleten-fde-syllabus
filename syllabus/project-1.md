@@ -22,6 +22,7 @@ Students diagnose a provided monolith-based enterprise reference platform runnin
 - Prometheus, Grafana, Jaeger, OpenTelemetry, and application logs.
 - Prebuilt dashboard with one misleading or incomplete signal.
 - Broken trace propagation scenario and one metric defect.
+- Deterministic provider-latency scenario pack with published development cases and held-out grading cases.
 - Capacity notebook seed with traffic and growth inputs.
 - Seeded flawed AI capacity analysis, expected-issue list, and review rubric.
 - Mermaid or equivalent C4 diagram tooling.
@@ -49,6 +50,7 @@ Students diagnose a provided monolith-based enterprise reference platform runnin
 ## Delivery Limits
 
 - No cloud deployment or public endpoint is permitted. The full project, including the demonstration, runs locally through Docker Compose.
+- The required latency behavior is exercised through the deterministic provider scenario pack, not a paid or public LLM API.
 - No production feature work is required.
 - Students do not build the reference platform from scratch.
 - Students repair exactly two observability defects; extra instrumentation is optional.

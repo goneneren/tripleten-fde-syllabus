@@ -2,64 +2,79 @@
 
 ## Purpose and Boundary
 
-Project 5 is the only project that deploys to AWS. Students first pass the local Docker Compose acceptance path and CI checks. They then deploy a temporary, protected reviewer endpoint in a course-managed AWS account. Projects 1-4 remain local-only; Project 1 must not expose a public endpoint.
+Project 5 is the only project that deploys to AWS. Students first demonstrate **local acceptance** on their open PR: `docker compose up` succeeds, the required tests pass, and CI is green. They then deploy a temporary protected reviewer endpoint in one dedicated course-managed AWS sandbox. Projects 1-4 remain local-only and do not expose public endpoints; Project 1 explicitly forbids one.
 
 The program allocation is **$200 per student in total**:
 
-| Allocation | Cap | Use |
+| Allocation | Hard cap | Use |
 | :--- | ---: | :--- |
 | Approved LLM API calls | $20 | Bounded P5 provider-adapter usage, manual evaluation, and defense traffic. |
-| AWS infrastructure | $180 | CPU endpoint, storage, observability allowance, public IPv4, and scheduled GPU sessions. |
-| Total | $200 | No project may use this as an additional or reusable allowance. |
+| AWS infrastructure | $180 | A short CPU endpoint, storage, public IPv4, scheduled GPU sessions, and operational variance. |
+| Total | $200 | Unused headroom does not authorize additional AWS resources. |
 
-API calls are metered in the application and use a program-issued key with a $20 provider-side cap where the provider supports one. CI uses cached fixtures and does not consume the API allowance.
+The normal P5 deployment target is below the AWS cap. The program must refresh this estimate in AWS Pricing Calculator and complete one student-sandbox pilot with Cost Explorer evidence before a cohort launch. Program-owned shared services such as the AWS Organization, domain, DNS automation, and verifier are separately budgeted operating costs; students never use personal accounts or payment methods.
 
 ## Planning Estimate
 
-This is a six-week planning estimate for `us-east-1`, excluding taxes. It uses Linux on-demand reference rates and must be recalculated in AWS Pricing Calculator before each cohort. A continuous `g4dn.xlarge` is explicitly out of scope: at an approximate $0.526/hour, six weeks would exceed $500 for compute alone.
+This is a `us-east-1` Linux on-demand planning target for one 14-calendar-day assessment window, excluding taxes. A continuous GPU is explicitly out of scope: a `g4dn.xlarge` at an approximate $0.526/hour would exceed $500 over six weeks for compute alone.
 
 | AWS item | Assumption | Planning amount |
 | :--- | :--- | ---: |
-| CPU application host | `t3.large`, 1,008 hours at approximately $0.0832/hour | $84 |
-| Public IPv4 | 1 address, 1,008 hours at $0.005/hour | $5 |
-| Persistent disk | 40 GiB gp3 for six weeks at approximately $0.08/GiB-month | $5 |
-| Logs and small operational variance | Capped log retention and no load balancer, NAT gateway, or managed database | $6 |
-| Scheduled GPU sessions | `g4dn.xlarge`, maximum 120 hours at approximately $0.526/hour | $63 |
-| AWS contingency | Pricing, data-transfer, and operational variance | $17 |
-| **AWS total** |  | **$180** |
+| CPU application host | `t3.large`, 336 hours at approximately $0.0832/hour | $28 |
+| Public IPv4 | One address, 336 hours at $0.005/hour | $2 |
+| CPU persistent disk | 40 GiB gp3 retained for 21 days | $3 |
+| Scheduled GPU sessions | `g4dn.xlarge`, maximum 40 hours at approximately $0.526/hour | $21 |
+| GPU root disk | 100 GiB gp3, deleted after every booked session | $1 |
+| Image registry | Capped student image storage and retention | $1 |
+| Logs | Capped retention and synthetic payloads only | $3 |
+| Operational contingency | Data transfer, delayed metering, and price variance | $21 |
+| **Normal AWS target** |  | **$80** |
 
-The endpoint is intentionally CPU and API-backed. GPU sessions are only for the required bounded vLLM serving or Unsloth fine-tuning exercises; training outputs, metrics, and the deployment report are submitted as artifacts. Students must not run a NAT gateway, load balancer, managed database, or a second always-on instance within this budget.
+The normal target is not a second budget. The per-student AWS hard cap remains $180. Students must not create a NAT gateway, load balancer, managed database, additional public IPv4 address, or second always-on instance. A cost exception requires instructor approval before resources are started.
 
-AWS bills usage, so a budget alert is not a hard spending cap. The course platform must configure both alerts and an enforced GPU-session shutdown. AWS documents that Budget Actions can stop targeted EC2 instances or restrict further provisioning; the course account owner, not the student, owns that guardrail. See [AWS Budgets actions](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-controls.html) and [AWS Budgets cost management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html).
+The endpoint is intentionally CPU and API-backed. GPU sessions are only for the required bounded vLLM serving demonstration or Unsloth fine-tuning. The final endpoint is not expected to host vLLM continuously.
 
-## Account and Access Model
+## Account, Cost, and Runtime Controls
 
-- The program provides a course-managed AWS account or isolated student sandbox in the cohort's fixed region. Students do not use personal AWS accounts or payment methods.
-- The supplied IAM role permits only the provided CPU and GPU launch templates, security-group attachment, approved parameter access, CloudWatch log viewing, and start/stop actions. It cannot create NAT gateways, load balancers, managed databases, additional public IPs, or arbitrary instance types.
-- The program resolves EC2 GPU quota and capacity before P5 begins. If capacity is unavailable, the instructor schedules an equivalent managed GPU session; students are assessed on the same artifacts, not on obtaining capacity themselves.
-- An AWS Budget notifies the student and instructor at $144 (80%) and $162 (90%) of the AWS allowance. The scheduled GPU shutdown and provisioning restriction activate before the $180 maximum. The remaining cost margin is reserved for delayed metering and teardown.
+- Each student receives one dedicated AWS Organizations member account, tagged by the program with `cohort`, `student-id`, and `project=P5`. Students receive a constrained course role; they do not use personal AWS accounts.
+- The bootstrap applies the same required tags to instances, volumes, images, parameters, and logs through launch templates and IAM conditions. The program activates its account and resource cost-allocation tags before P5, then uses them in Cost Explorer, the student cost report, and the account budget filter. AWS supports tag filters for cost budgets after the tags are activated.
+- The student role can use only supplied CPU and GPU launch templates, approved parameter paths, CloudWatch views, and Session Manager. It cannot create arbitrary instance types, new launch templates, NAT gateways, load balancers, managed databases, public IPs, IAM principals, or untagged resources.
+- The program bootstrap runs inside every student account. It creates an in-account AWS Budget with actual-cost alert at $144 and forecast-cost alert at $162. Its in-account Budget Action denies new EC2 provisioning and stops the tagged CPU/GPU instances at the threshold. AWS Budget Actions cannot target EC2 instances in another account, which is why the stop action is created inside each dedicated sandbox.
+- The program-owned GPU booking service maintains the 40-hour ledger. A booking starts the supplied GPU template and creates an in-account EventBridge/Lambda stop action no later than four hours after the start. A nightly in-account sweep stops every running GPU. The student role cannot directly start the GPU template. This runtime control is independent of cost-reporting delay.
+- The program confirms G-family quota and capacity for the expected concurrent students before P5 begins. If a session cannot be scheduled, the instructor provides an equivalent managed session as program overhead; it does not consume the student's AWS allocation.
+
+## DNS, Access, and Security Baseline
+
+- The program owns the capstone DNS zone and automation assigns each student one hostname. The supplied Caddy reverse-proxy profile obtains and renews a publicly trusted certificate using TLS-ALPN-01 over port 443. Students receive no DNS-zone permission.
+- The security group permits public TCP 443 only. This allows certificate validation and reviewer reachability; the application requires a unique reviewer token, valid only for the 14-day assessment window. The service limits each token to 30 requests per minute and 128 KiB request bodies. Public SSH is prohibited.
+- Administration uses AWS Systems Manager Session Manager. The launch template requires IMDSv2. It uses a metadata hop limit of 1 because application containers do not need instance metadata; the pre-launch verifier confirms that containers cannot reach link-local metadata. The instance profile is least privilege.
+- Application containers may call only the approved LLM provider endpoints and required AWS service endpoints. They must block link-local metadata access and deny arbitrary tool-network egress. Tool execution remains limited to the approved allow-list, step limit, and token budget.
+- Secrets are stored in approved managed parameters or host configuration, never Git. Application logs exclude prompts and secrets. Phoenix traces and Ragas artifacts contain synthetic data only, retain for at most seven days, and are deleted during teardown.
 
 ## Student Deployment Workflow
 
-1. **Prove the local release.** Run `docker compose up`, execute the required tests, and merge the Project 5 PR. The cloud deployment does not waive local acceptance.
-2. **Prepare the release.** Use the supplied production Compose profile, pinned image tag, `.env.example`, and architecture diagram. Put API keys and application secrets in the supplied managed parameter path or host-only configuration. Do not commit secrets, real customer data, or unreviewed tools.
-3. **Launch the CPU endpoint.** Start one `t3.large` from the course launch template. Attach only the supplied security group: inbound HTTPS (443) is allowed; SSH (22) is not public. Use the course-approved connection method for administration.
-4. **Expose a protected service.** Start the supplied TLS reverse-proxy profile and application Compose stack. Require application authentication for every reviewer. Configure request size and rate limits, a bounded tool allow-list, token and step limits, and structured logs without prompt or secret payloads. The reviewer receives the URL and access instructions through the submission workflow, not from a public unauthenticated link.
-5. **Use GPU only in booked sessions.** Start the provided `g4dn.xlarge` template for a booked vLLM or Unsloth session, record the start time and objective, save the adapter/evaluation output, then stop it immediately. The scheduler enforces a 120-hour total allocation; a stopped instance still retains any attached storage costs, so terminate temporary GPU-only storage when the session is complete.
-6. **Monitor and defend.** Review application telemetry, CloudWatch log volume, API spend, instance hours, and the AWS Budget alert state before the defense. Demonstrate the protected endpoint, explain the safety and cost trade-offs, and provide reviewer access for the assessment window.
-7. **Tear down and submit evidence.** At the end of the review window, stop and terminate the CPU and GPU instances, delete the public IPv4 resource and temporary volumes, revoke reviewer access and parameters, then submit a timestamped cost report and teardown checklist. The instructor confirms that no billable instances, IPs, volumes, or credentials remain.
+1. **Prove local acceptance.** On an open Project 5 PR, run `docker compose up`, execute the required tests, and obtain a green CI run. Submit the local evidence; do not merge before the cloud review.
+2. **Prepare the release.** Use the supplied production Compose profile, pinned image tag, `.env.example`, architecture diagram, scenario results, and managed parameter path. Do not commit secrets, real customer data, or unreviewed tools.
+3. **Launch the CPU endpoint.** Start the supplied `t3.large` template. The course automation assigns the program hostname and starts the supplied TLS reverse proxy and application stack.
+4. **Verify before reviewer access.** Run the course verifier. It checks tags, TLS, security group, authentication, rate/request limits, metadata controls, egress controls, API allowance, and the scheduled teardown. Resolve failures before inviting a reviewer.
+5. **Use booked GPU sessions only.** Join the scheduled vLLM or Unsloth session, record the objective and outcome, upload the model-serving or fine-tuning evidence, then let the in-account stop action end the session. Temporary GPU disks are deleted after each session.
+6. **Defend and revise.** Reviewer access opens for 14 calendar days from the first verified endpoint. Revisions use the same endpoint and window; an extension needs instructor approval within the $180 cap. The 15-minute defense covers the protected endpoint, scenario results, model-serving evidence, security controls, telemetry, and cost report.
+7. **Tear down.** At the end of the assessment window, course automation terminates instances and removes volumes, public IPv4, reviewer tokens, parameters, traces, images, and DNS records. The verifier records timestamps and produces the final report.
 
-## Required Security and Operations Evidence
+## Required Evidence and Assessment
 
-- A security-group screenshot or exported rule set showing HTTPS-only public ingress and no public SSH.
-- Evidence of TLS, application authentication, request rate limiting, secrets outside Git, a bounded tool allow-list, and no real personal or regulated data.
-- A budget screenshot or export showing the $144 and $162 alerts, plus the GPU-session limit.
+- A course-verifier report, not screenshots alone, for the cloud security, tag, budget, GPU-control, and teardown checks.
 - A cost report showing API spend at or below $20 and AWS spend at or below $180.
-- A teardown checklist with instance, volume, public IPv4, credential, and endpoint removal timestamps.
+- Held-out scenario results, scheduled vLLM evidence, protected-endpoint reviewer instructions, and the 15-minute defense.
+- The detailed pass/fail requirements are in [`projects/project-5-rubric.md`](../projects/project-5-rubric.md).
 
-## Pricing Sources
+## Pricing and Control Sources
 
 - [Amazon EC2 On-Demand Pricing](https://aws.amazon.com/ec2/pricing/on-demand/) explains per-second Linux instance billing and links to AWS Pricing Calculator.
 - [Amazon EBS Pricing](https://aws.amazon.com/ebs/pricing/) documents gp3 storage pricing and per-second billing.
 - [AWS public IPv4 pricing explanation](https://aws.amazon.com/blogs/networking-and-content-delivery/identify-and-optimize-public-ipv4-address-usage-on-aws/) documents the $0.005 per IP-hour rate used in the estimate.
-- [Amazon EC2 data transfer pricing](https://aws.amazon.com/ec2/pricing/on-demand-backup/) documents the shared 100 GB/month internet egress allowance and subsequent usage charges.
+- [AWS Budgets actions](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-controls.html) documents in-account EC2 actions and forecast-cost actions.
+- [Budget filters](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create-filters.html) documents activated tag filters for cost budgets.
+- [EC2 scheduled stop/start](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html) documents EventBridge/Lambda scheduling patterns.
+- [EC2 metadata options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html) documents IMDSv2 enforcement and hop limits.
+- [Systems Manager Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) documents managed access without open inbound administrative ports.
