@@ -77,6 +77,7 @@ Every project submission must contain:
 3. **System Documentation (`README.md`)**: System architecture overview, setup instructions, cost & performance telemetry basics.
 4. **Client-Facing Video Walkthrough (Loom, 3–5 min)**:
    - Students present their solution as if pitching or delivering to an enterprise client stakeholder (demonstrates communication, technical scoping, and live system demonstration).
+   - *For Project 5*, this demonstration must occur on the live public cloud endpoint, not `localhost`.
 
 ---
 

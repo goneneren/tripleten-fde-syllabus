@@ -15,7 +15,7 @@ Unlike traditional curriculum models that teach theory first and assign a small 
 
 ### Program-Wide Delivery Model & Constraints:
 1. **5 Major Projects across 22 Weeks**: Total workload calculated at ~452 hours across 5 sequential build phases.
-2. **Local-First with Controlled API Usage**: Core infrastructure runs locally via **Docker Compose** using open-source tools (Ollama/vLLM, PostgreSQL/Pgvector, Redis, LangGraph, Arize Phoenix). However, a $200 budget per student is allocated for explicitly permitted paid API usage (e.g., OpenAI/Anthropic) for specific RAG/Agent tasks.
+2. **Local-First Development, Cloud-Native Capstone**: Projects 1-4 run entirely locally via **Docker Compose** using open-source tools (Ollama/vLLM, PostgreSQL/Pgvector, Redis, LangGraph, Arize Phoenix) to ensure rapid iteration and zero unexpected costs. However, for the Project 5 Capstone, a $200 budget per student is allocated to provision a live cloud instance (e.g., an AWS EC2 GPU instance) and deploy their final multi-agent architecture to the public web.
 3. **Clear Pass/Fail Scope & Seeded Defect Labs**: Starter scaffolds include realistic enterprise legacy code, seeded bugs, performance bottlenecks, and architectural gaps that students must diagnose, audit, refactor, and fix.
 4. **Reference Program Benchmark**: Aligned with TripleTen's 5-Project Systems Engineering paradigm located at [`C:\repos\tripleten-systemengineering-projects\projects\v05-5-projects-22-weeks-local-and-aws-simplified`](file:///C:/repos/tripleten-systemengineering-projects/projects/v05-5-projects-22-weeks-local-and-aws-simplified).
 
