@@ -1,32 +1,32 @@
-# Codex Review: AI FDE Program Syllabus
-
-## Current Assessment
-
-The reorganized syllabus is substantially improved. The 452-hour total and most current project defaults are now aligned, but several consistency and launch-readiness issues remain.
-
-## Findings
-
-- **High: Project 5 cloud deployment remains mandatory in assessment.** The Project 5 skill marks cloud deployment as optional/positioning ([`project-5.md`](project-5.md)), but its required artifacts still demand a live cloud endpoint and its defense must demonstrate the application in the cloud ([`project-5.md`](project-5.md)). The main README also requires successful cloud deployment for graduation ([`README.md`](README.md)). This remains inconsistent with the local-first core policy in [`AGENTS.md`](../AGENTS.md).
-
-- **High: Root guidance references a removed legacy file.** The repository no longer contains `syllabus/based-on-competitors-2w-sprints.md`, but [`AGENTS.md`](../AGENTS.md) still references it in the syllabus history and repository sitemap. This creates a stale path for anyone following the documented version history.
-
-- **Medium: The companion review report contains broken links after reorganization.** [`claude-review.md`](claude-review.md) still links to the removed `5-projects-22-weeks/` directory and to the removed legacy sprint file. Its findings are also historical snapshots and do not reflect the current optional-cloud wording or pinned tool changes.
-
-- **Medium: The actual grading rubrics are still missing.** The project briefs document submission artifacts and assessment structure, but still defer the Must-Have rubrics to the `projects/` directory ([`project-1.md`](project-1.md), [`project-5.md`](project-5.md)). [`projects/README.md`](../projects/README.md) remains a placeholder rather than an actual grading package.
-
-- **Medium: Project 2 fallback wording is contradictory.** Its Skills and Theory sections describe `sentence-transformers` as a fallback ([`project-2.md`](project-2.md)), but Delivery Limits say alternatives are only permitted as ungraded optional extensions ([`project-2.md`](project-2.md)). A hardware-constrained fallback cannot simultaneously be outside graded scope without an explicit grading rule.
-
-- **Low: Competitor claims remain uncited.** The precise "95% of current enterprise job openings" claim was softened to "the majority," but the competitor documents still provide no sources or methodology for market claims ([`program-comparison.md`](../competitors/program-comparison.md)). The documents are consistent as positioning material, but not evidence-backed competitive research.
-
-## Resolved Since Previous Round
-
-- The program-level workload now consistently reports approximately 452 hours.
-- Project 5 cloud deployment is marked optional in its Skills section.
-- Default tools are now pinned for the main grading paths: `pgvector`/`FastEmbed`, vLLM, Guardrails AI, Arize Phoenix, and Unsloth.
-- The syllabus files are now organized directly under `syllabus/`, with [`README.md`](README.md) as the entry point.
-- Legacy sprint content was removed from the active file inventory.
-- Project 5 continuity from Project 4 and the project-specific assessment sections are documented.
+# Codex Review: PR1 P5 Cloud Capstone
 
 ## Review Scope
 
-This review was performed against the clean `main` checkout at commit `c79ea82`. No files were modified during the review; this report replaces the prior `codex-review.md` assessment.
+Reviewed branch `feature/p5-cloud-capstone` at commit `0f3a0df` against `origin/main` at `a41d2dd`. PR1 changes four documentation files and contains no executable code or automated tests.
+
+## Findings
+
+- **High: The local-first policy remains internally contradictory.** PR1 changes the headline policy to require a cloud capstone ([`AGENTS.md`](../AGENTS.md)), but the existing contributor rule still says every core task must run locally without paid cloud infrastructure or GPU dependencies ([`AGENTS.md`](../AGENTS.md)). The syllabus README also retains the rule that every core project path runs locally ([`README.md`](README.md)). The PR needs one authoritative definition of the local/cloud boundary.
+
+- **High: The `$200` budget is double-allocated.** PR1 assigns it to the six-week EC2 deployment ([`project-5.md`](project-5.md)), while the hardware policy still describes the same budget as an external API fallback ([`AGENTS.md`](../AGENTS.md)). Project 5 also permits OpenAI/Anthropic APIs ([`project-5.md`](project-5.md)). The PR does not provide a cost model or clarify whether API usage is separately funded.
+
+- **High: The public endpoint has no documented security baseline.** PR1 requires deploying a multi-agent tool system to the public web ([`AGENTS.md`](../AGENTS.md), [`project-5.md`](project-5.md)), but does not specify mandatory TLS, authentication, network restrictions, rate limits, secret handling, abuse controls, data retention, or teardown requirements. This is especially important because the system executes tools and exposes model-backed behavior.
+
+- **Medium: The cloud-capstone change is not propagated to the module map or executive overview.** PR1 updates `AGENTS.md`, the syllabus README, Project 5, and the teaching document, but the Project 5 section in [`overview-and-module-map.md`](overview-and-module-map.md) does not list cloud deployment, and [`executive-overview.md`](../executive-overview.md) still describes the FDE track primarily as Docker Compose and local-LLM delivery.
+
+- **Medium: Defense duration is inconsistent.** The general teaching document says every project requires a 3-5 minute Loom ([`teaching-and-submission-models.md`](../competitors/teaching-and-submission-models.md)), while Project 5 requires a 15-minute defense ([`project-5.md`](project-5.md)). PR1 adds a Project 5 public-cloud exception but does not update the duration rule.
+
+- **Medium: Student cloud operations are underspecified.** PR1 names `AWS EC2 g4dn.xlarge` but does not define the AWS account model, region, quota process, IAM permissions, deployment procedure, persistent storage, endpoint lifecycle, monitoring, or automatic shutdown. Without those details, a six-week live deployment is not yet a reproducible student workflow.
+
+- **Low: The root sitemap still references the removed legacy sprint file.** This is not introduced by PR1, but the branch still leaves the stale path in [`AGENTS.md`](../AGENTS.md) while PR1 modifies that file.
+
+## What PR1 Does Well
+
+- It makes the intended Project 5 cloud-capstone direction explicit instead of leaving it as optional positioning.
+- It separates local delivery for Projects 1-4 from the cloud deployment requirement for Project 5.
+- It identifies a concrete deployment target and allocates a program budget for the capstone environment.
+- It updates the client-demo guidance to require the live public endpoint for Project 5.
+
+## Verdict
+
+**Request changes.** Resolve the policy and budget contradictions, define the minimum public-cloud security and operations baseline, and propagate the final cloud-capstone contract through all authoritative syllabus documents before merging.
