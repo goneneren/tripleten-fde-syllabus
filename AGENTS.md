@@ -49,7 +49,7 @@ tripleten-fde-syllabus/
 │   ├── competitor-curriculums.md       # Analysis of existing AI / SE / ML Bootcamps
 │   └── teaching-and-submission-models.md # Analysis of teaching methodologies & submission workflows
 ├── syllabus/                           # Core 22-week curriculum design
-│   ├── overview.md                     # High-level 22-week roadmap & sprint breakdown
+│   ├── based-on-competitors-2w-sprints.md # High-level 22-week roadmap & sprint breakdown
 │   ├── sprint-01-02/                   # Individual sprint modules, projects, & rubrics
 │   └── ...
 └── projects/                           # Capstone & sprint project definitions
