@@ -39,7 +39,7 @@ Here is how the 5 shared projects are adapted for each student persona:
 
 ### FDE Delivery Boundary
 
-FDE Projects 1-4 are built, tested, graded, and demonstrated locally with Docker Compose and deterministic scenario packs; they do not expose public endpoints, and Project 1 explicitly forbids one. Project 5 must first pass the same local acceptance path, then students deploy a temporary protected endpoint for a 14-day assessment window in one dedicated course-managed AWS sandbox. The P5 deployment is capped at $180 of AWS infrastructure plus $20 of approved API usage per student, with scheduled GPU sessions rather than an always-on GPU service. The delivery-repository contract for local scenarios is defined in [Scenario Emulator Delivery Contract](syllabus/scenario-emulator-delivery.md).
+FDE Projects 1-4 are built, tested, graded, and demonstrated locally with Docker Compose and deterministic scenario packs; they do not expose public endpoints, and Project 1 explicitly forbids one. Project 5 must first pass the same local acceptance path, then students deploy a temporary protected endpoint for a 14-day assessment window in one dedicated course-managed AWS sandbox. The P5 deployment is capped at $180 of AWS infrastructure plus $20 of approved API usage per student, with scheduled GPU sessions rather than an always-on GPU service. The delivery-repository contract for local scenarios — published development cases, held-out grading cases, and a per-emulator `FIDELITY.md` — is specified per project in the [project briefs](syllabus/) and awaits re-authoring as a standalone contract document.
 
 ---
 

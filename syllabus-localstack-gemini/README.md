@@ -8,12 +8,29 @@
 
 The **AI Forward Deployed Engineer (AI FDE)** program is designed to build production-ready engineers who can architect, deploy, and evaluate enterprise AI solutions. 
 
+> **Status: unadopted variant.** This LocalStack edition is an alternative to the canonical `syllabus/` program, not a replacement. It carries a materially higher per-student cost and an un-reconciled workload increase. See [Program Cost](#-program-cost-planning-470student) and the [workload re-cost](overview-and-module-map.md#workload-impact-pending-re-cost) before quoting either figure.
+
 ### Key Program Principles:
-1. **Local-First Development with LocalStack AWS Emulation & Bounded AWS Capstone**: Projects 1–4 run and are graded locally on the student's machine via **Docker Compose** using open-source containers and **LocalStack AWS Emulation** (S3, SQS, SNS, SSM Parameter Store, Secrets Manager, DynamoDB, and CloudWatch Logs). They do not expose public endpoints; Project 1 explicitly forbids one. Project 5 first passes local acceptance (validated against LocalStack), then deploys a temporary protected endpoint in one dedicated course-managed AWS sandbox per student. For paid LocalStack Pro/Base licensing ($39/month over the 22-week program $\approx$ $214.50 per student), the total per-student program allocation is re-estimated at **$414.50** ($214.50 LocalStack + $180 AWS infrastructure cap + $20 LLM API allowance). If using 100% LocalStack without live AWS deployment, the total per-student budget is **$234.50**.
-2. **Enterprise AWS SDK Mastery (`boto3`)**: From Day 1, students write standard Python AWS SDK code (`boto3`) and CLI scripts (`awslocal`) targeting local emulated AWS services, establishing 1:1 code parity between local development and cloud production.
+1. **Local-First Development with LocalStack AWS Emulation & Bounded AWS Capstone**: Projects 1–4 run and are graded locally on the student's machine via **Docker Compose** using open-source containers and **LocalStack AWS Emulation** (S3, SQS, SNS, SSM Parameter Store, Secrets Manager, DynamoDB, and CloudWatch Logs). They do not expose public endpoints; Project 1 explicitly forbids one. Project 5 first passes local acceptance (validated against LocalStack), then deploys a temporary protected endpoint in one dedicated course-managed AWS sandbox per student.
+2. **Enterprise AWS SDK Mastery (`boto3`)**: From Day 1, students write standard Python AWS SDK code (`boto3`) and CLI scripts (`awslocal`) targeting local emulated AWS services, establishing **API-level** code parity between local development and cloud production. Emulation gives API and behavioral parity only — never performance or authorization parity. See [Emulation Fidelity Boundaries](overview-and-module-map.md#emulation-fidelity-boundaries).
 3. **Project-First Pedagogy**: Theory is delivered "Just-In-Time". Students learn by inheriting realistic, messy enterprise codebases with seeded defects and architectural gaps that they must diagnose and fix.
 4. **Containerized Engineering**: Every project must run locally via `docker compose up` before review. P5 adds a separately assessed AWS deployment after local acceptance; it does not replace the local path.
 5. **High-Touch Support**: Students are supported by rigorous line-by-line code reviews on GitHub Pull Requests and mandatory Loom video client defenses.
+
+---
+
+## 💵 Program Cost (Planning: $470/student)
+
+| Allocation Component | Planning amount | Use |
+| :--- | ---: | :--- |
+| LocalStack Base license | $270.00 | $45/license/month monthly billing × 6 billing cycles across 22 weeks. |
+| Approved LLM API calls | $20.00 | Bounded P5 provider-adapter usage, manual evaluation, and defense traffic. |
+| AWS infrastructure cap | $180.00 | Short CPU endpoint, storage, public IPv4, scheduled GPU sessions, variance. ($80 normal target.) |
+| **Total per student** | **$470.00** | vs. **$200.00** for the canonical program — a **135% increase**. |
+
+$45/month is LocalStack's **monthly-billing** rate. The widely quoted $39/month requires an annual commitment, which a 5.5-month per-student license cannot use without paying for 6.5 idle months. **Do not quote a figure below $470 until a reduction path is confirmed in writing** — the paths (seat reassignment across cohorts, Hobby-tier eligibility, and the education/OSS program) and the required decisions are enumerated in [LocalStack Licensing and Cost](overview-and-module-map.md#localstack-licensing-and-cost-unresolved). If Project 4's IAM grading requires the Ultimate tier, the license line roughly doubles.
+
+Dropping the live AWS capstone entirely would put this edition at **$290/student** ($270 license + $20 LLM) and forfeit the P5 cloud deployment that graduation criterion 5 requires.
 
 ---
 
@@ -22,7 +39,7 @@ The **AI Forward Deployed Engineer (AI FDE)** program is designed to build produ
 The required local environment and recommended hardware support containerized vector databases, LocalStack AWS emulation, and local open-weight LLMs:
 
 * **CPU**: 8-core Modern Processor (Intel i7/i9, AMD Ryzen 7/9, Apple Silicon M1/M2/M3/M4).
-* **RAM**: 16 GB minimum (32 GB strongly recommended for smooth multi-container orchestration including LocalStack, Postgres/pgvector, Redis, and vLLM/Ollama).
+* **RAM**: **24 GB minimum, 32 GB strongly recommended.** This edition raises the floor above the canonical program's 16 GB: Project 3 concurrently runs LocalStack (~1–2 GB), vLLM or Ollama, Postgres/pgvector, Redis, Prometheus, Grafana, and Jaeger. 16 GB will thrash during the P3 failure lab.
 * **GPU/VRAM**: 8 GB VRAM strongly recommended for local inference. Projects 1–4 provide mock, small-model, or approved local fallback paths rather than a paid-cloud dependency. The $20 API allowance and scheduled AWS GPU access are reserved for P5.
 * **OS**: macOS (M-series preferred), Linux, or Windows (WSL2 required).
 
@@ -30,8 +47,11 @@ The required local environment and recommended hardware support containerized ve
 * Docker Desktop or Rancher Desktop (with Docker Compose enabled)
 * Python 3.12+
 * AWS CLI (`aws`) & `awslocal` wrapper (`pip install localstack awscli-local`)
+* A program-issued LocalStack account and license key (students never purchase their own; see [licensing](overview-and-module-map.md#localstack-licensing-and-cost-unresolved))
 * Git & GitHub CLI (`gh`)
 * VS Code or Cursor IDE
+
+Starter repos set sentinel AWS credentials and route every `boto3` client through a shared factory that injects `endpoint_url`, so a student's real AWS credentials can never be used by accident. See [Local Credential Safety](overview-and-module-map.md#local-credential-safety-required-scaffold-control).
 
 ---
 
@@ -47,12 +67,14 @@ The 22 weeks are distributed across 5 major enterprise build phases. Each projec
 | **Project 4** | W13–W16 | Zero-Trust Security, Guardrails & Governance | OWASP LLM, LocalStack Secrets Manager/SSM, Guardrails AI, Local IAM Policies, PII Redaction | ~83 Hours (20h/wk) |
 | **Project 5** | W17–W22 | Autonomous Multi-Agent Platform & Defense | Advanced RAG, Multi-Agent LangGraph, LocalStack Pre-flight, Ragas Evals, LoRA, protected AWS deployment | ~120 Hours (20h/wk) |
 
+⚠️ **These hours are inherited unchanged from the canonical program and do not account for the LocalStack surface this edition adds** (estimated **+27 hours**, taking the program to ~479 hours / ~21.8 h/wk). Either extend the envelope or displace ~27 hours of existing scope before publishing this table. See [Workload Impact](overview-and-module-map.md#workload-impact-pending-re-cost).
+
 ---
 
 ## 📖 Project Summaries
 
 ### [Project 1: System Diagnostics & API Scaling](project-1.md)
-Students diagnose a provided monolith-based reference platform running with LocalStack S3. They trace request paths and AWS SDK (`boto3`) calls across OpenTelemetry/Jaeger, repair observability defects (Prometheus/Grafana), run reproducible load tests, and evaluate the latency impacts of mocked LLM API calls on traditional backend systems.
+Students diagnose a provided monolith-based reference platform running with LocalStack S3. They trace request paths and AWS SDK (`boto3`) calls across OpenTelemetry/Jaeger, repair observability defects (Prometheus/Grafana), run reproducible load tests, and evaluate the latency impacts of mocked LLM API calls on traditional backend systems. LocalStack appears here as a **traced boundary only** — all capacity and latency conclusions come from the deterministic provider scenario pack and the real Postgres/Redis tier, never from emulated AWS timings.
 
 ### [Project 2: Data Layer, Vector Search & Hybrid RAG](project-2.md)
 Students build the foundational data layer for AI integration using a LocalStack S3 document lake (`s3://enterprise-docs`). S3 upload events trigger text and table extraction using `Unstructured`, generating local embeddings with `FastEmbed`, tracking job metadata in LocalStack DynamoDB, and indexing hybrid semantic retrieval in `pgvector` and BM25.

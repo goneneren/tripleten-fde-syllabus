@@ -4,18 +4,22 @@
 
 Project 5 is the only project that deploys to AWS. Students first demonstrate **local acceptance** on their open PR: `docker compose up` succeeds, LocalStack `awslocal` pre-flight checks pass, the required tests pass, and CI is green. They then deploy a temporary protected reviewer endpoint in one dedicated course-managed AWS sandbox. Projects 1–4 remain local-only using LocalStack Base and do not expose public endpoints; Project 1 explicitly forbids one.
 
-The re-estimated program allocation for the LocalStack edition is **$414.50 per student in total** (or **$314.50** under the $80 normal AWS planning target):
+The planning allocation for the LocalStack edition is **$470.00 per student in total** (or **$370.00** under the $80 normal AWS planning target):
 
 | Allocation Component | Hard Cap / Estimate | Use |
 | :--- | ---: | :--- |
-| **LocalStack Base Subscription** | $214.50 | $39/month per student across 22 weeks (~5.5 months / 6 billing cycles). |
+| **LocalStack Base license** | $270.00 | $45/license/month **monthly billing** × 6 billing cycles across 22 weeks (~5.5 months). |
 | **Approved LLM API calls** | $20.00 | Bounded P5 provider-adapter usage, manual evaluation, and defense traffic. |
 | **AWS infrastructure cap** | $180.00 | A short CPU endpoint (`t3.large`), storage, public IPv4, scheduled GPU sessions, and operational variance. ($80 normal target) |
-| **Total Combined Allocation** | **$414.50** | Re-estimated total allocation ($314.50 with normal $80 AWS spend). |
+| **Total Combined Allocation** | **$470.00** | Planning total ($370.00 with normal $80 AWS spend). |
 
-If the program adopts **100% LocalStack** without live AWS deployment, the total per-student budget is **$234.50** ($214.50 LocalStack + $20 LLM API).
+**On the license figure.** An earlier revision of this document used $214.50, derived from $39/month × 5.5 months. That is wrong twice over: $39/license/month is LocalStack's **annual-billing** rate, which a 5.5-month per-student license cannot claim without paying for 6.5 idle months; and 22 weeks spans **6 monthly billing cycles**, not 5.5, so even at $39 the correct figure would be $234.00. The monthly-billing rate of $45 across 6 cycles gives **$270.00**, which is the number to plan against.
 
-The normal P5 deployment target is below the AWS cap. The program must refresh this estimate in AWS Pricing Calculator and complete one student-sandbox pilot with Cost Explorer evidence before a cohort launch. Program-owned shared services such as the AWS Organization, domain, DNS automation, and verifier are separately budgeted operating costs; students never use personal accounts or payment methods.
+This edition therefore costs **$470.00 against the canonical program's $200.00 — a 135% increase.** Three reduction paths could lower it, none yet confirmed: license reassignment between students across cohorts (~$234), Hobby-tier eligibility for individual learners (removes the line entirely), and LocalStack's education / open-source program (free Ultimate for qualifying OSI-licensed projects). All three, plus the CI licensing model and the Project 4 tier dependency, must be settled before a cohort is priced — see [LocalStack Licensing and Cost](overview-and-module-map.md#localstack-licensing-and-cost-unresolved). Quote $470 until one lands.
+
+If the program adopts **100% LocalStack** without live AWS deployment, the total per-student budget is **$290.00** ($270 license + $20 LLM API). This forfeits the protected AWS endpoint that graduation criterion 5 requires and would need that criterion rewritten.
+
+The normal P5 deployment target is below the AWS cap. The program must refresh this estimate in AWS Pricing Calculator and complete one student-sandbox pilot with Cost Explorer evidence before a cohort launch. Program-owned shared services such as the AWS Organization, domain, DNS automation, verifier, and any program-owned LocalStack CI license are separately budgeted operating costs; students never use personal accounts or payment methods.
 
 ## Planning Estimate
 
@@ -57,6 +61,8 @@ The endpoint is intentionally CPU and API-backed. GPU sessions are only for the 
 ## Student Deployment Workflow (With LocalStack Pre-Flight)
 
 1. **Prove local acceptance & LocalStack pre-flight.** On an open Project 5 PR, run `docker compose up`, execute `awslocal` pre-flight verification scripts against LocalStack (confirming SSM parameter lookups and S3 bucket creation), run required unit/integration tests, and obtain a green CI run. Submit local evidence; do not merge before cloud review.
+
+   Pre-flight retires **call-shape, parameter-path, and configuration** errors before cloud budget is spent. It does **not** retire instance-profile IAM, VPC and security-group reachability, service quotas, TLS issuance, region behavior, or real service latency — those are covered by the course verifier in step 4, which is why local acceptance is a gate and not a guarantee. Students must state this boundary in their defense.
 2. **Prepare the release.** Use the supplied production Compose profile, pinned image tag, `.env.example`, architecture diagram, scenario results, and managed SSM parameter path. Do not commit secrets, real customer data, or unreviewed tools.
 3. **Launch the CPU endpoint.** Start the supplied `t3.large` template. The course automation assigns the program hostname and starts the supplied TLS reverse proxy and application stack.
 4. **Verify before reviewer access.** Run the course verifier. It checks tags, TLS, security group, authentication, rate/request limits, metadata controls, egress controls, API allowance, and the scheduled teardown. Resolve failures before inviting a reviewer.
@@ -82,3 +88,5 @@ The endpoint is intentionally CPU and API-backed. GPU sessions are only for the 
 - [EC2 metadata options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html) documents IMDSv2 enforcement and hop limits.
 - [Systems Manager Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) documents managed access without open inbound administrative ports.
 - [LocalStack Documentation](https://docs.localstack.cloud/overview/) documents LocalStack emulated services (S3, SQS, SNS, SSM, Secrets Manager, DynamoDB, CloudWatch).
+- [LocalStack Pricing](https://www.localstack.cloud/pricing) documents the Hobby/Base/Ultimate tiers, the annual-vs-monthly rate split ($39 vs $45 per license-month for Base), the IAM enforcement feature split between Base and Ultimate, and the education / open-source license program.
+- [LocalStack Service Coverage](https://docs.localstack.cloud/aws/services/) documents which services and features each tier supports; use it to settle the Project 4 IAM tier dependency.

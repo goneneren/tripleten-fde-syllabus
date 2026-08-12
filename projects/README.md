@@ -6,7 +6,7 @@ In the final operational repository structure, this folder will contain:
 1. The Docker Compose definitions for the reference platform.
 2. The seeded application codebases containing defects that students must repair.
 3. The explicit Pass/Fail rubrics defining Must-Have criteria and Recommendations for each project's client defense and PR submission.
-4. The published scenario packs, held-out grader packs, emulator `FIDELITY.md` files, and verifier scripts required by [`syllabus/scenario-emulator-delivery.md`](../syllabus/scenario-emulator-delivery.md).
+4. The published scenario packs, held-out grader packs, emulator `FIDELITY.md` files, and verifier scripts required by the [project briefs](../syllabus/). *(The standalone scenario-emulator delivery contract was deleted in `cd301ba` and needs re-authoring.)*
 
 ## Current Contract
 

@@ -21,7 +21,8 @@ Students evolve the reference platform to support AI document ingestion and hybr
 - Opinionated REST/gRPC starter repo extended from Project 1.
 - Docker Compose scaffold with PostgreSQL (including `pgvector`), Redis, and **LocalStack Base** (S3 and DynamoDB services).
 - Python `boto3` integration with LocalStack endpoint overrides (`endpoint_url="http://localstack:4566"`).
-- S3 Bucket initializer script (`awslocal s3 mb s3://enterprise-docs`) and DynamoDB table schema initializer.
+- S3 Bucket initializer script (`awslocal s3 mb s3://enterprise-docs`) and DynamoDB table schema initializer, re-runnable on every `docker compose up` because state persistence is not assumed.
+- Shared `boto3` client factory with sentinel credentials and injected `endpoint_url`, carried forward from Project 1, plus the CI gate that fails on clients constructed outside it.
 - Database connection pooling, migration tooling, repository layer, and test harness.
 - API contract tests and integration tests for document upload, extraction, idempotency, vector indexing, and cache freshness.
 - Deterministic enterprise-data scenario pack with messy documents, duplicate IDs, slow listings, and held-out grading cases.
@@ -55,8 +56,10 @@ Students evolve the reference platform to support AI document ingestion and hybr
 - Students implement unstructured parsing from LocalStack S3, DynamoDB tracking, and hybrid search; additional complex microservice splits are optional.
 - Default tools are mandatory for grading: `LocalStack S3` for object storage, `pgvector` for vector storage, `FastEmbed` for local embeddings, and `LocalStack DynamoDB` for metadata tracking. Alternatives are only permitted as un-graded optional extensions.
 - NoSQL deep dives, GraphQL, partitioning, sharding, and gRPC implementation are decision-level only unless scaffolded.
-- No cloud deployment or public endpoint is permitted; all S3 and DynamoDB calls execute against LocalStack inside Docker Compose.
-- The starter repo must provide LocalStack initialization, database plumbing, migration tooling, tests, flawed AI artifact, expected issues, and rubric before launch.
+- No cloud deployment or public endpoint is permitted; all S3 and DynamoDB calls execute against LocalStack inside Docker Compose. Sentinel credentials and the injected `endpoint_url` are mandatory; bypassing the client factory is a CI failure.
+- Retrieval quality, chunking, and correctness are graded from the scenario pack. **Ingestion throughput and S3/DynamoDB latency are not graded and must not appear as evidence** — emulated storage timings are not transferable. Idempotency, retry, and job-state correctness are graded on behavior, not speed.
+- This is the first project in which students write `boto3` service logic themselves; Project 1 provides it pre-built.
+- The starter repo must provide LocalStack initialization, the `boto3` client factory and its CI gate, database plumbing, migration tooling, tests, flawed AI artifact, expected issues, and rubric before launch.
 
 ## Submission & Assessment Criteria
 
@@ -72,3 +75,5 @@ Students evolve the reference platform to support AI document ingestion and hybr
 | Theory time | 22.5 |
 | Project work time | 64 |
 | Workload calc | 86.5 |
+
+⚠️ **Pending re-cost.** These hours are inherited from the canonical program. This edition adds an estimated **+8 hours** (S3 document lake, S3 event notifications, DynamoDB job-state tracking) — the largest increase of any project. At 86.5 hours across 4 weeks this is already 21.6 h/wk. See [Workload Impact](overview-and-module-map.md#workload-impact-pending-re-cost).

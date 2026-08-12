@@ -88,8 +88,12 @@ tripleten-fde-syllabus/
 │   ├── project-3.md                    # Project 3 Brief: Resilience, Microservices & Local LLM Serving
 │   ├── project-4.md                    # Project 4 Brief: Zero-Trust Security, Guardrails & Governance
 │   ├── project-5.md                    # Project 5 Brief: Autonomous Multi-Agent Platform & Defense
-│   ├── project-5-aws-deployment.md     # P5 AWS estimate, deployment workflow, and teardown contract
-│   └── scenario-emulator-delivery.md   # Required local scenario-emulator delivery contract
+│   └── project-5-aws-deployment.md     # P5 AWS estimate, deployment workflow, and teardown contract
+├── syllabus-localstack-gemini/         # UNADOPTED VARIANT: LocalStack AWS-emulation edition of the above
+│   ├── README.md                       # Variant program principles + $470/student cost table
+│   ├── overview-and-module-map.md      # Variant module map + licensing, fidelity, and re-cost decisions
+│   ├── project-1.md … project-5.md     # Variant project briefs (LocalStack S3/SQS/SNS/SSM/DynamoDB)
+│   └── project-5-aws-deployment.md     # Variant AWS runbook with the revised cost basis
 └── projects/                           # Starter code specs, seeded defects, & rubric definitions
     ├── README.md                       # Delivery-artifact inventory and launch prerequisites
     └── project-5-rubric.md             # P5 local, cloud, cost, and teardown Must-Haves
@@ -101,5 +105,6 @@ tripleten-fde-syllabus/
 - **Adhere to the Project-First Philosophy**: Always ground theoretical topics in concrete project tasks and real-world problem scenarios.
 - **Maintain the Delivery Boundary**: Projects 1-4 must run and pass locally using Docker Compose; Project 1 must not expose a public endpoint. Project 5 must pass locally before its required, temporary protected AWS deployment. Do not add cloud requirements to Projects 1-4 or turn the P5 GPU into an always-on service.
 - **Keep the Capstone Budget Bounded**: Treat $200 as the total per-student allocation: $20 maximum for approved LLM API calls and $180 maximum for AWS. Use the estimate, access controls, security baseline, and teardown process in [`syllabus/project-5-aws-deployment.md`](syllabus/project-5-aws-deployment.md).
-- **Provide Deterministic Local Scenarios Before Launch**: Delivery repositories must implement the published and held-out scenario-pack contract in [`syllabus/scenario-emulator-delivery.md`](syllabus/scenario-emulator-delivery.md). Do not treat an optional paid API or an external cloud service as a fallback for Projects 1-4.
+- **Provide Deterministic Local Scenarios Before Launch**: Delivery repositories must implement a published and held-out scenario-pack contract covering each project's emulator: published development cases, held-out grading cases, and a per-emulator `FIDELITY.md` stating what the emulator does and does not reproduce. Do not treat an optional paid API or an external cloud service as a fallback for Projects 1-4. *(The former `syllabus/scenario-emulator-delivery.md` contract document was deleted in `cd301ba` and has not been replaced; re-author it before delivery repositories are specced.)*
+- **Treat `syllabus-localstack-gemini/` as Unadopted**: It is an alternative edition under evaluation, not the program of record. `syllabus/` and the $200 allocation above remain canonical. The variant carries a $470/student planning cost and an unresolved +27h workload delta; do not copy its figures into canonical or stakeholder-facing docs, and do not reconcile the two editions by editing `syllabus/` to match it.
 - **Enforce High-Touch Quality**: Ensure grading rubrics contain clear *Must-Have* criteria and *Recommendations*, alongside Loom video client demonstration requirements.

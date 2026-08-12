@@ -8,7 +8,7 @@ Students harden one core platform workflow and add a grounded AI feature using a
 
 - Build and defend a STRIDE threat model for one real platform workflow (emphasizing Prompt Injection, Cloud IAM abuse, and Data Poisoning).
 - Store, retrieve, and rotate API Keys and secrets using **LocalStack SSM Parameter Store & Secrets Manager** with `boto3`.
-- Write and evaluate local IAM least-privilege JSON policies (`AssumeRole`, S3 bucket policies, KMS key policies) using LocalStack.
+- Write and evaluate local IAM least-privilege JSON policies (`AssumeRole`, S3 bucket policies, KMS key policies) using LocalStack, and state where local evaluation diverges from the real AWS policy engine.
 - Apply zero-trust principles, OIDC/RBAC, scopes, and least privilege to one endpoint.
 - Configure one CI security gate for secrets (Gitleaks), dependencies (Trivy), or pipeline hardening.
 - Defend against OWASP LLM Top 10 vulnerabilities (Prompt Injection, Insecure Output Handling, Sensitive Information Disclosure).
@@ -23,7 +23,8 @@ Students harden one core platform workflow and add a grounded AI feature using a
 - Dex or Keycloak dev-mode container with seeded users, roles, and token examples.
 - OIDC/RBAC middleware scaffold for one endpoint.
 - Python `boto3` integration with LocalStack for SSM parameter resolution (`ssm.get_parameter`) and secret retrieval (`secretsmanager.get_secret_value`).
-- Local IAM policy test scripts verifying least-privilege access rules locally.
+- Local IAM policy test scripts verifying least-privilege access rules locally, each annotated with the AWS policy-engine features it does **not** exercise.
+- Shared `boto3` client factory with sentinel credentials and injected `endpoint_url`, carried forward from Projects 1–3.
 - CI security checks such as Gitleaks, Trivy, dependency scanning, or gated deployment.
 - Local LLM or deterministic provider-emulator adapter, with Guardrails AI scaffold.
 - PII redaction scaffold, request audit log stream pushing to LocalStack CloudWatch Logs, and request/token controls.
@@ -34,7 +35,7 @@ Students harden one core platform workflow and add a grounded AI feature using a
 
 - Identify realistic threats across users, cloud pipelines, local secrets, and AI features (OWASP LLM Top 10 & STRIDE).
 - Manage API keys and credentials using LocalStack SSM Parameter Store and Secrets Manager instead of raw `.env` files or hardcoded strings.
-- Evaluate IAM least-privilege policies locally using `boto3` and LocalStack.
+- Evaluate IAM least-privilege policies locally using `boto3` and LocalStack, and articulate why a local pass is necessary but not sufficient evidence of correct authorization.
 - Implement identity, access, and secrets controls without production cloud identity cluster overhead.
 - Add one CI security check that fails unsafe changes early.
 - Protect LLM API calls with PII redaction, LocalStack CloudWatch audit logging, prompt injection mitigation, and cost/request limits.
@@ -58,6 +59,9 @@ Students harden one core platform workflow and add a grounded AI feature using a
 
 - Compliance work is educational control mapping, not legal readiness or certification.
 - Production AWS Vault or enterprise IAM cluster operations are not required; LocalStack SSM/Secrets Manager provides the local emulation layer.
+- **IAM evaluation is approximate and must be taught as such.** LocalStack does not fully replicate the AWS policy engine across condition keys, resource policies, permission boundaries, and SCPs. A policy that passes locally can behave differently in AWS. Students must accompany each policy with a short note naming what local evaluation did not verify; the rubric grades policy *reasoning and least-privilege intent*, not the emulator's allow/deny verdict alone. Presenting a local pass as production-ready authorization is a rubric failure. Real-AWS authorization behavior is first observed in Project 5 via the course verifier and least-privilege instance profile.
+- **Open tier dependency:** LocalStack Base advertises *basic* IAM policy enforcement; *advanced* IAM policy testing is an Ultimate feature. This project grades `AssumeRole`, S3 bucket policies, and KMS key policies, which may exceed "basic". Verify against the current LocalStack feature matrix before the cohort is priced — if Ultimate is required, the per-student license line roughly doubles. If only Base is available, reduce the graded IAM scope to policy authoring and reasoning and drop enforcement-verdict grading rather than silently grading against an unsupported feature.
+- Sentinel credentials and the injected `endpoint_url` are mandatory; bypassing the client factory is a CI failure. The Gitleaks gate this project configures must also cover the LocalStack license credential.
 - No cloud deployment or public endpoint is permitted; the graded AI path uses the local model or deterministic provider emulator with LocalStack. Paid provider use is an ungraded extension and does not consume the Project 5 API allowance.
 - Students complete one STRIDE workflow, protect one RBAC endpoint, retrieve secrets via LocalStack SSM/Secrets Manager, configure one CI security gate, and add one grounded AI guardrail boundary.
 - Default tools are mandatory for grading: `Guardrails AI` must be explicitly chosen as the single default in the final repository scaffold (`NeMo Guardrails` permitted as fallback only).
@@ -77,3 +81,5 @@ Students harden one core platform workflow and add a grounded AI feature using a
 | Theory time | 20.75 |
 | Project work time | 62 |
 | Workload calc | 82.75 |
+
+⚠️ **Pending re-cost.** These hours are inherited from the canonical program. This edition adds an estimated **+6 hours** (SSM Parameter Store, Secrets Manager, IAM policy evaluation, CloudWatch Logs). At 82.75 hours across 4 weeks this is 20.7 h/wk. See [Workload Impact](overview-and-module-map.md#workload-impact-pending-re-cost).

@@ -10,7 +10,7 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 - Integrate OpenAI/Anthropic APIs or local models through a provider adapter with request and token limits.
 - Build Hybrid RAG with LocalStack S3 document ingestion, PostgreSQL, `pgvector`, keyword search, and cross-encoder reranking.
 - Design a multi-agent LangGraph tool flow with LocalStack SQS tool queues, sandboxing, step limits, and a human-in-the-loop checkpoint.
-- Write and run `awslocal` pre-flight verification scripts against LocalStack to validate AWS parameter lookups and bucket setups locally prior to AWS deployment.
+- Write and run `awslocal` pre-flight verification scripts against LocalStack to validate AWS parameter lookups and bucket setups locally prior to AWS deployment, and document the residual risks pre-flight does not retire.
 - Build CI-safe evaluation cases with cached prompt/response fixtures.
 - Implement LLM-as-a-judge evaluation pipelines using Ragas.
 - Perform PEFT/LoRA fine-tuning for a specialized task using Unsloth.
@@ -35,7 +35,7 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 ## Learning Objectives
 
 - Build an end-to-end AI system that satisfies production acceptance criteria.
-- Use LocalStack locally for zero-friction local-to-cloud AWS parity (`awslocal` pre-flight script).
+- Use an `awslocal` pre-flight script to catch call-shape, parameter-path, and configuration errors against LocalStack *before* spending cloud budget — and enumerate what pre-flight cannot cover: instance-profile IAM, VPC and security-group reachability, service quotas, TLS issuance, region behavior, and real service latency. These are the failures that actually break a first deployment, and they are why local acceptance is a gate rather than a guarantee.
 - Implement advanced Hybrid RAG that balances retrieval quality, latency, cost, and safety.
 - Prevent prompt injection and unsafe tool execution with concrete controls in a multi-agent setup.
 - Calibrate evals (LLM-as-a-Judge, Ragas) so failures are measurable, reproducible, and useful.
@@ -46,7 +46,7 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 ## Theory Topics
 
 - Production definition of done, build kickoff, and final architecture review.
-- LocalStack pre-flight validation vs. live AWS provisioning parity.
+- LocalStack pre-flight validation vs. live AWS provisioning: what emulation covers, what it cannot, and how to design a pre-flight gate around that boundary.
 - Production LLM integration, provider adapters, API reliability.
 - Advanced RAG as production architecture, `pgvector`, keyword retrieval, reranking, and grounding.
 - Agentic frameworks, state graphs, tool sandboxing, and human oversight.
@@ -56,7 +56,7 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 
 ## Delivery Limits
 
-- The re-estimated total per-student allocation for the LocalStack edition is $414.50: $214.50 for the 22-week LocalStack Base subscription ($39/mo $\times$ 5.5 mo), $20 maximum for approved LLM API calls, and $180 maximum for AWS infrastructure ($80 normal target). Each student receives one dedicated course-managed AWS sandbox in the fixed region; account, resource, and cost-allocation tags are required.
+- The planning total per-student allocation for the LocalStack edition is **$470.00**: $270.00 for the LocalStack Base license (monthly billing at $45/license/month × 6 billing cycles), $20 maximum for approved LLM API calls, and $180 maximum for AWS infrastructure ($80 normal target). The license figure is unsettled and may fall — see [Project 5 AWS Deployment](project-5-aws-deployment.md) and [LocalStack Licensing and Cost](overview-and-module-map.md#localstack-licensing-and-cost-unresolved). Each student receives one dedicated course-managed AWS sandbox in the fixed region; account, resource, and cost-allocation tags are required.
 - The protected endpoint runs on a CPU instance (`t3.large`) for a 14-calendar-day assessment window. A `g4dn.xlarge` GPU is launched only through booked, program-controlled sessions for local model-serving evidence or fine-tuning and is stopped automatically after each session. It is not an always-on six-week host.
 - The protected endpoint requires a program-issued hostname with a publicly trusted TLS certificate, per-reviewer authentication tokens, a maximum request body of 128 KiB, and a rate limit of 30 requests per minute per token. Its security group allows public HTTPS only; administration uses Session Manager, not public SSH. Secrets stay in managed SSM parameters or host configuration, never Git.
 - The launch templates require IMDSv2, block container access to link-local instance metadata, use a least-privilege instance profile, and restrict application egress to approved provider and required AWS service endpoints. Application logs exclude prompts and secrets; trace/evaluation payloads use synthetic data, retain for at most seven days, and are deleted at teardown.
@@ -78,3 +78,5 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 | Local platform, scenario, and evaluation work time | 78.5 |
 | AWS deployment, defense, and teardown work time | 16 |
 | Workload calc | 120 |
+
+⚠️ **Pending re-cost.** These hours are inherited from the canonical program. This edition adds an estimated **+3 hours** (`awslocal` pre-flight verification script). At 120 hours across 6 weeks this is 20.0 h/wk. See [Workload Impact](overview-and-module-map.md#workload-impact-pending-re-cost).
