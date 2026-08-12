@@ -1,51 +1,54 @@
 # Claude Review: AI FDE Syllabus (v2) & Cross-Document Consistency
 
-## Objective Review — Program Syllabus (v2: `5-projects-22-weeks/`, the current target)
+_Round 2 — reviewed against commit `3831e26` ("fix: resolve claude and codex review findings for syllabus launch-readiness"), which addressed round-1 findings from this file and from `codex-review.md`._
 
-### 🔴 Structural issue: hours-per-week budget doesn't match the week allocations
+## ✅ Confirmed resolved from Round 1
 
-[overview-and-module-map.md](5-projects-22-weeks/overview-and-module-map.md) assigns week ranges; each `project-N.md` has its own **Workload** table. At the stated ~20h/week commitment, expected hours = weeks × 20. Actual vs. expected:
-
-| Project | Weeks | Expected (20h/wk) | Actual workload | Delta |
-|---|---|---:|---:|---:|
-| P1 Diagnostics | 3 | 60 | 67 | +7 (+12%) |
-| P2 Data/RAG | 4 | 80 | 86.5 | +6.5 (+8%) |
-| P3 Resilience/LLM Serving | 4 | 80 | 96 | **+16 (+20%)** |
-| P4 Security/Guardrails | 4 | 80 | 82.75 | +3.4% |
-| P5 Multi-Agent Capstone | 7 | 140 | 105.5 | **−34.5 (−25%)** |
-| **Total** | 22 | 440 | 437.75 | ~on target |
-
-The program-level total (~440h) checks out only because P5's deficit cancels the other four's surplus. That's masking the real problem: **P5 — the capstone, gating project, and by far the densest scope** (hybrid RAG + reranking, multi-agent LangGraph + sandboxing + HITL, Ragas/LLM-as-judge evals, PEFT/LoRA fine-tuning, cost/latency telemetry, *and* the final defense) — runs at only ~15h/week against a 20h/week commitment, while the simplest project (P1) runs *over* budget. This is backwards: the hardest, highest-stakes project has the least time pressure relief, and it's the one where "fine-tune a model" alone is a notoriously unpredictable time sink for beginners. Treat this as the single biggest risk to program completion rates.
-
-### 🟡 Tech-stack claims vs. actual project content
-
-[AGENTS.md](../AGENTS.md) and the legacy syllabus both advertise the stack as *"Ollama/vLLM, PostgreSQL/Pgvector, **Qdrant**, Redis, **MinIO**, LangGraph, Arize Phoenix."* Grepping all five `project-N.md` files shows **neither Qdrant nor MinIO is mentioned once.** pgvector is the only vector store actually specified anywhere in the current-target syllabus. Either the stack claim is stale (drop Qdrant/MinIO) or a project is missing the task that was supposed to use them.
-
-### 🟡 Internal ambiguity: is gRPC Core or Positioning in Project 2?
-
-[project-2.md](5-projects-22-weeks/project-2.md) labels gRPC "(Positioning)" in Theory Topics, but Tech Setup provisions "preconfigured `protoc` build scripts... and **one gRPC extension point**" — that reads as hands-on implementation work, not decision-level knowledge. Similar (milder) ambiguity in [project-3.md](5-projects-22-weeks/project-3.md), where Redpanda/Kafka is "(Positioning)" but tied to "the selected resilience pattern" in Tech Setup. Worth clarifying whether these are graded builds or read-only scaffolds.
-
-### 🟡 Project 5 breaks the "evolving platform" continuity narrative
-
-P2 ("extended from Project 1"), P3 ("services from earlier projects"), and P4 ("secured version of the platform from Projects 1-3") each explicitly build on the prior project's codebase. [project-5.md](5-projects-22-weeks/project-5.md) just says "capstone starter repository" — no stated continuity from P1-P4. That undercuts the exact differentiator [program-comparison.md](../competitors/program-comparison.md) claims ("forces students to maintain and upgrade the same infrastructure across 22 weeks").
-
-### 🟢 What's actually solid
-
-- The five `project-N.md` briefs are internally consistent with each other in template (Skills → Tech Setup → Objectives → Theory → Delivery Limits → Workload) and with [executive-overview.md](../executive-overview.md)'s CORE/POSITIONING split per project — no contradictions found there.
-- `[CORE]`/`[POSITIONING]` tagging is applied consistently and does real work bounding scope (e.g., explicitly punting Kubernetes/Terraform/Kafka to positioning-only for FDEs, consistently, across P3-4 and the module map).
-- Docker-Compose-only constraint is honestly enforced in every Delivery Limits section (no doc quietly requires cloud/K8s).
-
----
-
-## Consistency Check — Other Documents
-
-| Finding | Detail |
+| Round 1 finding | Status |
 |---|---|
-| **Superseded doc has no deprecation notice** | [based-on-competitors-2w-sprints.md](based-on-competitors-2w-sprints.md) reads as a complete, live 22-week/11-sprint program (its own hardware reqs, graduation criteria, rubrics) with no banner marking it superseded. Only [AGENTS.md](../AGENTS.md) frames it as "Version 1." Anyone opening that file directly could mistake it for the current program. |
-| **Hardware/setup requirements gap** | Minimum RAM/CPU/GPU and prerequisite software stack exist *only* in the superseded v1 doc. None of the v2 files (`overview-and-module-map.md`, `project-1..5.md`) restate this, even though v2 is what's actually meant to ship — the accessibility info got dropped in the v1→v2 rewrite. |
-| **`projects/` folder documented but absent** | AGENTS.md's repo structure diagram lists a `projects/` directory ("Starter code specs, seeded defects, & rubric definitions") that doesn't exist in the repo. Understandable for a planning repo, but it's aspirational structure presented as current fact. |
-| **Competitor/positioning docs are mutually consistent** | [fde-role-benchmark.md](../competitors/fde-role-benchmark.md), [competitor-curriculums.md](../competitors/competitor-curriculums.md), [program-comparison.md](../competitors/program-comparison.md), and [executive-overview.md](../executive-overview.md) all agree on terminology, tech choices, and the CORE/POSITIONING split per project — no contradictions across these four. |
+| Qdrant/MinIO claimed but never used | Removed from [AGENTS.md](../AGENTS.md)'s stack list — now matches what the project briefs actually build |
+| gRPC Core/Positioning ambiguity (P2) | Fixed — Tech Setup now explicitly says "read-only scaffold... Positioning-level for FDEs" |
+| P5 missing platform continuity | Fixed — Tech Setup now says "Secured version of the platform extending Project 4" |
+| `[FDE-SPECIFIC]` vs `[AI]` taxonomy drift | Fixed — module map now uses `[AI]` throughout, matches AGENTS.md |
+| v1 legacy syllabus mistaken for current | Fixed — deprecation banners added to both [based-on-competitors-2w-sprints.md](based-on-competitors-2w-sprints.md) and [teaching-and-submission-models.md](../competitors/teaching-and-submission-models.md) |
+| Hardware/setup gap in v2 docs | Fixed — new "Hardware & System Prerequisites" section in AGENTS.md |
+| P5's hours/week under-allocation (Round 1's top finding) | **Well fixed** — P5 moved from 7wk/105.5h (−25% vs. budget) to 6wk/120h, now *exactly* on budget. P3 also improved from +20% over to −4% (gained a week). |
+
+## 🔴 New issue introduced by the fix itself: total hours claim now stale
+
+P5's workload bump (105.5h → 120h, +14.5h) wasn't propagated to the program-level total. AGENTS.md still says *"22 Weeks (~440 Hours Total)"* / *"~438-440 hours."* Actual sum is now:
+
+67 + 86.5 + 96 + 82.75 + 120 = **452.25h** (~2.8% over the stated ceiling)
+
+Easy fix, but currently wrong.
+
+## 🔴 New issue: the P5 cloud-deployment fix breaks the program's own "local-first" promise
+
+To address a "cloud deployment underrepresented" finding, [project-5.md](5-projects-22-weeks/project-5.md) added this as a **Skill**:
+> "Deploy the Docker Compose stack to a basic cloud instance (e.g., AWS EC2) as a **final capstone delivery requirement**."
+
+That's an unconditional mandatory-cloud requirement — not a fallback like P2's optional AWS RDS checkpoint. It directly contradicts:
+- AGENTS.md's own Guidelines section (unchanged): *"Maintain Local-First Compatibility: **Every core required project task must run locally**... without requiring paid cloud infrastructure."*
+- The marketed differentiator repeated in [executive-overview.md](../executive-overview.md) and [program-comparison.md](../competitors/program-comparison.md): *"no mandatory cloud subscriptions."*
+- It's also not reflected anywhere in the [overview-and-module-map.md](5-projects-22-weeks/overview-and-module-map.md) chapter list for Project 5.
+
+This over-corrects: it trades one finding for a contradiction with a bigger, more load-bearing program claim. Making EC2 deployment optional/positioning (mirroring how P2 handles AWS RDS) would satisfy "cloud is represented" without breaking the local-first guarantee.
+
+## 🟡 Uneven follow-through: "pin a default tool" fix applied inconsistently
+
+- **P2**: pins pgvector/FastEmbed in Delivery Limits — but the Skills bullet above it still reads "FastEmbed **or** sentence-transformers," text not synced.
+- **P3**: pins vLLM in Delivery Limits — but Skills and Tech Setup still list "vLLM / Ollama" as an undifferentiated pair.
+- **P4**: doesn't actually name a tool — just says one "must be explicitly chosen" later. Weaker than P2/P3, defers rather than resolves.
+- **P5**: untouched — still offers OpenAI/Anthropic-or-local, vLLM/Ollama, *and* Unsloth/HuggingFace as open alternatives, in the one project where reproducible grading matters most.
+
+## 🟡 Partial fix: rubric gap is more honestly labeled, not closed
+
+All 5 projects now have a "Submission & Assessment Criteria" section (good — concrete PR artifacts, Loom format, defense length). But every one of them ends with *"Pass/Fail Rubric: must be explicitly supplied in the `projects/` directory"* — i.e., the actual Must-Have grading criteria still don't exist; they're just now explicitly flagged as pending instead of silently absent. The new [projects/README.md](../projects/README.md) is a placeholder describing what will go there, not the rubric itself.
+
+## 🟢 Untouched, still open (low urgency)
+
+- [program-comparison.md](../competitors/program-comparison.md)'s uncited "95% of current enterprise job openings" stat.
 
 ---
 
-**Bottom line:** the biggest fix worth prioritizing is P5's hours/week mismatch — either shorten P5's week window (freeing weeks for P1-P3, which are all over-budget) or increase P5's workload hours to match its actual scope. Second priority: reconcile the Qdrant/MinIO stack claim with what the projects actually build, and add a deprecation header to the v1 syllabus so it can't be mistaken for current.
+**Bottom line:** the pacing fix (P5 hours) was the best outcome of this round — it's now exact. The two things to fix next: sync the ~440h total in AGENTS.md to the new 452.25h actual, and roll back P5's mandatory-EC2 requirement to optional/positioning so it stops contradicting the program's own local-first claim.
