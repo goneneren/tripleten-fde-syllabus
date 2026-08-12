@@ -5,6 +5,16 @@ This module map adapts the 5 shared enterprise projects (used across both SE and
 **Core Concept: Same Repository, Different Focus**
 FDE students use the exact same starter repositories and environments as SE students. However, the grading scope is shifted: heavy backend infrastructure (Kubernetes, Kafka, Terraform) is relegated to `[POSITIONING]` (decision-level knowledge), while applied AI, containerization, and evaluation are elevated to `[CORE]` required implementations. **FDEs operate strictly within `docker-compose` instead of local Kubernetes (`kind`).**
 
+### Program Comparison: AI FDE vs. System Engineering
+
+| Project | Shared Starter Repo | SE Focus (Core) | AI FDE Focus (Core) |
+| :--- | :--- | :--- | :--- |
+| **P1: Diagnostics & Scaling** | Monolith, Prom/Grafana, Load Tester | Traces, DB Bottlenecks, Load Testing | API Diagnostics, LLM Mock Latency, Observability |
+| **P2: Polyglot Data Tier** | Postgres, Redis, gRPC, Auth | gRPC boundaries, Redis replication, Idempotency | Unstructured ETL, Chunking, Pgvector Data Prep |
+| **P3: Operations & Resilience** | K8s (`kind`), CI/CD, Event Bus | Terraform/OpenTofu, Kafka, Chaos Lab | Docker Compose, Local LLM Serving (vLLM/Ollama), API Resiliency (Retries) |
+| **P4: Security & Compliance** | IAM, Secrets, LLM Adapter | K8s Secrets, RBAC, CI Security Gates | OWASP LLM, Guardrails, PII Redaction, Prompt Injection Defense |
+| **P5: Autonomous AI System** | RAG, LangGraph, Telemetry | Basic RAG, CI Smoke Evals, Telemetry | Advanced RAG, Multi-Agent LangGraph, LLM-as-a-Judge, Fine-Tuning |
+
 ## Labels
 
 - `[CORE]` - Required FDE project work students build, operate, document, or defend using Docker Compose.
