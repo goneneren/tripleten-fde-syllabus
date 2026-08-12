@@ -63,24 +63,3 @@ Students secure the AI system against the OWASP LLM Top 10. They build a STRIDE 
 
 ### [Project 5: Autonomous Multi-Agent Platform & Defense](project-5.md)
 The capstone. Students build a multi-agent tool flow using `LangGraph` with human-in-the-loop sandboxing. They run CI evaluations, calibrate LLM-as-a-judge metrics with `Ragas`, fine-tune a specialized model via LoRA, and deploy the locally accepted stack to a temporary protected AWS endpoint within a $180 infrastructure allocation. The deployment workflow and estimate are defined in [Project 5 AWS Deployment](project-5-aws-deployment.md).
-
----
-
-## 🛠️ Student Assessment & Code Review Workflow
-
-To mirror real-world engineering standards, pass/fail assessment is highly rigorous and manual:
-
-1. **Continuous Integration (CI) Gates**: Every PR must pass automated CI checks (linting, test coverage, dependency scanning, and LLM smoke evals) before a human reviews it.
-2. **Code Reviews**: Dedicated engineering reviewers conduct line-by-line code reviews on GitHub Pull Requests. Students must address all requested changes to merge their work.
-3. **Client Defenses (Loom Videos)**: Projects 1-4 use 5-minute local Loom defenses. Project 5 uses a 15-minute defense of the protected AWS endpoint, local evidence, cost telemetry, and teardown plan.
-
----
-
-## 🏆 Graduation Criteria
-
-To graduate from the TripleTen AI FDE program, a student must:
-1. successfully complete and merge GitHub Pull Requests for all 5 Projects.
-2. Pass all automated CI/CD evaluation pipelines.
-3. Pass the manual Code Review rubrics (achieving 100% of Must-Have criteria).
-4. Deliver passing Client Defense Loom videos for all 5 projects.
-5. Successfully deploy the Project 5 Capstone architecture to a temporary protected AWS endpoint, demonstrate the LLM telemetry metrics, and complete the teardown evidence.
