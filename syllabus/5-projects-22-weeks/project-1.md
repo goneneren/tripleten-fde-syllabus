@@ -54,6 +54,13 @@ Students diagnose a provided monolith-based enterprise reference platform runnin
 - Students repair exactly two observability defects; extra instrumentation is optional.
 - The platform, load generator, dashboards, broken trace, bad metric, capacity notebook, flawed AI artifact, expected findings, and rubric must be provided before launch.
 
+## Submission & Assessment Criteria
+
+- **Automated Tests**: CI pipeline must pass (linting, basic integration tests).
+- **Required Artifacts**: PR containing the two observability fixes and the finalized ADR for API scaling.
+- **Client Defense**: A 5-minute Loom video demonstrating the reproducible load test and explaining the telemetry findings on the dashboard.
+- **Pass/Fail Rubric**: Must be explicitly supplied in the `projects/` directory prior to launch, defining Must-Have criteria for the ADR.
+
 ## Workload
 
 | Field | Hours |

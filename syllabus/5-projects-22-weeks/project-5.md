@@ -14,11 +14,12 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 - Implement LLM-as-a-judge evaluation pipelines using Ragas.
 - Perform PEFT/LoRA fine-tuning for a specialized task.
 - Monitor quality signals, cost, latency, failures, and user-visible behavior using Arize Phoenix or similar tracing.
+- Deploy the Docker Compose stack to a basic cloud instance (e.g., AWS EC2) as a final capstone delivery requirement.
 - Defend model-serving, provider, architecture, safety, and evaluation trade-offs.
 
 ## Tech Setup
 
-- Capstone starter repository and production definition-of-done checklist.
+- Secured version of the platform extending Project 4.
 - Paid LLM API provider adapter or local inference engine (vLLM/Ollama).
 - PostgreSQL with `pgvector` plus simple keyword search and local cross-encoder for hybrid retrieval.
 - LangGraph scaffold for multi-agent tool-execution flow.
@@ -56,10 +57,17 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 - CI evals are limited to smoke cases with cached fixtures; larger LLM-as-judge evals run manually.
 - The starter repo, `pgvector` setup, provider adapter, LangGraph scaffold, tool sandbox template, eval fixtures, fine-tuning script, telemetry template, flawed AI artifact, expected issues, and rubric must be provided before launch.
 
+## Submission & Assessment Criteria
+
+- **Automated Tests**: CI pipeline must pass (LLM smoke evaluation gates).
+- **Required Artifacts**: PR containing the LangGraph multi-agent flow, the Ragas evaluation suite, and a live endpoint URL pointing to the cloud-deployed instance.
+- **Client Defense (Capstone)**: A 15-minute live or Loom video defense demonstrating the working application in the cloud, explaining the multi-agent architecture, interpreting the LLM-as-a-judge Ragas metrics, and justifying the model fine-tuning results.
+- **Pass/Fail Rubric**: Must be explicitly supplied in the `projects/` directory, defining Must-Have criteria for the defense and evaluation metrics.
+
 ## Workload
 
 | Field | Hours |
 | :--- | ---: |
 | Theory time | 25.5 |
-| Project work time | 80 |
-| Workload calc | 105.5 |
+| Project work time | 94.5 |
+| Workload calc | 120 |

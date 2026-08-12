@@ -1,3 +1,8 @@
+> [!WARNING]
+> **DEPRECATED: LEGACY 11-SPRINT MODEL**
+> This document describes an older, competitor-based 11-sprint curriculum model. 
+> The authoritative, current curriculum model is the **5-Project Project-First Syllabus** located in [`AGENTS.md`](../AGENTS.md) and [`5-projects-22-weeks/overview-and-module-map.md`](5-projects-22-weeks/overview-and-module-map.md).
+
 # AI Forward Deployed Engineer (AI FDE) Syllabus
 ## 22-Week Bootcamp Program | ~20 Hours / Week Commitment (~440 Hours Total)
 

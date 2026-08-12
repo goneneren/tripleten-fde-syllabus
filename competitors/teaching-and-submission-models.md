@@ -1,3 +1,8 @@
+> [!WARNING]
+> **DEPRECATED: LEGACY 11-SPRINT MODEL**
+> This document describes teaching models for an older 11-sprint curriculum. 
+> The authoritative curriculum model is the **5-Project Project-First Syllabus** located in [`AGENTS.md`](../AGENTS.md) and [`overview-and-module-map.md`](../syllabus/5-projects-22-weeks/overview-and-module-map.md).
+
 # Analysis: Bootcamp Teaching Methodology & Student Submission Workflow
 
 ## Executive Summary

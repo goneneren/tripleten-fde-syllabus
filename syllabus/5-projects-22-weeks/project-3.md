@@ -50,8 +50,16 @@ Students operate the platform in a production-like local environment using stric
 - Per-student always-on EKS or local Kubernetes (`kind`) is not required; Docker Compose is strictly used for FDEs.
 - Terraform/OpenTofu is optional or instructor-led.
 - Students configure local LLM serving, configure one SLO alert, implement one LLM resilience pattern, and run one failure lab.
+- Default tools are mandatory for grading: `vLLM` for model serving. Alternatives (like Ollama) are permitted only if hardware constraints prevent vLLM execution.
 - Extra Kafka depth, multiple resilience patterns, and full chaos suites are optional or scaffolded.
 - The Docker Compose scaffold, CI config, Redpanda setup, failure script, dashboards, flawed AI artifact, expected issues, and rubric must be provided before launch.
+
+## Submission & Assessment Criteria
+
+- **Automated Tests**: CI pipeline must pass (deployment gates, rollback awareness).
+- **Required Artifacts**: PR containing the LLM API resilience pattern (e.g., Retry / Circuit Breaker) and the SLO alert configuration.
+- **Client Defense**: A 5-minute Loom video walking through the simulated LLM failure lab and showing how the system degrades gracefully based on telemetry.
+- **Pass/Fail Rubric**: Must be explicitly supplied in the `projects/` directory, defining Must-Have criteria for the circuit breaker implementation.
 
 ## Workload
 

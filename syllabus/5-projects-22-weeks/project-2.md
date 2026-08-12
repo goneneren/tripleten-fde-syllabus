@@ -17,7 +17,7 @@ Students evolve the reference platform to support AI data ingestion and hybrid r
 ## Tech Setup
 
 - Opinionated REST/gRPC starter repo extended from Project 1.
-- Preconfigured `protoc` build scripts, protobuf definitions, and one gRPC extension point.
+- Preconfigured `protoc` build scripts, protobuf definitions, and one gRPC boundary provided as a read-only scaffold (gRPC implementation is Positioning-level for FDEs).
 - Database connection pooling, migration tooling, repository layer, and test harness.
 - Docker Compose with PostgreSQL (including `pgvector`), read-replica simulation helper, and Redis.
 - API contract tests and integration tests for idempotency, N+1 behavior, cache freshness, and migration safety.
@@ -48,9 +48,17 @@ Students evolve the reference platform to support AI data ingestion and hybrid r
 
 - Raw PostgreSQL WAL or physical streaming replication is not required.
 - Students implement unstructured parsing and hybrid search; additional complex service splits are optional.
-- NoSQL, GraphQL, partitioning, and sharding are decision-level only unless a separate lab is supplied.
+- Default tools are mandatory for grading: `pgvector` for vector storage and `FastEmbed` for local embeddings. Alternatives are only permitted as un-graded optional extensions.
+- NoSQL, GraphQL, partitioning, sharding, and gRPC implementation are decision-level only unless a separate lab is supplied.
 - AWS RDS is optional and must have a local fallback.
 - The starter repo must provide database plumbing, migration tooling, replica simulation, tests, flawed AI artifact, expected issues, and rubric before launch.
+
+## Submission & Assessment Criteria
+
+- **Automated Tests**: CI pipeline must pass (ETL tests, vector retrieval unit tests).
+- **Required Artifacts**: PR containing the Unstructured pipeline script and hybrid search API endpoint.
+- **Client Defense**: A 5-minute Loom video demonstrating the extraction of a messy PDF into the vector database and executing a successful hybrid query.
+- **Pass/Fail Rubric**: Must be explicitly supplied in the `projects/` directory, defining Must-Have accuracy standards for the chunking logic.
 
 ## Workload
 

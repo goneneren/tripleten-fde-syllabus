@@ -54,8 +54,16 @@ Students harden one core platform workflow and add a narrow grounded AI feature 
 - Compliance work is educational control mapping, not legal readiness or certification.
 - Production Vault or Keycloak operations are not required.
 - Students complete one STRIDE workflow, protect one RBAC endpoint, configure one CI security gate, make one secrets improvement, and add one grounded AI guardrail boundary.
+- Default tools are mandatory for grading: `Guardrails AI` or `NeMo Guardrails` must be explicitly chosen as the single default in the final repository scaffold.
 - LLM API usage must have request/token limits, cached fixtures, and audit logging.
 - The identity dev setup, STRIDE template, compliance matrix, security gate scaffold, grounded AI adapter, flawed AI artifact, expected issues, and rubric must be provided before launch.
+
+## Submission & Assessment Criteria
+
+- **Automated Tests**: CI pipeline must pass (Gitleaks, dependency scanning, guardrail unit tests).
+- **Required Artifacts**: PR containing the RBAC implementation, the Guardrails AI configuration, and the completed STRIDE threat model.
+- **Client Defense**: A 5-minute Loom video demonstrating a prompt injection attempt being successfully blocked and redacted by the AI guardrails.
+- **Pass/Fail Rubric**: Must be explicitly supplied in the `projects/` directory, defining Must-Have criteria for the STRIDE threat model and guardrail accuracy.
 
 ## Workload
 

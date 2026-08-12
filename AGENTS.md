@@ -15,9 +15,15 @@ Unlike traditional curriculum models that teach theory first and assign a small 
 
 ### Program-Wide Delivery Model & Constraints:
 1. **5 Major Projects across 22 Weeks**: Total workload calculated at ~438-440 hours across 5 sequential build phases.
-2. **Local-First & Containerized**: Every required project path runs locally via **Docker Compose** using open-source tools (Ollama/vLLM, PostgreSQL/Pgvector, Qdrant, Redis, MinIO, LangGraph, Arize Phoenix).
+2. **Local-First with Controlled API Usage**: Core infrastructure runs locally via **Docker Compose** using open-source tools (Ollama/vLLM, PostgreSQL/Pgvector, Redis, LangGraph, Arize Phoenix). However, a $200 budget per student is allocated for explicitly permitted paid API usage (e.g., OpenAI/Anthropic) for specific RAG/Agent tasks.
 3. **Clear Pass/Fail Scope & Seeded Defect Labs**: Starter scaffolds include realistic enterprise legacy code, seeded bugs, performance bottlenecks, and architectural gaps that students must diagnose, audit, refactor, and fix.
 4. **Reference Program Benchmark**: Aligned with TripleTen's 5-Project Systems Engineering paradigm located at [`C:\repos\tripleten-systemengineering-projects\projects\v05-5-projects-22-weeks-local-and-aws-simplified`](file:///C:/repos/tripleten-systemengineering-projects/projects/v05-5-projects-22-weeks-local-and-aws-simplified).
+
+### Hardware & System Prerequisites
+Due to the focus on local deployment of open-weight LLMs (Ollama/vLLM) and containerized vector databases, students must meet the following hardware minimums:
+- **RAM**: 16GB minimum (32GB strongly recommended for smooth multi-container orchestration).
+- **GPU/VRAM**: 8GB VRAM minimum for local inference, or reliance on the $200 external API budget/provided cloud notebooks if local VRAM is insufficient.
+- **OS**: macOS (M-series preferred), Linux, or Windows (WSL2 required).
 
 ### Curriculum Content Taxonomy:
 - `[CORE]` - Required implementation work that students build, operate, document, and defend.
