@@ -70,7 +70,7 @@ An AI FDE must be able to:
    - Documented in [`syllabus/based-on-competitors-2w-sprints.md`](file:///c:/repos/tripleten-fde-syllabus/syllabus/based-on-competitors-2w-sprints.md).
    - 11 two-week sprints based on traditional bootcamp sprint pacing.
 2. **TripleTen 5-Project, 22-Week Project-First Version (Current Target)**:
-   - Documented in [`syllabus/5-projects-22-weeks/`](file:///c:/repos/tripleten-fde-syllabus/syllabus/5-projects-22-weeks/).
+   - Documented in [`syllabus/`](file:///c:/repos/tripleten-fde-syllabus/syllabus/).
    - 5 major real-world enterprise projects with problem-driven JIT learning maps.
 
 ---
@@ -85,13 +85,12 @@ tripleten-fde-syllabus/
 │   └── teaching-and-submission-models.md # Analysis of teaching methodologies & submission workflows
 ├── syllabus/                           # Core 22-week curriculum design
 │   ├── based-on-competitors-2w-sprints.md # Version 1: Competitor 2-week sprint model
-│   └── 5-projects-22-weeks/            # Version 2: TripleTen 5-Project Project-First model
-│       ├── overview-and-module-map.md  # 5-Project module map, hours calculation, and JIT roadmap
-│       ├── project-1.md                # Project 1 Brief: System Diagnostics & Enterprise API Scaling
-│       ├── project-2.md                # Project 2 Brief: Data Layer, Vector Search & Hybrid RAG
-│       ├── project-3.md                # Project 3 Brief: Resilience, Microservices & Local LLM Serving
-│       ├── project-4.md                # Project 4 Brief: Zero-Trust Security, Guardrails & Governance
-│       └── project-5.md                # Project 5 Brief: Autonomous Multi-Agent Platform & Defense
+│   ├── overview-and-module-map.md      # 5-Project module map, hours calculation, and JIT roadmap
+│   ├── project-1.md                    # Project 1 Brief: System Diagnostics & Enterprise API Scaling
+│   ├── project-2.md                    # Project 2 Brief: Data Layer, Vector Search & Hybrid RAG
+│   ├── project-3.md                    # Project 3 Brief: Resilience, Microservices & Local LLM Serving
+│   ├── project-4.md                    # Project 4 Brief: Zero-Trust Security, Guardrails & Governance
+│   └── project-5.md                    # Project 5 Brief: Autonomous Multi-Agent Platform & Defense
 └── projects/                           # Starter code specs, seeded defects, & rubric definitions
 ```
 
