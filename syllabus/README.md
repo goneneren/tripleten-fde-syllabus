@@ -9,7 +9,7 @@
 The **AI Forward Deployed Engineer (AI FDE)** program is designed to build production-ready engineers who can architect, deploy, and evaluate enterprise AI solutions. 
 
 ### Key Program Principles:
-1. **Local-First with Controlled API Usage**: Core infrastructure runs locally on the student's machine via **Docker Compose** using open-source tools (Ollama/vLLM, PostgreSQL/Pgvector, Redis, LangGraph, Arize Phoenix). However, a $200 budget per student is allocated for explicitly permitted paid API usage (e.g., OpenAI/Anthropic) for specific RAG/Agent tasks.
+1. **Local-First Development, Cloud-Native Capstone**: Projects 1-4 run entirely locally on the student's machine via **Docker Compose** using open-source tools (Ollama/vLLM, PostgreSQL/Pgvector, Redis, LangGraph, Arize Phoenix) to ensure rapid iteration and zero unexpected costs. However, for the Project 5 Capstone, a $200 budget per student is allocated to provision a live cloud instance (e.g., an AWS EC2 GPU instance) and deploy their final multi-agent architecture to the public web.
 2. **Project-First Pedagogy**: Theory is delivered "Just-In-Time". Students learn by inheriting realistic, messy enterprise codebases with seeded defects and architectural gaps that they must diagnose and fix.
 3. **Containerized Engineering**: Every core required project path runs locally via `docker-compose`. If it doesn't run with `docker compose up`, it doesn't pass code review.
 4. **High-Touch Support**: Students are supported by rigorous line-by-line code reviews on GitHub Pull Requests and mandatory Loom video client defenses.
@@ -62,7 +62,7 @@ Students deploy local LLM inference engines (`vLLM` or `Ollama`) within a strict
 Students secure the AI system against the OWASP LLM Top 10. They build a STRIDE threat model, implement output guardrails (`Guardrails AI`), configure PII redaction, and map educational compliance controls (EU AI Act & HIPAA).
 
 ### [Project 5: Autonomous Multi-Agent Platform & Defense](project-5.md)
-The capstone. Students build a multi-agent tool flow using `LangGraph` with human-in-the-loop sandboxing. They run CI evaluations, calibrate LLM-as-a-judge metrics with `Ragas`, and fine-tune a specialized model via LoRA. (Optional/Positioning: deploy the full stack to a cloud instance like AWS EC2).
+The capstone. Students build a multi-agent tool flow using `LangGraph` with human-in-the-loop sandboxing. They run CI evaluations, calibrate LLM-as-a-judge metrics with `Ragas`, fine-tune a specialized model via LoRA, and deploy the full stack to a live cloud instance (AWS EC2).
 
 ---
 

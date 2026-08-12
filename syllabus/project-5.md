@@ -14,7 +14,7 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 - Implement LLM-as-a-judge evaluation pipelines using Ragas.
 - Perform PEFT/LoRA fine-tuning for a specialized task.
 - Monitor quality signals, cost, latency, failures, and user-visible behavior using Arize Phoenix.
-- [Positioning] Deploy the Docker Compose stack to a basic cloud instance (e.g., AWS EC2) as an optional capstone delivery requirement.
+- Deploy the Docker Compose stack to a live cloud instance (e.g., AWS EC2) as a mandatory capstone delivery requirement.
 - Defend model-serving, provider, architecture, safety, and evaluation trade-offs.
 
 ## Tech Setup
@@ -51,6 +51,7 @@ Students build and defend a complex autonomous AI system using paid/local LLM AP
 
 ## Delivery Limits
 
+- The $200 program budget is primarily allocated to provision a live cloud instance (e.g., AWS EC2 `g4dn.xlarge`) to host this capstone project for the duration of the 6-week build.
 - GPU access is strictly limited; fine-tuning tasks use highly optimized small-parameter models (e.g., Qwen/Llama 3B via Unsloth) or run on provided cloud notebooks if local VRAM is insufficient.
 - Required retrieval is `pgvector` plus keyword search AND cross-encoder reranking.
 - Students implement one bounded multi-agent LangGraph flow.
