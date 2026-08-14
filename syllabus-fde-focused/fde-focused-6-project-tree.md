@@ -1,5 +1,7 @@
 # AI Forward Deployed Engineer: Focused Six-Project Program
 
+> **Superseded planning artifact.** The normative candidate documents are `fde-focused-6-projects-opensource.md` and `fde-focused-6-projects-localstack.md`. This ASCII tree is retained only as review history and must not be used for authoring, workload, tooling, GPU, or assessment decisions.
+
 This proposal restructures the AI FDE program into six sequential enterprise engagements. The program remains project-first, includes just-in-time theory inside each task estimate, and stays within **22 weeks x 20 hours/week = 440 total hours**.
 
 ```text
