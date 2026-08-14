@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<!-- saved from url=(0253)https://1ab1ad96-bf58-40e1-b734-f2f1714e0190.frame.claudeusercontent.com/_f/1786618724-3ee7/?__frame_t=XYQYjWoeX2vNWSzJxKc0SDIy.6eb85e4a-6cd2-4cdd-aaaa-ea3b90d61089.73df40c8-9e44-49e2-aae2-91363ca52ab9.1786712606&__frame_v=manifest.c760995c2b5961e2.json -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!-- frame-runtime --><!--<base href="/_f/1786618724-3ee7/">--><base href="."><script>window.__FRAME_PREAMBLE={"capabilities":{"artifact":"artifact.BWD0CGLd.js","assets":"assets.hcOK0ALv.js","comments":"comments.aMuwftAG.js","db":"db.C8ehi_0m.js","downloads":"downloads.BXsoAvg9.js","mcp":"mcp.D3B2EyQu.js","permissions":"permissions.DdITF2Mk.js","room":"room.BgXZkiYR.js","sample":"sample.DpdXn9di.js","self":"artifact.BWD0CGLd.js","user":"user.o5zdRedj.js"},"transforms":"_transforms.BI3gXbbT.js","comments":"_comments.Cp2LbYKb.js","translate":"_translate.BOzFH2D9.js"}</script><script>(function(){"use strict";var ce=["light","dark","system"],ue=/^[A-Za-z0-9_-]{1,64}$/,V=/^[a-zA-Z_:][a-zA-Z0-9_:.-]{0,127}$/,fe=new Set(["class","hidden","value","checked"]);function de(e){const t=e.toLowerCase();return t.startsWith("data-")||t.startsWith("aria-")||fe.has(t)}var pe="http://www.w3.org/1999/xhtml",me="http://www.w3.org/2000/svg",ge=new Set(["script","style","iframe","noscript","noframes","noembed","xmp","plaintext","template","title","textarea","object","embed"]),ve=new Set(["script","style"]);function _e(e){const t=e.localName.toLowerCase();return e.namespaceURI===pe?!ge.has(t):e.namespaceURI===me?!ve.has(t):!1}function he(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_patch;if(t===null||typeof t!="object")return!1;const{seq:n,elements:a}=t;if(typeof n!="number"||!Number.isSafeInteger(n)||!Array.isArray(a)||a.length===0||a.length>64)return!1;for(const i of a){if(i===null||typeof i!="object")return!1;const r=i;if(typeof r.target!="string"||!ue.test(r.target)||r.text!==void 0&&typeof r.text!="string")return!1;if(r.attrsSet!==void 0){if(r.attrsSet===null||typeof r.attrsSet!="object")return!1;for(const[l,c]of Object.entries(r.attrsSet))if(!V.test(l)||typeof c!="string")return!1}if(r.attrsRemoved!==void 0){if(!Array.isArray(r.attrsRemoved))return!1;for(const l of r.attrsRemoved)if(typeof l!="string"||!V.test(l))return!1}}return!0}function ye(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_init;return t!==null&&typeof t=="object"}function be(e){return e!==null&&typeof e=="object"&&e.__frame_size_poke===!0}function Ee(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_theme;if(t===null||typeof t!="object")return!1;const n=t.theme;return typeof n=="string"&&ce.includes(n)}function we(e){try{typeof reportError=="function"?reportError(e):setTimeout(()=>{throw e},0)}catch{}}var X=["#62744c","#b04e72","#5b7596","#a3651f","#7a6ba8","#3f7a75"],J=e=>{let t=0;for(let n=0;n<e.length;n++)t=t*31+e.charCodeAt(n)>>>0;return X[t%X.length]??"#788c5d"},Z="#c7c9d1",Q=e=>"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 2'%3E%3Ccircle cx='1' cy='1' r='1' fill='"+encodeURIComponent(e)+"'/%3E%3C/svg%3E",Ae=Object.freeze({id:null,name:"",avatarUrl:Q(Z),color:Z,email:null,isOwner:!1,canEdit:!1}),Se=(...e)=>{const t=e[0],n=typeof t=="string"?[t]:Array.isArray(t)?t.filter(i=>typeof i=="string"):[],a=Object.create(null);for(const i of n)a[i]={id:i,name:"",avatarUrl:Q(J(i)),color:J(i),email:null,isMe:!1};return a},ee=Object.freeze(Object.assign(Object.create(null),{user:Object.freeze(Object.assign(Object.create(null),{id:null,isOwner:!1,canEdit:!1,me:Ae,profiles:Se,name:"",avatarUrl:null,search:Object.freeze([]),email:null}))})),je={sample:"sample"};function te(){const e=new Uint8Array(20);try{crypto.getRandomValues(e)}catch{for(let n=0;n<e.length;n++)e[n]=Math.floor(Math.random()*256)}let t="";for(const n of e)t+=(n%36).toString(36);return t}function Re(e,t){const n=r=>{const l={path:r},c=r.split("/");return{id:c[c.length-1],path:r,get:()=>t("get",[l]),set:d=>t("set",[l,d]),update:d=>t("update",[l,d]),delete:()=>t("delete",[l]),acquire:d=>t("acquire",[l,d]),onSnapshot:(d,E)=>t("subscribe",[l,d,E]),collection:d=>i(r+"/"+String(d))}},a=r=>({where:(l,c,d)=>a({...r,where:[...r.where??[],{f:String(l),op:String(c),v:d}]}),orderBy:(l,c)=>a({...r,orderBy:{f:String(l),dir:c===void 0?"asc":String(c)}}),limit:l=>a({...r,limit:Number(l)}),get:()=>t("query",[r]),onSnapshot:(l,c)=>t("subscribe",[r,l,c])}),i=r=>({...a({collection:r}),path:r,doc:l=>n(r+"/"+(l===void 0?te():String(l))),add:l=>{const c=n(r+"/"+te());return Promise.resolve(c.set(l)).then(()=>c)}});e.doc=r=>n(String(r)),e.collection=r=>i(String(r))}var Oe=Object.freeze([]);function Pe(e,t){let n=null,a=null;const i=()=>e.__settled;e.peers=()=>Oe,e.connected=()=>!1,e.emit=()=>i()?.()??Promise.resolve(),e.presence=r=>{const l=i();if(l)return l();let c=null;if(r!==null&&typeof r=="object")try{Array.isArray(r)||(c={...r})}catch{}return c===null?Promise.reject({code:"invalid_argument",message:"presence takes an object"}):(n===null&&(n=Object.create(null),a=Promise.resolve(t("presence",[n]))),Object.assign(n,c),a)}}var D="__frame_scroll",Te=150,Me=310,Le=160,ke=3e4;function Ce(){let e=0,t=!1,n=!1,a=!1,i=0,r=null;const l=u=>{try{sessionStorage.setItem(D,JSON.stringify({y:u}))}catch{}},c=()=>{if(clearTimeout(e),r===null)return;const u=r;r=null,l(u)},d=()=>{if(t){t=!1;return}n=!0,r=scrollY,clearTimeout(e),e=setTimeout(c,Te)};try{addEventListener("scroll",d,{passive:!0}),addEventListener("pagehide",c)}catch{}const E=()=>{let u;try{u=sessionStorage.getItem(D)}catch{return null}if(u===null)return null;let g;try{g=JSON.parse(u)}catch{g=null}const f=g?.y;if(!(typeof f=="number"&&Number.isFinite(f)&&f>=0)){try{sessionStorage.removeItem(D)}catch{}return null}return f};let T=!1;const h=u=>{try{const g=scrollY;scrollTo({top:u,left:0,behavior:"instant"}),i=u,a=!0,clearTimeout(e),r=null,l(u);const f=scrollY;f!==g&&(t=!0),f!==u&&!T&&(T=!0,addEventListener("load",()=>{try{if(scrollY===f){const p=E();h(p!==null?p:i)}}catch{}},{once:!0}))}catch{}},R=()=>{try{return!!location.hash}catch{return!0}};let A=!1;const O=()=>{try{if(A||innerWidth>Me||innerHeight>Le)return;A=!0;const u=Date.now(),g=()=>{try{removeEventListener("resize",g)}catch{}if(Date.now()-u>ke||n||R())return;const f=E();h(f!==null?f:i)};addEventListener("resize",g)}catch{}};let M=!1,o=!1;return{restore(){if(M||(M=!0,R()))return;const u=E();u!==null&&(h(u),O())},promoted(){if(o||(o=!0,R()))return;const u=E();u!==null?(h(u),O()):a&&h(i)}}}var He="modulepreload",Ye=function(e){return"/"+e},We={},Ne=function(t,n,a){let i=Promise.resolve();function r(l){const c=new Event("vite:preloadError",{cancelable:!0});if(c.payload=l,window.dispatchEvent(c),!c.defaultPrevented)throw l}return i.then(l=>{for(const c of l||[])c.status==="rejected"&&r(c.reason);return t().catch(r)})};(function(){const e=Object.defineProperty,t=globalThis,n=["RTCPeerConnection","webkitRTCPeerConnection","RTCDataChannel","RTCIceCandidate","RTCSessionDescription","RTCRtpSender","RTCRtpReceiver"];let a=0;for(let i=0;i<n.length;i++){const r=n[i];try{e(t,r,{value:void 0,writable:!1,configurable:!1})}catch{try{delete t[r]}catch{}try{e(t,r,{value:void 0,writable:!1,configurable:!0})}catch{}}typeof t[r]=="function"&&a++}if(a&&window!==top)try{parent.postMessage({__frame_rtc_lockdown_failed:a},"*")}catch{}})();var Ue=1e4,qe=Object.freeze([...window.__FRAME_PREAMBLE?.origins??["https://claude.ai","https://preview.claude.ai"]]);function re(e){for(const t of qe)if(t.endsWith(":*"))try{const n=new URL(e);if(`${n.protocol}//${n.hostname}:*`===t)return!0}catch{}else if(e===t)return!0;return!1}var k=Object.freeze({...window.__FRAME_PREAMBLE?.capabilities}),x=window.__FRAME_PREAMBLE?.transforms,$=window.__FRAME_PREAMBLE?.comments,z=window.__FRAME_PREAMBLE?.translate,q=/^[\w.-]+\.js$/,Ie=/^[a-z][a-z0-9_-]{0,63}$/,I=e=>Ne(()=>import("/_runtime/"+e),void 0);function Be(e,t){return{contract:e.contract,changes:new Set(e.changes??[]),flags:new Set(e.flags??[]),capabilities:e.capabilities??{},capBudgets:e.capBudgets??{},transforms:new Map,shellOrigin:t,mount:Y,pipe:()=>({wrap:(n,a)=>(...i)=>{try{return a(...i)}catch(r){return Promise.reject(r)}}})}}var ne=null,C=null;function F(e,t,n){try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!1,enumerable:!0})}catch{try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!0,enumerable:!0})}catch{}}}var H=!1;function De(e,t){const n=[];for(const a of e.elements){const i=document.querySelector(`[data-id="${a.target}"]`);if(!i){parent.postMessage({__frame_patch_miss:{seq:e.seq}},t);return}if([...Object.keys(a.attrsSet??{}),...a.attrsRemoved??[]].some(r=>!de(r))){parent.postMessage({__frame_patch_miss:{seq:e.seq}},t);return}if(a.text!==void 0&&!_e(i)){parent.postMessage({__frame_patch_miss:{seq:e.seq}},t);return}for(const[r,l]of Object.entries(a.attrsSet??{}))if(!oe(i,r)){try{i.setAttribute(r,l)}catch{}se(i,r,l)}for(const r of a.attrsRemoved??[])oe(i,r)||(i.removeAttribute(r),se(i,r,null));typeof a.text=="string"&&(i.textContent=a.text),n.push(a.target)}try{document.dispatchEvent(new CustomEvent("claude:edit",{detail:{seq:e.seq,targets:n}}))}catch{}}function se(e,t,n){if(!(e instanceof HTMLInputElement))return;const a=t.toLowerCase();a==="checked"?e.checked=n!==null:a==="value"&&e.type!=="file"&&(e.value=n??"")}function oe(e,t){const n=t.toLowerCase(),a=e;return n==="data-id"||(n==="value"||n==="checked")&&(a.__artifactSecret===!0||/^(password|hidden|file)$/.test(a.type??"")||/(^|\s)(cc-|one-time-code|current-password|new-password)/i.test(`${e.getAttribute("autocomplete")??""} ${a.autocomplete??""}`))}function ae(e){const t=document.documentElement;e==="light"||e==="dark"?(t.dataset.theme=e,t.style.colorScheme=e,H=!0):H&&(delete t.dataset.theme,t.style.colorScheme="",H=!1)}var ie=256,N=Object.assign(Object.create(null),{mcp:Object.assign(Object.create(null),{watchTool:{handlerArg:3}}),db:Object.assign(Object.create(null),{subscribe:{handlerArg:1,errArg:2}}),room:Object.assign(Object.create(null),{on:{handlerArg:1,errArg:2},onPeers:{handlerArg:0,errArg:1},onConnection:{handlerArg:0,errArg:1}})}),xe=Object.assign(Object.create(null),{db:(e,t)=>Re(e,t),room:(e,t,n)=>Pe(e,n)}),j=new Map;function Y(e,t){const n=j.get(e);if(!n)return;const a=Object.assign(Object.create(null),t);Object.assign(n.impl,a),n.r(n.ns),n.impl.__settled=()=>Promise.reject({code:"capability_removed",message:`${e}: method not in this runtime`});const i=n.queue;n.queue=[];for(const r of i){const l=a[r.method];if(l)if(N[e]?.[r.method])try{r.resolve(l(...r.args))}catch{U(r,N[e][r.method],{code:"transform_error",message:`${e}.${r.method} rejected its arguments`})}else l(...r.args).then(r.resolve,r.reject);else{const c={code:"capability_removed",message:`${e}.${r.method} is not in this runtime`},d=N[e]?.[r.method];if(d){U(r,d,c);continue}r.reject(c)}}}function $e(e,t){const n=j.get(e);if(!n)return;n.impl.__settled=()=>Promise.reject(t),n.r(null);const a=n.queue;n.queue=[];for(const i of a){const r=N[e]?.[i.method];if(r){U(i,r,t);continue}i.reject(t)}}function le(e,t){if(typeof e=="function")try{return e(...t)}catch{return Object.create(null)}return Array.isArray(e)?[...e]:e!==null&&typeof e=="object"?{...e}:e}function B(e,t){const n=ee[e];if(!n){$e(e,t);return}j.get(e)?.r(null),Y(e,Object.fromEntries(Object.entries(n).map(([a,i])=>[a,(...r)=>Promise.resolve(le(i,r))])))}function U(e,t,n){if(e.syncState?.dead)return;const a=t.errArg===void 0?void 0:e.args[t.errArg],i=t.errArg===void 0?e.args[t.handlerArg]:a;typeof i=="function"&&queueMicrotask(()=>{if(!e.syncState?.dead)try{i(t.errArg===void 0?{type:"error",error:n}:n)}catch(r){we(r)}})}var W=Object.getOwnPropertyDescriptor(window,"claude");if(window!==top&&!(W&&W.writable===!1)){const e=x&&q.test(x)?I(x).catch(()=>{}):Promise.resolve(void 0),t=o=>{if(o.type==="auxclick"&&o.button!==1)return;const u=o.target,g=u&&u.closest?u.closest("a[href],area[href]"):null;if(!g)return;const f=g.getAttribute("href");if(!f)return;let p,P;try{p=new URL(f,document.baseURI),P=new URL(document.baseURI).origin}catch{return}if((p.protocol==="http:"||p.protocol==="https:")&&p.origin!==P){o.preventDefault();const w=(g.getAttribute("target")??"").toLowerCase(),y=o.type==="auxclick"||o.metaKey||o.ctrlKey||o.shiftKey||o.altKey||!["","_self","_top","_parent"].includes(w);parent.postMessage({__frame_nav:!0,url:p.href,newTab:y},"*")}};addEventListener("click",t,!0),addEventListener("auxclick",t,!0);const n={},a=o=>{o.isTrusted&&(n.pointer=!0)},i=o=>{o.isTrusted&&(n.click=!0)};addEventListener("pointermove",a,{capture:!0,passive:!0}),addEventListener("click",i,{capture:!0,passive:!0}),e.then(o=>{o?.wireNav&&(o.wireNav(),removeEventListener("click",t,!0),removeEventListener("auxclick",t,!0),removeEventListener("pointermove",a,!0),removeEventListener("click",i,!0),o.wireEngagement?.(n))});let r=null;try{r=Ce()}catch{}const l=W?.value??{};F(window,"claude",l);const c=o=>{let u;const g=new Promise(_=>{u=_}),f={impl:Object.create(null),queue:[],u:g,r:u,ns:null};j.set(o,f);const p=f.impl,P=_=>({code:"queue_overflow",message:`${o}.${_}: pre-init call queue is full`}),w=(_,s)=>{if(f.queue.length>=ie){const m=ee[o];return m&&_ in m?Promise.resolve(le(m[_],s)):Promise.reject(P(_))}return new Promise((m,v)=>{f.queue.push({method:_,args:s,resolve:m,reject:v})})},y=je[o],L=new Proxy(y===void 0?p:(()=>{}),{apply:(_,s,m)=>{const v=y,b=p[v]??p.__settled;return b?b(...m):w(v,m)},get:(_,s)=>{if(typeof s!="string"||s==="then"||s==="toJSON"||s==="valueOf")return;if(s==="toString")return Object.prototype.toString;if(y!==void 0&&(s==="call"||s==="apply"||s==="bind"))return Function.prototype[s];const m=N[o]?.[s];return m?(...v)=>{if(typeof v[m.handlerArg]!="function")throw new TypeError(`${o}.${s} requires a handler function`);const b=p[s];if(b)return b(...v);if(p.__settled){const S={dead:!1},ze={args:[...v],syncState:S};return p.__settled().catch(Fe=>U(ze,m,Fe)),()=>{S.dead=!0}}if(f.queue.length>=ie){const S={dead:!1};return U({args:[...v],syncState:S},m,P(s)),()=>{S.dead=!0}}let K=null;const G={dead:!1};return f.queue.push({method:s,args:v,resolve:S=>{K=typeof S=="function"?S:null,G.dead&&K?.()},reject:()=>{},syncState:G}),()=>{G.dead=!0,K?.()}}:(...v)=>{const b=p[s]??p.__settled;return b?b(...v):w(s,v)}},set:()=>!1});xe[o]?.(p,(_,s)=>L[_](...s),w),f.ns=L,F(l,o,L)};for(const o of Object.keys(k)){if(l[o]!==void 0){F(l,o,l[o]);continue}c(o)}if(l.use===void 0){const o=u=>{if(typeof u!="string"||!Object.hasOwn(k,u))return Promise.resolve(null);const g=j.get(u);return g?g.u:Promise.resolve(l[u]??null)};try{Object.defineProperty(l,"use",{value:o,writable:!0,configurable:!0,enumerable:!1})}catch{}}let d=null,E=null,T=0;const h=o=>{o.source!==parent||!re(o.origin)||ye(o.data)&&(d=o.data.__frame_init,C=o.origin,removeEventListener("message",h),clearTimeout(T),E?.())};addEventListener("message",h),parent.postMessage({__frame_connect:!0},"*");const R=new Promise(o=>{E=o,T=setTimeout(()=>{removeEventListener("message",h),o()},Ue)}),A=document.readyState==="loading"?new Promise(o=>document.addEventListener("DOMContentLoaded",()=>o(),{once:!0})):Promise.resolve();A.then(()=>{try{r?.restore()}catch{}});const O={cb:null},M=o=>{if(!(o.source!==parent||!re(o.origin))&&be(o.data)){try{r?.promoted()}catch{}O.cb?.()}};addEventListener("message",M),R.then(async()=>{if(!d||!C){for(const s of j.keys())B(s,{code:"not_granted",message:"frame initialization did not arrive - capability unavailable"});return}ae(d.theme);const o=C;let u=!1,g=!1;addEventListener("message",s=>{if(s.source!==parent||s.origin!==o)return;Ee(s.data)&&ae(s.data.__frame_theme.theme),he(s.data)&&De(s.data.__frame_patch,o);const m=s.data?.__fc_mode;m&&typeof m=="object"&&!u&&$&&q.test($)&&(u=!0,I($).then(b=>b.install?.(o,m.on===!0)).catch(()=>{}));const v=s.data?.__ft_cmd;v&&typeof v=="object"&&!g&&z&&q.test(z)&&(g=!0,I(z).then(b=>b.install?.(o,v)).catch(()=>{}))});const f=Object.keys(d.capabilities??{});for(const s of f)Object.hasOwn(k,s)||Ie.test(s)&&l[s]===void 0&&(c(s),B(s,{code:"capability_disabled",message:"capability not in this runtime generation"}));const p=f.filter(s=>Object.hasOwn(k,s)).map(s=>[s,k[s]]).filter(s=>typeof s[1]=="string"&&q.test(s[1])),P=await Promise.allSettled(p.map(([,s])=>I(s))),w=await e,y=C;w?.buildBoot||parent.postMessage({__frame_cap_telemetry:{kind:"cap-load-error",cap:"_transforms"}},y),ne=w?.buildBoot?w.buildBoot(d,w.TRANSFORMS??{},{shellOrigin:y,mount:Y},s=>parent.postMessage({__frame_cap_telemetry:s},y)):Be(d,y);const L=s=>parent.postMessage({__frame_cap_telemetry:{kind:"cap-load-error",cap:s}},y),_=ne;P.forEach((s,m)=>{const v=p[m][0];if(s.status!=="fulfilled"){L(v);return}try{s.value?.install?.(_)}catch{L(v)}});for(const[s,m]of j)if(m.impl.__settled===void 0){if(f.includes(s)){B(s,{code:"capability_disabled",message:"capability not available in this session"});continue}B(s,{code:"not_granted",message:"capability not available in this session"})}await A,parent.postMessage({__frame_ready:!0},C),e.then(s=>s?.installSizeReporter?.(y,O))})}})();</script><!-- /frame-runtime --><meta name="viewport" content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>Forward Deployed Engineer — the role, explained</title>
+<style>
+  :root {
+    --peach:#FFD6C5; --mint:#B8E9C8; --lavender:#E4D9FC; --pink:#FFCCC9; --sky:#C5E0FC; --honey:#FDE3AF;
+    --coal:#1A1A1A; --beige:#F2F1EE; --white:#FFFFFF;
+    --display: Gramatika, Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --body: "Suisse Int'l", Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "Suisse Int'l Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--beige); color:var(--coal); font-family:var(--body);
+         font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .slide { padding: 4.5rem 1.5rem; }
+  .inner { max-width: 66rem; margin: 0 auto; }
+  .white { background: var(--white); }
+  .coal { background: var(--coal); color: var(--beige); }
+  .coal h2, .coal h3 { color: var(--beige); }
+  .coal .sub { opacity:.62; }
+
+  .eyebrow { font-family:var(--mono); font-size:.72rem; text-transform:uppercase;
+             letter-spacing:.16em; margin:0 0 1.5rem; opacity:.55; }
+  h1 { font-family:var(--display); font-weight:700; font-size:clamp(2.3rem,6.5vw,4.2rem);
+       line-height:1; letter-spacing:-.03em; margin:0; text-wrap:balance; max-width:26ch; }
+  h2 { font-family:var(--body); font-weight:500; font-size:clamp(1.45rem,3.2vw,2.1rem);
+       line-height:1.14; letter-spacing:-.02em; margin:0 0 .9rem; text-wrap:balance; max-width:38ch; }
+  h3 { font-family:var(--mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.14em;
+       font-weight:500; opacity:.5; margin:2.4rem 0 1rem; }
+  .sub { font-size:1.04rem; opacity:.72; max-width:56ch; margin:0 0 2.4rem; }
+  p { margin:0 0 1rem; } p:last-child { margin-bottom:0; }
+  .body-copy { max-width:62ch; }
+  .body-copy p { font-size:1.02rem; }
+
+  /* definition block */
+  .def { background:var(--peach); border-radius:18px; padding:2.4rem 2rem; }
+  .def .q { font-family:var(--display); font-weight:700; font-size:clamp(1.4rem,3.2vw,2rem);
+            line-height:1.2; letter-spacing:-.02em; margin:0 0 1.1rem; }
+  .def .n { font-size:1rem; opacity:.78; margin:0; max-width:60ch; }
+
+  /* flow */
+  .flow { display:grid; grid-template-columns:repeat(auto-fit,minmax(10rem,1fr)); gap:.7rem; }
+  .step { background:var(--white); border-radius:14px; padding:1.3rem 1.2rem; position:relative; }
+  .step .i { font-family:var(--mono); font-size:.68rem; letter-spacing:.14em; opacity:.4;
+             display:block; margin-bottom:.6rem; }
+  .step .t { font-family:var(--display); font-weight:700; font-size:1.02rem; display:block;
+             margin-bottom:.4rem; line-height:1.2; }
+  .step .d { font-size:.9rem; opacity:.75; }
+
+  /* two columns of do / don't */
+  .split { display:grid; grid-template-columns:repeat(auto-fit,minmax(17rem,1fr)); gap:1.1rem; }
+  .box { border-radius:16px; padding:1.7rem 1.5rem; }
+  .box .h { font-family:var(--mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.14em;
+            opacity:.55; display:block; margin-bottom:1rem; }
+  .box ul { margin:0; padding-left:1.1rem; }
+  .box li { margin-bottom:.6rem; font-size:.97rem; }
+  .box li:last-child { margin-bottom:0; }
+  .box li b { font-weight:650; }
+  .box .take { font-family:var(--display); font-weight:700; font-size:1.06rem; line-height:1.28;
+               letter-spacing:-.015em; margin:0 0 .9rem; }
+  .spec-list li { margin-bottom:.55rem; }
+  .tagn { display:inline-block; font-family:var(--mono); font-size:.68rem; text-transform:uppercase;
+          letter-spacing:.08em; opacity:.5; margin-left:.4rem; white-space:nowrap; }
+
+  /* signal reader */
+  .signals { display:flex; flex-direction:column; gap:.55rem; }
+  .srow { display:grid; grid-template-columns:1.15fr 1fr 1fr; gap:1.2rem; background:var(--white);
+          border-radius:12px; padding:1.15rem 1.3rem 1.15rem 1.1rem; border-left:5px solid var(--coal); }
+  .srow.stop { border-left-color:#C7534B; }
+  .srow.care { border-left-color:#C08A2E; }
+  .srow.gate { border-left-color:#5B6A72; }
+  .srow .sig-t { font-size:.95rem; }
+  .srow .sig-t b { font-weight:650; }
+  .srow .sig-m { font-size:.93rem; opacity:.75; }
+  .srow .sig-a { font-size:.93rem; }
+  .srow .sig-a b { font-weight:650; }
+  .srow .cap { display:block; font-family:var(--mono); font-size:.62rem; text-transform:uppercase;
+               letter-spacing:.12em; opacity:.45; margin-bottom:.35rem; }
+  .sev { display:flex; flex-wrap:wrap; gap:1.4rem; margin:0 0 1.6rem;
+         font-family:var(--mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.1em; }
+  .sev i { display:inline-block; width:10px; height:22px; border-radius:3px; margin-right:.5rem; vertical-align:-6px; }
+
+  /* quote line inside a box + our move */
+  .qline { font-size:.92rem; font-style:italic; opacity:.72; margin:1rem 0 .9rem;
+           padding-left:.85rem; border-left:2px solid rgba(26,26,26,.2); }
+  .qline .src { display:block; font-family:var(--mono); font-size:.63rem; font-style:normal;
+                text-transform:uppercase; letter-spacing:.1em; opacity:.6; margin-top:.4rem; }
+  .move { font-size:.94rem; margin:0; padding-top:.85rem; border-top:1px solid rgba(26,26,26,.16); }
+  .vq { display:block; font-size:.92rem; font-style:italic; opacity:.7; margin-top:.4rem; }
+
+  /* ranked pains */
+  .needs { list-style:none; margin:1.4rem 0 0; padding:0; display:flex; flex-direction:column; }
+  .needs li { display:grid; grid-template-columns:3.6rem 1fr; gap:1.2rem; align-items:baseline;
+              padding:1.05rem 0; border-top:1px solid rgba(26,26,26,.14); }
+  .needs li:last-child { border-bottom:1px solid rgba(26,26,26,.14); }
+  .needs .ct { font-family:var(--mono); font-size:.86rem; font-variant-numeric:tabular-nums; opacity:.55; }
+  .needs .what { font-size:1rem; }
+  .needs .what b { display:block; font-weight:650; margin-bottom:.15rem; }
+  @media (max-width:40rem) { .needs li { grid-template-columns:1fr; gap:.3rem; } }
+
+  /* pay modifiers */
+  .mods { display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:1rem; }
+  .mod { border-radius:14px; padding:1.3rem 1.3rem; background:var(--white); border-top:4px solid var(--mint); }
+  .mod.up { border-top-color:var(--mint); }
+  .mod.down { border-top-color:var(--pink); }
+  .mod .d { display:block; font-family:var(--display); font-weight:700; font-size:1.35rem;
+            letter-spacing:-.03em; margin-bottom:.5rem; font-variant-numeric:tabular-nums; }
+  .mod .t { font-size:.93rem; opacity:.82; }
+
+  /* profile rows */
+  .profiles { display:flex; flex-direction:column; gap:.6rem; }
+  .prow { display:grid; grid-template-columns:1.1fr 1.05fr .95fr; gap:1.3rem;
+          border-radius:12px; padding:1.3rem 1.4rem; background:rgba(242,241,238,.07); }
+  .prow .cap { display:block; font-family:var(--mono); font-size:.62rem; text-transform:uppercase;
+               letter-spacing:.12em; opacity:.42; margin-bottom:.4rem; }
+  .prow .path { font-size:.95rem; }
+  .prow .path b { font-weight:650; }
+  .prow .brought { font-size:.93rem; opacity:.8; }
+  .prow .read { font-size:.93rem; opacity:.8; }
+  @media (max-width:52rem) { .prow { grid-template-columns:1fr; gap:.8rem; } }
+  @media (max-width:52rem) {
+    .srow { grid-template-columns:1fr; gap:.75rem; }
+  }
+  .b-mint{background:var(--mint)} .b-pink{background:var(--pink)} .b-sky{background:var(--sky)}
+  .b-lav{background:var(--lavender)} .b-honey{background:var(--honey)} .b-white{background:var(--white)}
+  .b-peach{background:var(--peach)}
+
+  /* 2x2 map */
+  .maprail { overflow-x:auto; padding-bottom:.4rem; }
+  .mapgrid { min-width:40rem; display:grid; grid-template-columns:1.6rem 1fr;
+             grid-template-rows:1fr 1.8rem; gap:.5rem; }
+  .yax { writing-mode:vertical-rl; transform:rotate(180deg); display:flex; align-items:center;
+         justify-content:center; font-family:var(--mono); font-size:.64rem; text-transform:uppercase;
+         letter-spacing:.14em; opacity:.45; }
+  .xax { grid-column:2; display:flex; align-items:center; justify-content:center;
+         font-family:var(--mono); font-size:.64rem; text-transform:uppercase; letter-spacing:.14em; opacity:.45; }
+  .plot { position:relative; height:30rem; border-radius:16px; overflow:hidden; background:var(--white); }
+  .quad { position:absolute; width:50%; height:50%; }
+  .quad .qn { position:absolute; font-family:var(--mono); font-size:.63rem; text-transform:uppercase;
+              letter-spacing:.12em; opacity:.42; max-width:11rem; line-height:1.5; }
+  .q-tl { left:0; top:0; }              .q-tl .qn { left:1.1rem; top:1rem; }
+  .q-tr { right:0; top:0; background:rgba(184,233,200,.35); }  .q-tr .qn { right:1.1rem; top:1rem; text-align:right; }
+  .q-bl { left:0; bottom:0; }           .q-bl .qn { left:1.1rem; bottom:1rem; }
+  .q-br { right:0; bottom:0; }          .q-br .qn { right:1.1rem; bottom:1rem; text-align:right; }
+  .ax { position:absolute; background:rgba(26,26,26,.14); }
+  .ax.h { left:0; right:0; top:50%; height:1px; }
+  .ax.v { top:0; bottom:0; left:50%; width:1px; }
+  .dot { position:absolute; transform:translate(-50%,-50%); text-align:center; width:9rem; }
+  .dot i { display:block; width:13px; height:13px; border-radius:50%; margin:0 auto .4rem;
+           box-shadow:0 0 0 3px var(--white); }
+  .dot span { font-size:.84rem; line-height:1.25; display:block; }
+  .dot span em { font-style:italic; opacity:.55; font-size:.76rem; display:block; }
+  .dot.us { width:11rem; }
+  .dot.us i { width:26px; height:26px; box-shadow:0 0 0 6px rgba(26,26,26,.09); }
+  .dot.us span { font-family:var(--display); font-weight:700; font-size:1.02rem; }
+  .maplegend { display:flex; flex-wrap:wrap; gap:1.3rem; margin-top:1.2rem;
+               font-family:var(--mono); font-size:.66rem; text-transform:uppercase; letter-spacing:.1em; }
+  .maplegend i { display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:.45rem;
+                 vertical-align:-1px; }
+
+  /* distance ladder */
+  .ladder { display:flex; flex-direction:column; gap:.6rem; }
+  .rung { display:grid; grid-template-columns:6.5rem 1.15fr 1fr; gap:1.2rem; align-items:start;
+          border-radius:12px; padding:1.15rem 1.3rem; }
+  .rung .lbl { font-family:var(--mono); font-size:.66rem; text-transform:uppercase; letter-spacing:.12em;
+               opacity:.6; padding-top:.15rem; }
+  .rung .names { font-size:.96rem; }
+  .rung .names b { font-weight:650; }
+  .rung .names em { font-style:normal; opacity:.62; display:block; margin-top:.3rem; font-size:.9rem; }
+  .rung .act { font-size:.92rem; opacity:.85; border-left:1px solid rgba(26,26,26,.14); padding-left:1.2rem; }
+  .rung .act b { font-weight:650; }
+  @media (max-width:52rem) { .rung { grid-template-columns:1fr; gap:.6rem; }
+    .rung .act { border-left:none; padding-left:0; border-top:1px solid rgba(26,26,26,.14); padding-top:.6rem; } }
+
+  /* company archetypes */
+  .arch { display:grid; grid-template-columns:repeat(auto-fit,minmax(16rem,1fr)); gap:1.1rem; }
+  .a-card { border-radius:16px; padding:1.6rem 1.4rem; }
+  .a-card .k { font-family:var(--mono); font-size:.66rem; text-transform:uppercase; letter-spacing:.13em;
+               opacity:.55; display:block; margin-bottom:.7rem; }
+  .a-card .t { font-family:var(--display); font-weight:700; font-size:1.12rem; line-height:1.2;
+               display:block; margin-bottom:.6rem; }
+  .a-card .who { font-size:.9rem; opacity:.68; display:block; margin-bottom:.7rem; }
+  .a-card .b { font-size:.95rem; }
+
+  /* link list */
+  .links { display:grid; grid-template-columns:repeat(auto-fit,minmax(19rem,1fr)); gap:.6rem; }
+  .lnk { background:var(--white); border-radius:12px; padding:.95rem 1.1rem; font-size:.93rem; }
+  .lnk a { color:var(--coal); font-weight:650; text-decoration-thickness:1px; text-underline-offset:2px; }
+  .lnk span { display:block; opacity:.65; margin-top:.25rem; font-size:.89rem; }
+  .searchbox { display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:1.1rem; }
+  .q-str { font-family:var(--mono); font-size:.86rem; background:rgba(26,26,26,.06);
+           padding:.2rem .45rem; border-radius:4px; display:inline-block; margin:.15rem .2rem .15rem 0; }
+
+  /* fit signals */
+  .sig { display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:1.1rem; }
+
+  /* experience three-lane */
+  .lanes { display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:1.1rem; }
+  .lane { border-radius:16px; padding:1.7rem 1.5rem; }
+  .lane .cap { font-family:var(--mono); font-size:.66rem; text-transform:uppercase; letter-spacing:.14em;
+               opacity:.55; display:block; margin-bottom:.6rem; }
+  .lane .big { font-family:var(--display); font-weight:700; font-size:1.2rem; line-height:1.2;
+               display:block; margin-bottom:.9rem; }
+  .lane ul { margin:0; padding-left:1.05rem; font-size:.94rem; }
+  .lane li { margin-bottom:.45rem; }
+
+  /* earnings */
+  .earn { background:var(--white); border-radius:16px; padding:2rem 1.6rem 1.4rem; }
+  .track { position:relative; height:2.6rem; margin-bottom:.5rem; }
+  .track .lab { position:absolute; left:0; top:.15rem; font-size:.92rem; }
+  .track .lab em { font-style:normal; opacity:.5; font-size:.85rem; }
+  .track .rail { position:absolute; left:9.5rem; right:0; top:1.55rem; height:16px;
+                 background:rgba(26,26,26,.05); border-radius:8px; }
+  .track .seg { position:absolute; height:16px; border-radius:8px; }
+  .track .val { position:absolute; top:.15rem; right:0; font-family:var(--mono); font-size:.82rem;
+                font-variant-numeric:tabular-nums; }
+  .scale { position:relative; margin-left:9.5rem; height:1.4rem; border-top:1px solid rgba(26,26,26,.14); }
+  .scale span { position:absolute; top:.3rem; transform:translateX(-50%); font-family:var(--mono);
+                font-size:.68rem; opacity:.5; }
+  @media (max-width:40rem) {
+    .track .rail, .scale { margin-left:0; left:0; }
+    .track { height:3.6rem; }
+    .track .rail { top:2.5rem; }
+    .track .seg { top:2.5rem; }
+  }
+
+  /* confidence spectrum */
+  .spectrum { background:var(--white); border-radius:16px; padding:1.8rem 1.6rem; }
+  .spec-bar { height:8px; border-radius:4px; margin:0 0 1.4rem;
+              background:linear-gradient(90deg,var(--mint),var(--honey),var(--pink)); }
+  .spec-cols { display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:1.4rem; }
+  .spec-col .ct { font-family:var(--mono); font-size:.66rem; text-transform:uppercase;
+                  letter-spacing:.12em; opacity:.55; display:block; margin-bottom:.7rem; }
+  .spec-col ul { margin:0; padding-left:1.05rem; font-size:.94rem; }
+  .spec-col li { margin-bottom:.5rem; }
+
+  /* quote chips */
+  .quotes { display:grid; grid-template-columns:repeat(auto-fit,minmax(16rem,1fr)); gap:.8rem; }
+  .qq { background:var(--white); border-radius:14px; padding:1.2rem 1.3rem; font-size:.96rem; }
+  .qq .src { display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.08em;
+             text-transform:uppercase; opacity:.45; margin-top:.7rem; }
+  .vocab { display:flex; flex-wrap:wrap; gap:.55rem; }
+  .word { background:var(--white); border-radius:999px; padding:.45rem .95rem; font-family:var(--mono);
+          font-size:.79rem; }
+
+  /* nebius people */
+  .people { display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:1rem; }
+  .person { border-radius:14px; padding:1.4rem 1.3rem; }
+  .person .role { font-family:var(--mono); font-size:.66rem; text-transform:uppercase;
+                  letter-spacing:.12em; opacity:.55; display:block; margin-bottom:.7rem; }
+  .person .from { font-family:var(--display); font-weight:700; font-size:1.02rem; display:block;
+                  margin-bottom:.45rem; line-height:1.2; }
+  .person .note { font-size:.9rem; opacity:.78; }
+
+  .stat-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(10rem,1fr)); gap:1rem; }
+  .st { border-radius:14px; padding:1.4rem 1.3rem; }
+  .st .v { font-family:var(--display); font-weight:700; font-size:1.9rem; letter-spacing:-.03em;
+           display:block; line-height:1; font-variant-numeric:tabular-nums; }
+  .st .l { font-size:.88rem; opacity:.75; display:block; margin-top:.55rem; }
+
+  /* part dividers */
+  .part { background:var(--coal); color:var(--beige); padding:3.4rem 1.5rem; }
+  .part .pnum { font-family:var(--mono); font-size:.68rem; text-transform:uppercase;
+                letter-spacing:.18em; opacity:.5; display:block; margin-bottom:1rem; }
+  .part .ptitle { font-family:var(--display); font-weight:700; color:var(--beige);
+                  font-size:clamp(1.8rem,4.5vw,2.8rem); line-height:1.05; letter-spacing:-.025em;
+                  margin:0 0 .8rem; max-width:20ch; }
+  .part .psub { font-size:1.02rem; opacity:.62; max-width:52ch; margin:0; }
+
+  footer { padding:3rem 1.5rem 4rem; }
+  footer .inner { font-family:var(--mono); font-size:.72rem; letter-spacing:.04em;
+                  text-transform:uppercase; opacity:.45; line-height:1.9; }
+</style>
+
+<!-- ═══ title ═══ -->
+<section class="slide coal" style="padding:5.5rem 1.5rem">
+  <div class="inner">
+    <p class="eyebrow" style="opacity:.6">TripleTen · 2nd floor · role brief · august 2026</p>
+    <h1>Forward Deployed Engineer: what the job actually is</h1>
+    <p style="font-size:1.06rem;opacity:.66;max-width:50ch;margin-top:1.4rem">Written for marketing, sales
+    and product. Three questions: what this profession really is, what a course for it has to contain, and
+    how to sell it to an audience that assumes it is being lied to.</p>
+  </div>
+</section>
+
+<!-- ═══ part 1 ═══ -->
+<section class="slide part">
+  <div class="inner">
+    <span class="pnum">Part 1</span>
+    <h2 class="ptitle">What the profession is</h2>
+    <p class="psub">The work itself, the titles around it, who hires it, and what the postings demand.</p>
+  </div>
+</section>
+
+<!-- ═══ definition ═══ -->
+<section class="slide">
+  <div class="inner">
+    <h2>The definition the market agrees on</h2>
+    <p class="sub">The title is contested, the work isn't. Across 53 postings, the same job description
+    keeps appearing under five different names.</p>
+
+    <div class="def">
+      <p class="q">An engineer who goes into someone else's business, works out what should be built there,
+      and builds it — in the client's environment, with the client in the room.</p>
+      <p class="n">Palantir invented the title over a decade ago. What's new isn't the role, it's the
+      cargo: the thing being deployed is now an AI system that behaves differently in every customer's
+      mess. That's why hiring exploded, and why the same work is posted as Applied AI Engineer, Forward
+      Deployed AI Engineer, FDSE, AI Applications Engineer, or Founding FDE.</p>
+    </div>
+
+    <h3>How the work runs, start to finish</h3>
+    <div class="flow">
+      <div class="step"><span class="i">01</span><span class="t">Discovery</span><span class="d">Sit with the client's team and trace how the work really happens — not how the process document says it happens.</span></div>
+      <div class="step"><span class="i">02</span><span class="t">Scope</span><span class="d">Decide what's worth building, what to cut, and where AI has no business being. Estimate it and defend the estimate.</span></div>
+      <div class="step"><span class="i">03</span><span class="t">Build</span><span class="d">Write production integration code against undocumented client systems. Ship an agent that survives the unhappy path.</span></div>
+      <div class="step"><span class="i">04</span><span class="t">Deploy</span><span class="d">Get it live inside the client's cloud, security review, permissions and all. Prove it works with evals, not with a demo.</span></div>
+      <div class="step"><span class="i">05</span><span class="t">Hand back</span><span class="d">Drive adoption, then turn what you learned into a reusable playbook so the next deployment is cheaper.</span></div>
+    </div>
+
+    <h3>What it does, and what it does not</h3>
+    <div class="split">
+      <div class="box b-mint">
+        <span class="h">The job does</span>
+        <ul>
+          <li><b>Write production code</b> that ships into a customer's stack — not slides, not diagrams</li>
+          <li><b>Own delivery end to end</b>, from the first conversation to the system running in production</li>
+          <li><b>Decide what gets built</b>, including saying that a process should be fixed with plain software and no AI</li>
+          <li><b>Carry the technical relationship</b> with people from engineers to the CFO</li>
+          <li><b>Feed the field back into product</b> — patterns, playbooks, feature requests</li>
+        </ul>
+      </div>
+      <div class="box b-pink">
+        <span class="h">The job does not</span>
+        <ul>
+          <li><b>Train or fine-tune models.</b> Zero of 41 roles ask for it. That's a different profession</li>
+          <li><b>Carry a sales quota</b> — in the real version. Where it does, that's the disguised sales role candidates fear</li>
+          <li><b>Manage people.</b> Growth goes to designing bigger systems, not bigger teams</li>
+          <li><b>Own the product roadmap.</b> An FDE optimises for one customer; coherence across customers belongs to someone else</li>
+          <li><b>Live in one codebase.</b> No greenfield, no months of deep focus on a single problem</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ positioning map ═══ -->
+<section class="slide">
+  <div class="inner">
+    <h2>Where the role sits between engineering and the customer</h2>
+    <p class="sub">Two axes decide everything: how close you sit to the customer, and whether you ship
+    production code. FDE is the only box that maxes out both — which is exactly why it's hard to hire for.</p>
+
+    <div class="maprail">
+      <div class="mapgrid">
+        <div class="yax">ships production code</div>
+        <div class="plot">
+          <div class="quad q-tl"><span class="qn">Builds, never meets the customer</span></div>
+          <div class="quad q-tr"><span class="qn">Builds and owns the customer — the scarce combination</span></div>
+          <div class="quad q-bl"><span class="qn">Neither half — nothing is hired here</span></div>
+          <div class="quad q-br"><span class="qn">Owns the customer, doesn't build</span></div>
+          <div class="ax h"></div>
+          <div class="ax v"></div>
+
+          <div class="dot" style="left:14%; top:20%;"><i style="background:var(--sky)"></i><span>Backend / platform engineer</span></div>
+          <div class="dot" style="left:26%; top:42%;"><i style="background:var(--sky)"></i><span>ML engineer, researcher</span></div>
+          <div class="dot" style="left:38%; top:66%;"><i style="background:var(--sky)"></i><span>DevOps / SRE</span></div>
+          <div class="dot" style="left:56%; top:26%;"><i style="background:var(--mint)"></i><span>Applied AI Engineer<em>at the labs, the same job</em></span></div>
+          <div class="dot us" style="left:80%; top:16%;"><i style="background:var(--coal)"></i><span>Forward Deployed Engineer</span></div>
+          <div class="dot" style="left:63%; top:56%;"><i style="background:var(--honey)"></i><span>Solutions architect</span></div>
+          <div class="dot" style="left:84%; top:44%;"><i style="background:var(--honey)"></i><span>Sales / solutions engineer</span></div>
+          <div class="dot" style="left:60%; top:82%;"><i style="background:var(--pink)"></i><span>Technical account manager</span></div>
+          <div class="dot" style="left:85%; top:76%;"><i style="background:var(--pink)"></i><span>Deployment strategist</span></div>
+        </div>
+        <div class="xax">customer proximity →</div>
+      </div>
+    </div>
+    <div class="maplegend">
+      <span><i style="background:var(--coal)"></i>The role</span>
+      <span><i style="background:var(--mint)"></i>Same job, other name</span>
+      <span><i style="background:var(--sky)"></i>Has the engineering half</span>
+      <span><i style="background:var(--honey)"></i>Has the customer half</span>
+      <span><i style="background:var(--pink)"></i>Different job entirely</span>
+    </div>
+    <p style="font-size:.95rem;opacity:.72;max-width:64ch;margin-top:1.2rem">Two things to take from this.
+    <b>Only one box needs both halves</b> — which is why the role is hard to hire for and why it pays what it
+    pays. And the market fills the right-hand side <b>in pairs</b>: at Palantir there is roughly one
+    deployment strategist for every two FDEs. Our graduate is the engineering half of that pair — and at a
+    small company, both halves at once.</p>
+
+    <div class="split" style="margin-top:1.6rem">
+      <div class="box b-mint">
+        <span class="h">Same job, other names</span>
+        <p style="font-size:.95rem;margin:0">Forward Deployed AI Engineer · FDSE · Founding FDE · FD Infrastructure Engineer. And <b>Applied AI Engineer at the frontier labs only</b> — elsewhere that title means the same work minus the customer.</p>
+      </div>
+      <div class="box b-sky">
+        <span class="h">Source candidates here</span>
+        <p style="font-size:.95rem;margin:0">Implementation, onboarding and professional-services engineers hold the client half. Senior backend, platform and data engineers hold the engineering half. Solutions architects and SREs are two steps away.</p>
+      </div>
+      <div class="box b-pink">
+        <span class="h">Delete from every search</span>
+        <p style="font-size:.95rem;margin:0"><b>“Integration engineer”</b> returns hardware roles. <b>“Field engineer”</b> returns department heads — 27 of 32 hits are Director or Manager <em>of</em> Field Engineering. And “Reliability” inside the title is a different, cheaper job.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ who hires ═══ -->
+<section class="slide">
+  <div class="inner">
+    <h2>Five kinds of company hire this, and they want different people</h2>
+    <p class="sub">Same title, materially different job. This is the single most useful thing to teach a
+    candidate before they apply anywhere.</p>
+
+    <div class="arch">
+      <div class="a-card b-mint">
+        <span class="k">Highest bands · agents at the core</span>
+        <span class="t">AI-native product companies</span>
+        <span class="who">OpenAI · Scale AI · ElevenLabs · Glean · Sierra · Warp · Exa · Traversal · Giga ML · Labelbox · Assort · Confido · Clarasight</span>
+        <span class="b">Founding-flavoured hires, “startup CTO” framing, equity as real pay. Several state no years at all — the bar is judgement, not credentials.</span>
+      </div>
+      <div class="a-card b-sky">
+        <span class="k">Structured ladders · formal bars</span>
+        <span class="t">Big Tech and platform vendors</span>
+        <span class="who">Google · Google DeepMind · Microsoft · Databricks · NVIDIA · Salesforce · Palantir · Figma · Notion · Asana</span>
+        <span class="b">Published bands and real interview loops. Often the best route in for a senior engineer with no client history, because the process tests engineering first.</span>
+      </div>
+      <div class="a-card b-honey">
+        <span class="k">Domain gate before the AI gate</span>
+        <span class="t">Vertical products</span>
+        <span class="who">Qualified Health (Epic) · AHEAD (SOC) · Applied Intuition (defence) · Sayari (financial crime) · Gecko Robotics (industrial) · Aircall (telephony) · Flow (hardware)</span>
+        <span class="b">The vertical is the requirement and can't be crammed. Nine of 29 postings. Only a target if the candidate already has the domain.</span>
+      </div>
+      <div class="a-card b-lav">
+        <span class="k">Delivery model, not product</span>
+        <span class="t">Services and partner organisations</span>
+        <span class="who">AHEAD · Nearform · Databricks Public Sector</span>
+        <span class="b">Billable work, client sites, consulting experience valued outright. Highest experience bars in the corpus, and live coding in the interview.</span>
+      </div>
+      <div class="a-card b-peach">
+        <span class="k">No travel, no external client</span>
+        <span class="t">Internal FDE</span>
+        <span class="who">NVIDIA · Cohere · Notion · HP · AHEAD's own transformation team</span>
+        <span class="b">The full method aimed at your own company's business units. The honest answer to “I don't want to fly and don't want a client” — and it widens the target list.</span>
+      </div>
+    </div>
+
+    <h3>What to type when you look for these roles</h3>
+    <div class="searchbox">
+      <div class="box b-mint">
+        <span class="h">Returns real jobs</span>
+        <p style="margin:0 0 .4rem"><span class="q-str">forward deployed</span><span class="q-str">applied ai engineer</span><span class="q-str">founding fde</span><span class="q-str">ai applications engineer</span></p>
+        <p style="font-size:.92rem;margin:0;opacity:.8">The first string is the largest family — 278 titles across 30 boards.</p>
+      </div>
+      <div class="box b-sky">
+        <span class="h">Returns people, not jobs</span>
+        <p style="margin:0 0 .4rem"><span class="q-str">implementation engineer</span><span class="q-str">professional services engineer</span><span class="q-str">customer engineer</span></p>
+        <p style="font-size:.92rem;margin:0;opacity:.8">Near-zero in job titles, everywhere in résumés. Recruiting language, not search language.</p>
+      </div>
+      <div class="box b-honey">
+        <span class="h">Two shortcuts</span>
+        <p style="font-size:.92rem;margin:0;opacity:.85">A company posting <b>deployment strategists</b> has a real FDE organisation. And the ladder is visible on one board: <b>FDE → Technical Deployment Lead → Manager, FDE</b> all sit open at OpenAI at once.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ requirements: education, experience, common vs specific ═══ -->
+<section class="slide white">
+  <div class="inner">
+    <h2>What the postings actually require</h2>
+    <p class="sub">Read line by line across 41 unique roles. Two findings surprise people: the degree barely
+    matters, and the common core is smaller than you'd expect.</p>
+
+    <div class="split">
+      <div class="box b-sky">
+        <span class="h">Education</span>
+        <p class="take">A diploma is not the gate. One posting in 41 makes it a hard requirement.</p>
+        <ul>
+          <li>Roughly half mention a degree at all — nearly always as “or equivalent” or preferred</li>
+          <li>Master's or PhD appears as preferred exactly once, at Google</li>
+          <li>Named fields are broad: CS, maths, software engineering, physics, data science</li>
+          <li>One posting accepts competitive-programming pedigree instead of experience; another counts client experience from student clubs</li>
+        </ul>
+      </div>
+      <div class="box b-mint">
+        <span class="h">Experience</span>
+        <p class="take">Four years is the median — and proof you shipped beats the number.</p>
+        <ul>
+          <li>Years stated in 29 of 41 roles; half of those ask for five or more</li>
+          <li>Twelve roles state no years at all, and say “production-grade”, “shipped at scale”, “not demos” instead</li>
+          <li>Pay tracks the employer tier, not the years behind you</li>
+          <li>Two thirds want prior customer-facing work as evidence — the hardest line on the list to satisfy</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Common core versus the specific gate</h3>
+    <div class="split">
+      <div class="box b-white">
+        <span class="h">In almost every posting</span>
+        <p class="take">Describe these six and you have described the job.</p>
+        <ul>
+          <li>Production engineering, one main language, usually Python</li>
+          <li>APIs and integration into enterprise systems</li>
+          <li>Some LLM or GenAI experience — nine in ten</li>
+          <li>Translating between technical and business audiences</li>
+          <li>Owning delivery end to end, with no spec to start from</li>
+          <li>Holding stakeholders, up to executives</li>
+        </ul>
+      </div>
+      <div class="box b-honey">
+        <span class="h">Specific — and where it lives</span>
+        <p class="take">These can't be crammed. They decide which door is open at all.</p>
+        <ul class="spec-list">
+          <li>Epic, HL7, FHIR <span class="tagn">healthcare</span></li>
+          <li>SIEM, XDR, SOAR, SOC operations <span class="tagn">security</span></li>
+          <li>SIP, WebRTC, contact centres <span class="tagn">voice AI — biggest vertical cluster</span></li>
+          <li>Graph databases, anti-money-laundering <span class="tagn">financial crime</span></li>
+          <li>RL environments, Gym, SWE-bench <span class="tagn">AI labs</span></li>
+          <li>Spark runtime internals <span class="tagn">data platform</span></li>
+          <li>PLM, MBSE, hardware programmes <span class="tagn">hardware</span></li>
+          <li>Apex, Salesforce certifications <span class="tagn">vendor ladder</span></li>
+          <li>Go or Rust <span class="tagn">infra edge — no Python at all</span></li>
+          <li>US citizenship, clearance to TS/SCI <span class="tagn">closed to most</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="body-copy" style="margin-top:1.4rem">The rule this hands a candidate: <b>the common core gets
+    you considered anywhere, the specific requirement decides where you can apply at all.</b> So target the
+    vertical you already have — and teach domain <em>discovery</em>, never the domains.</p>
+  </div>
+</section>
+
+<!-- ═══ part 2 ═══ -->
+<section class="slide part">
+  <div class="inner">
+    <span class="pnum">Part 2</span>
+    <h2 class="ptitle">How to build the course</h2>
+    <p class="psub">What has to be there on day one, what we teach, and what a graduate can hand a hiring manager.</p>
+  </div>
+</section>
+
+<!-- ═══ fit ═══ -->
+<section class="slide">
+  <div class="inner">
+    <h2>Fit, profile by profile</h2>
+    <p class="sub">Six starting points, graded. For each: what they already hold, what's missing, and the
+    one thing they have to prove to a hiring manager.</p>
+
+    <div class="profiles" style="color:var(--coal)">
+      <div class="prow" style="background:var(--white)">
+        <div class="path"><span class="cap">Strong fit</span><b>Senior backend, platform or data engineer, 5+ years</b><br><span style="opacity:.7;font-size:.9rem">Our primary buyer.</span></div>
+        <div class="brought"><span class="cap">Already holds</span>The entire engineering gate — production history, a language, cloud, debugging across layers. Clears 85% of what postings demand.</div>
+        <div class="read"><span class="cap">Must prove</span>That they can sit in front of a customer. Two thirds of postings want prior client work as evidence — this is the whole gap.</div>
+      </div>
+
+      <div class="prow" style="background:var(--white)">
+        <div class="path"><span class="cap">Strong fit</span><b>Implementation, onboarding or professional-services engineer</b><br><span style="opacity:.7;font-size:.9rem">Closest to ready of anyone.</span></div>
+        <div class="brought"><span class="cap">Already holds</span>Discovery, scoping, stakeholders, delivery under a client's constraints — the half nobody can teach quickly.</div>
+        <div class="read"><span class="cap">Must prove</span>Current production depth. Needs the agent stack — agents, retrieval, evals — and recent code to show.</div>
+      </div>
+
+      <div class="prow" style="background:var(--white)">
+        <div class="path"><span class="cap">Workable</span><b>Solutions architect or sales engineer with real production behind them</b></div>
+        <div class="brought"><span class="cap">Already holds</span>The room, the language of the business, and demo craft. Knows how enterprises buy.</div>
+        <div class="read"><span class="cap">Must prove</span>That they still ship. The suspicion runs the other way here — a portfolio of running systems answers it.</div>
+      </div>
+
+      <div class="prow" style="background:var(--white)">
+        <div class="path"><span class="cap">Workable</span><b>DevOps or SRE</b></div>
+        <div class="brought"><span class="cap">Already holds</span>Deploying into hostile environments, security reviews, permissions, incident work — exactly step four of the job.</div>
+        <div class="read"><span class="cap">Must prove</span>App-layer AI and discovery. There's a direct route: <b>Forward Deployed Infrastructure Engineer</b> — highest band in the corpus, and it runs on Go.</div>
+      </div>
+
+      <div class="prow" style="background:var(--white)">
+        <div class="path"><span class="cap">Workable</span><b>Engineering manager or tech lead, 7–15 years</b></div>
+        <div class="brought"><span class="cap">Already holds</span>Defending decisions to non-engineers, estimating, holding a timeline, saying no — the field muscle under a different name.</div>
+        <div class="read"><span class="cap">Must prove</span>That they want to build again. This role grows into bigger systems, not bigger teams — worth stating before they buy.</div>
+      </div>
+
+            <div class="prow" style="background:var(--white)">
+        <div class="path"><span class="cap">Weak fit</span><b>ML engineer or researcher</b></div>
+        <div class="brought"><span class="cap">Already holds</span>Model depth — which the market doesn't ask FDEs for. Fine-tuning appears in zero of 41 roles.</div>
+        <div class="read"><span class="cap">Must prove</span>Effectively a career change: production application engineering plus the client half. Their strongest asset goes unused.</div>
+      </div>
+    </div>
+
+    <div class="split" style="margin-top:1.4rem">
+      <div class="box b-pink">
+        <span class="h">Will be miserable regardless of profile</span>
+        <ul>
+          <li>Needs a written task to start — comfort with ambiguity is the most-cited must-have in the market</li>
+          <li>Wants deep focus on one problem for weeks. Context-switching across 8–15 clients <em>is</em> the job</li>
+          <li>Wants to understand and direct without building. This role is 100% building</li>
+          <li>No production history at all — courses, notebooks, prototypes. There is nothing to build the field half on top of, and saying so early is cheaper than a refund later</li>
+        </ul>
+      </div>
+      <div class="box b-honey">
+        <span class="h">Two fears that are not disqualifiers</span>
+        <ul>
+          <li><b>Reluctance to travel.</b> Explicit travel is in under a third of postings, and internal FDE roles have no travel and no external client at all</li>
+          <li><b>A legacy stack.</b> Sixteen postings say “Python or similar”; what's tested is judgment about production, not the language on the CV</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ experience: gate / taught / cannot ═══ -->
+<section class="slide white">
+  <div class="inner">
+    <h2>What has to be there already, what we teach, what nobody can hand over</h2>
+    <p class="sub">The honest split. It also explains the admission bar: we can't sell this to someone
+    without the first lane.</p>
+
+    <div class="lanes">
+      <div class="lane b-sky">
+        <span class="cap">Must arrive with it</span>
+        <span class="big">The engineering gate</span>
+        <ul>
+          <li>Years of production engineering — “shipped at scale”, not demos</li>
+          <li>Python, or a language they can carry over</li>
+          <li>Comfort in one cloud, APIs, debugging across layers</li>
+          <li>Median bar across the market: four years, with half the postings that state a number asking five or more</li>
+        </ul>
+        <p style="font-size:.92rem;opacity:.7;margin-top:.9rem">Verified at intake. Teaching this would make
+        us a different school for a different buyer.</p>
+      </div>
+      <div class="lane b-mint">
+        <span class="cap">We teach it</span>
+        <span class="big">The AI delivery stack and the field method</span>
+        <ul>
+          <li>Agents that survive contact with reality: tool use, orchestration, guardrails</li>
+          <li>Retrieval over a client's messy documents</li>
+          <li>Evals and golden datasets — turning “it seems to work” into evidence</li>
+          <li>Observability and debugging of non-deterministic behaviour</li>
+          <li>Discovery, workflow tracing, scoping and estimation</li>
+          <li>ROI in the language of revenue, risk and cost</li>
+          <li>Defending the build to a non-engineer</li>
+          <li>Turning one customer's solution into a reusable playbook</li>
+        </ul>
+      </div>
+      <div class="lane b-pink">
+        <span class="cap">Cannot be handed over</span>
+        <span class="big">A history of client work</span>
+        <ul>
+          <li>Two thirds of postings ask for prior customer-facing experience as proof</li>
+          <li>No course can retroactively put a client in someone's past</li>
+        </ul>
+        <p style="font-size:.94rem;margin-top:.9rem">So we do two things instead: <b>surface what's already
+        there</b> — in the CVs of working FDEs the field muscle came from consulting, private equity, a seat
+        in VC, teaching, running a camp — and <b>manufacture auditable evidence</b>: a client component in
+        every project, public reference architectures, a demo day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ what the programme gives, practically ═══ -->
+<section class="slide">
+  <div class="inner">
+    <h2>What a graduate can actually point to</h2>
+    <p class="sub">Not modules. Five things they can hand a hiring manager, and four things they've done
+    enough times to do them under pressure. Together these stand in for the client history nobody can give
+    them.</p>
+
+    <div class="split">
+      <div class="box b-mint">
+        <span class="h">Five artefacts — auditable, public</span>
+        <ul>
+          <li><b>A traced workflow.</b> A real, messy process mapped end to end, including the exceptions the process document never mentions</li>
+          <li><b>An agent with an audit trail.</b> Running on a genuine business task, where you can show exactly how it reached its conclusion</li>
+          <li><b>Unhappy-path hardening.</b> Schema validation and failure recovery — the part that keeps working when the input is garbage</li>
+          <li><b>An eval suite.</b> Golden dataset, quality metrics, a before-and-after that proves behaviour instead of asserting it</li>
+          <li><b>An integration into legacy.</b> Against an undocumented system with real permissions and limits, not a clean sandbox</li>
+        </ul>
+      </div>
+      <div class="box b-sky">
+        <span class="h">Four rehearsals — done until they hold</span>
+        <ul>
+          <li><b>A discovery sprint</b> with a live stakeholder who withholds information, changes their mind, and controls a budget</li>
+          <li><b>A scoping defence:</b> estimate it, cut scope out loud, and hold the line on what isn't included</li>
+          <li><b>The business defence.</b> One build, two rooms: an architecture review with engineers and a value case for a VP</li>
+          <li><b>The live interview drill</b> — narrating a solution while the constraints keep changing. The exact format candidates report failing</li>
+        </ul>
+      </div>
+    </div>
+    <p class="body-copy" style="margin-top:1.4rem">Why this split matters commercially: <b>the artefacts are
+    what a sceptical audience can check</b> — and this audience assumes course claims are bought. Five public,
+    working things beat any testimonial we could print.</p>
+  </div>
+</section>
+
+<!-- ═══ part 3 ═══ -->
+<section class="slide part">
+  <div class="inner">
+    <span class="pnum">Part 3</span>
+    <h2 class="ptitle">How to sell it</h2>
+    <p class="psub">What actually hurts, what pays, the objection we can answer with facts, and where the roles are.</p>
+  </div>
+</section>
+
+<!-- ═══ tone of voice ═══ -->
+<section class="slide">
+  <div class="inner">
+    <h2>What actually hurts, in their words</h2>
+    <p class="sub">Ranked by how many of 14 threads raise it independently. Each line is a real pain with a
+    real quote — this is the objection list any campaign has to survive.</p>
+
+    <ol class="needs">
+      <li><span class="ct">8/14</span><span class="what"><b>The title itself is suspect before the job is read</b>
+        <span class="vq">“I always thought the title was kind of cringey — like someone doing military cosplay, or those coding ninja titles from 10 years ago.”</span></span></li>
+      <li><span class="ct">8/14</span><span class="what"><b>Nobody can say how it differs from a solutions architect</b>
+        <span class="vq">“Simply sounds like a technical account manager or solutions architect to me.”</span></span></li>
+      <li><span class="ct">7/14</span><span class="what"><b>Fear of being handed several jobs and one salary</b>
+        <span class="vq">“It's a way companies can package up three roles into one… because they need to operate as cheap as possible.”</span></span></li>
+      <li><span class="ct">6/14</span><span class="what"><b>Burnout: travel, on-call, and endless context-switching</b>
+        <span class="vq">“Context-switching becomes the job. I work with 10–15 clients in parallel. If you need deep focus on one problem for weeks at a time, this will frustrate you.”</span></span></li>
+      <li><span class="ct">5/14</span><span class="what"><b>Suspicion that the posting is a sales job in disguise</b>
+        <span class="vq">“The elephant in the room is that around 40% of these ‘engineering’ roles are just rebranded sales positions.”</span></span></li>
+      <li><span class="ct">5/14</span><span class="what"><b>No way to prepare — the information simply isn't there</b>
+        <span class="vq">“There is very little information about this role on the internet, so I'm also super confused, but I will share how it goes.”</span></span></li>
+    </ol>
+
+    <h3>The questions they ask out loud</h3>
+    <div class="quotes">
+      <div class="qq">“How do you manage to find something going 150k+? I feel like I'm losing my SE skills as time goes on.”<span class="src">the skill-decay fear, stated plainly</span></div>
+      <div class="qq">“Is FDE a type of SWE, or is it a different ladder?”<span class="src">asked repeatedly, never answered</span></div>
+      <div class="qq">“Does anyone have any advice for the RRK portion?”<span class="src">interview prep, zero replies in thread</span></div>
+      <div class="qq">“Am I cut out to be a good Forward Deployed Engineer — or should I stay in my very much dying field of UX Research?”<span class="src">the adjacent-field pivoter</span></div>
+    </div>
+
+    <h3>Their vocabulary — use it verbatim</h3>
+    <div class="vocab">
+      <span class="word">fake FDE</span><span class="word">one-man show</span><span class="word">military cosplay</span>
+      <span class="word">the dirty ‘c’ word</span><span class="word">dual narrative</span><span class="word">vibed out mess</span>
+      <span class="word">losing my SE skills</span><span class="word">cost center vs revenue generator</span>
+      <span class="word">pound some sand</span><span class="word">dry run</span><span class="word">bumbling around</span>
+      <span class="word">hands on the deck</span><span class="word">AI Monopoly money</span><span class="word">paid reviews</span>
+      <span class="word">how cracked do you have to be?</span>
+    </div>
+
+    <div class="split" style="margin-top:1.8rem">
+      <div class="box b-mint">
+        <span class="h">What earns their attention</span>
+        <ul>
+          <li>Naming the objection before they do — the sales trap, the travel, the solo accountability</li>
+          <li>Technical specificity: schema validation, failure recovery, audit trails, evals</li>
+          <li>Verifiable specifics — instructors who did the job, outcomes that can be checked</li>
+        </ul>
+      </div>
+      <div class="box b-pink">
+        <span class="h">What loses them instantly</span>
+        <ul>
+          <li>Salary as a promise — that's the competitors' weak flank, not our pitch</li>
+          <li>“A brand-new profession”. The model is over a decade old and they know it</li>
+          <li>Scarcity, guarantees, testimonial volume with no names — they assume reviews are bought</li>
+          <li>Leading with the acronym: no search demand, and the word itself triggers suspicion</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ earnings ═══ -->
+<section class="slide white">
+  <div class="inner">
+    <h2>What it pays, and what actually moves the number</h2>
+    <p class="sub">Base salary bands from US postings that disclose them, plus the market-wide figure we can
+    defend in public. Ranges, not promises.</p>
+
+    <div class="earn">
+      <div class="track">
+        <span class="lab">Mid <em>2–5 yrs</em></span>
+        <span class="rail"></span>
+        <span class="seg" style="background:var(--sky); left:calc(9.5rem + 11.7%); width:26.4%; top:1.55rem;"></span>
+        <span class="val">$135–225K</span>
+      </div>
+      <div class="track">
+        <span class="lab">Senior <em>5–8 yrs</em></span>
+        <span class="rail"></span>
+        <span class="seg" style="background:var(--mint); left:calc(9.5rem + 20%); width:29.6%; top:1.55rem;"></span>
+        <span class="val">$160–261K</span>
+      </div>
+      <div class="track">
+        <span class="lab">Staff / founding <em>8–12 yrs</em></span>
+        <span class="rail"></span>
+        <span class="seg" style="background:var(--peach); left:calc(9.5rem + 35%); width:54.2%; top:1.55rem;"></span>
+        <span class="val">$205–390K</span>
+      </div>
+      <div class="scale">
+        <span style="left:0%">$100K</span><span style="left:33%">$200K</span>
+        <span style="left:66%">$300K</span><span style="left:100%">$400K</span>
+      </div>
+    </div>
+
+    <h3>Then four things move you inside the band</h3>
+    <div class="mods">
+      <div class="mod up"><span class="d">+$50–100K</span><span class="t">The employer tier, not your years. An AI-first company pays that much more than a baseline employer for the identical title.</span></div>
+      <div class="mod up"><span class="d">+ top of band</span><span class="t">A named client-delivery track record. The field half is precisely what the upper half of every band is paying for.</span></div>
+      <div class="mod down"><span class="d">−15–25%</span><span class="t">If the band is labelled OTE, that share is variable and depends on selling. One posting states an 80/20 split outright.</span></div>
+      <div class="mod down"><span class="d">−$60K</span><span class="t">The reliability variant of the same title — support rather than discovery and build. Same words, different job.</span></div>
+    </div>
+
+    <p class="body-copy" style="margin-top:1.6rem"><b>Equity sits on top and is not in these bars.</b> It runs
+    around 25–30% of total pay at the typical level, and considerably more at the frontier labs — which is
+    where the viral $500K+ screenshots come from. That is paper value at private-company marks, and the same
+    threads that post it argue it down. <b>For anything public we quote one figure instead:</b> $125–198K
+    typical and up to $244K for top earners, Glassdoor total pay across 651 reports. It's a different metric
+    from the bars above — total pay, not base — so never put the two on the same slide.</p>
+  </div>
+</section>
+
+<!-- ═══ dangers ═══ -->
+<section class="slide">
+  <div class="inner">
+    <h2>A ready-made lead magnet: “is this FDE job actually a sales job?”</h2>
+    <p class="sub">Not trivia for candidates — <b>this is content we can publish tomorrow</b>. Five of
+    fourteen threads ask for exactly this checklist, the market's own estimate is that a chunk of postings
+    are disguised sales roles, and <b>nobody has published the test.</b> Giving it away answers the
+    audience's loudest objection with facts instead of reassurance, and proves we know the market — which is
+    the credibility bar with people who assume every course buys its reviews.</p>
+
+    <div class="split" style="margin-bottom:2rem">
+      <div class="box b-mint">
+        <span class="h">Why marketing needs this</span>
+        <ul>
+          <li><b>It's the objection killer.</b> “It's secretly a sales job” is the #3 pain in the corpus. You can't argue it away — you hand them the test</li>
+          <li><b>It's free-tier content with a real job to do:</b> a checklist, a post, a filter in the funnel. Useful before anyone buys anything</li>
+          <li><b>It disciplines our promise.</b> We can't say “you'll land an FDE role” when the label covers four different jobs. We can say you'll be able to tell them apart</li>
+        </ul>
+      </div>
+      <div class="box b-honey">
+        <span class="h">And it fixes our own targeting</span>
+        <p style="font-size:.96rem;margin:0">The same signals decide which postings we point graduates at,
+        which employers are worth a hiring partnership, and which “FDE” roles we should quietly exclude from
+        any outcomes claim we ever publish. A placement into a quota-carrying sales role is not a placement
+        into this profession.</p>
+      </div>
+    </div>
+
+    <h3>The checklist itself — five lines, all quoted from real postings</h3>
+    <div class="sev">
+      <span><i style="background:#C7534B"></i>Not this job — walk away</span>
+      <span><i style="background:#C08A2E"></i>Still the job, harder — ask first</span>
+      <span><i style="background:#5B6A72"></i>Hard gate — nothing to negotiate</span>
+    </div>
+
+    <div class="signals">
+      <div class="srow stop">
+        <div class="sig-t"><span class="cap">The line in the posting</span><b>“OTE”</b> instead of a base salary — one states an <b>80/20 base-to-variable split</b> verbatim. Commission, regional revenue targets, outbound campaigns. Reports into GTM or Sales.</div>
+        <div class="sig-m"><span class="cap">What it really is</span>Pre-sales. The role owns the <em>technical win</em>, not the delivery, and a fifth of the pay depends on closing.</div>
+        <div class="sig-a"><span class="cap">What we tell them</span>One question settles it: <b>who owns the project after signature?</b> “Someone else” ends the conversation.</div>
+      </div>
+      <div class="srow stop">
+        <div class="sig-t"><span class="cap">The line in the posting</span><b>“Explicitly NOT a software engineering role.”</b> Elsewhere: <b>“You don't need to be a developer.”</b> Or filed under Program Management with <b>“1+ year reading and/or writing code (preferred)”</b>.</div>
+        <div class="sig-m"><span class="cap">What it really is</span>Configuration, client management or programme management. Real work, well paid — with no production code in it.</div>
+        <div class="sig-a"><span class="cap">What we tell them</span>Read the department and the responsibilities, never the title. Both quotes are real, and both companies were being honest.</div>
+      </div>
+      <div class="srow care">
+        <div class="sig-t"><span class="cap">The line in the posting</span><b>“Willing to wear many hats — software engineer, product manager, account manager and support.”</b> Elsewhere: four years engineering <b>and</b> four customer-facing <b>and</b> four managerial; <b>“capable of working long productive hours.”</b></div>
+        <div class="sig-m"><span class="cap">What it really is</span>The one-man show they already fear — sometimes genuine ownership, sometimes four jobs on one salary.</div>
+        <div class="sig-a"><span class="cap">What we tell them</span>Ask <b>how many clients run in parallel, who's on call, who backs you up.</b> Stacked years are a wish list; the hours line is not.</div>
+      </div>
+      <div class="srow care">
+        <div class="sig-t"><span class="cap">The line in the posting</span>Two different salary ranges in the same advert. A band spanning <b>$89K–$317K</b>. Or the word <b>“Reliability”</b> inside a forward-deployed title.</div>
+        <div class="sig-m"><span class="cap">What it really is</span>Several career levels in one advert, not an offer. And the reliability track is support rather than discovery — roughly <b>$60K less</b> for the same words.</div>
+        <div class="sig-a"><span class="cap">What we tell them</span>Anchor on the level, not the range, and confirm which band applies before the first call.</div>
+      </div>
+      <div class="srow gate">
+        <div class="sig-t"><span class="cap">The line in the posting</span>US citizenship, green card or clearance to TS/SCI · a vertical stated as required, not preferred · on-site five days in one city · new-grad-only pipelines.</div>
+        <div class="sig-m"><span class="cap">What it really is</span>A closed door. Five roles in the corpus are clearance-gated and nine are vertical products where the domain is the requirement.</div>
+        <div class="sig-a"><span class="cap">What we tell them</span>Filter these first — the cheapest rejections to avoid. <b>Internal FDE roles are the answer</b> when travel or on-site is the blocker.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ nebius people ═══ -->
+<section class="slide coal">
+  <div class="inner">
+    <h2>And who actually got hired</h2>
+    <p class="sub">Six forward deployed engineers on one team, all hired inside thirteen months. Profiles
+    described in aggregate — no names, this is personal data.</p>
+    <p class="body-copy" style="opacity:.72;margin-bottom:2rem">Worth knowing about the employer first: its
+    three open FDE roles — 3+ years on customer delivery, 6+ years on partner products, and a director role
+    that explicitly rules out sales engineering and professional services — are all measured on <b>reusable
+    outcomes</b> rather than hours delivered. That is the structural difference between an FDE org and a
+    consultancy, and the strongest answer we have to “isn't this just consulting?”</p>
+
+    <div class="profiles">
+      <div class="prow">
+        <div class="path"><span class="cap">Hire 1 · founding FDE · ~2 yrs in</span><b>Backend co-op → SWE at a startup → founding FDE</b><br><span style="opacity:.65;font-size:.9rem">BSc CS, five co-op terms.</span></div>
+        <div class="brought"><span class="cap">What he brought</span>Spring Boot, Node, SQL. <b>No AI anywhere in the profile</b> — not one LLM line at the point of hire.</div>
+        <div class="read"><span class="cap">What it says</span>The first hire was picked for shipping ability, not AI credentials. The stack was assumed learnable; the judgment wasn't.</div>
+      </div>
+
+      <div class="prow">
+        <div class="path"><span class="cap">Hire 2 · ~7 months out of research</span><b>Robotics and electrical engineering → junior data engineer → FDE</b><br><span style="opacity:.65;font-size:.9rem">MASc in electrical &amp; computer engineering.</span></div>
+        <div class="brought"><span class="cap">What he brought</span>No CS degree, no software-engineering job title, and the only certificates on the CV are lifeguard and first aid. Years as a camp counsellor.</div>
+        <div class="read"><span class="cap">What it says</span>The clearest case that <b>certificates buy nothing</b> here — and the clearest referral signal in the set.</div>
+      </div>
+
+      <div class="prow">
+        <div class="path"><span class="cap">Hire 3 · ~2 yrs incl. research</span><b>Knowledge graphs → particle physics → grad TA → FDE</b><br><span style="opacity:.65;font-size:.9rem">MS in AI; hired weeks after finishing.</span></div>
+        <div class="brought"><span class="cap">What he brought</span>Ten-plus petabytes on a physics accelerator; two semesters teaching with office hours; work with “investors, organisations and non-technical clients”. Self-taught through short courses: transformers in code, knowledge graphs for RAG, a hackathon.</div>
+        <div class="read"><span class="cap">What it says</span>Exactly the self-study track our curriculum covers — and the explaining muscle came from <b>teaching</b>, not from a client.</div>
+      </div>
+
+      <div class="prow">
+        <div class="path"><span class="cap">Hire 4 · ~5.5 yrs · the outlier</span><b>Economics → 3.5 yrs strategy consulting → analytics master's → senior engineer → AI engineer → FDE</b></div>
+        <div class="brought"><span class="cap">What he brought</span>Due diligence for a private-equity client with $23B under management, 15+ expert calls, a briefing to a head of government. Built a university course; trained 100+ new joiners. Thinks in business metrics — hours saved, NPS, return multiple.</div>
+        <div class="read"><span class="cap">What it says</span>The only one who arrived holding <b>both halves</b> — and note the order: he converted to engineering <em>before</em> the move, not instead of it.</div>
+      </div>
+
+      <div class="prow">
+        <div class="path"><span class="cap">Hire 5 · ~2 yrs</span><b>Museum assistant → two years engineering inside VC funds → FDE</b><br><span style="opacity:.65;font-size:.9rem">BS CS; promoted SWE → AI engineer in two months.</span></div>
+        <div class="brought"><span class="cap">What he brought</span>A computer-vision stack rather than LLMs — and a seat in the room where technology gets assessed fast, explained to non-engineers, and discussed with founders.</div>
+        <div class="read"><span class="cap">What it says</span><b>The least-occupied entry channel we found.</b> A VC or PE seat delivers the same reps as a client-facing role, and nobody markets to those people.</div>
+      </div>
+
+      <div class="prow">
+        <div class="path"><span class="cap">Hire 6 · ~1.5 yrs · most recent</span><b>Music-tech ML → ML engineer for two months → FDE</b><br><span style="opacity:.65;font-size:.9rem">MS in machine learning and music information retrieval.</span></div>
+        <div class="brought"><span class="cap">What he brought</span>The longest single entry on his CV is <b>five years at a summer camp</b>, latterly as assistant director — where he had supervised hire 2 years earlier.</div>
+        <div class="read"><span class="cap">What it says</span>The field muscle again comes from running people, not from a client account. And the network did the hiring.</div>
+      </div>
+    </div>
+
+    <h3 style="opacity:.5">Read across all six</h3>
+    <div class="stat-row">
+      <div class="st" style="background:rgba(242,241,238,.08)"><span class="v">0 of 6</span><span class="l">came from solutions architecture, sales engineering or professional services — the exact backgrounds the market says it wants</span></div>
+      <div class="st" style="background:rgba(242,241,238,.08)"><span class="v">6 of 6</span><span class="l">can stand up a working system end to end, and have worked with no structure around them</span></div>
+      <div class="st" style="background:rgba(242,241,238,.08)"><span class="v">5 of 6</span><span class="l">have a public portfolio or personal site. Not one got in on a certificate</span></div>
+      <div class="st" style="background:rgba(242,241,238,.08)"><span class="v">2 of 6</span><span class="l">arrived through the same personal network — cohort, demo day and community are mechanics, not perks</span></div>
+    </div>
+
+    <p class="body-copy" style="margin-top:1.8rem;opacity:.8">Two honest caveats. This is one early-stage
+    team of six, and it hires cheaper and closer to home than the wider market: median experience at entry is
+    around two years, against a market median of four. So it doesn't lower our admission bar — the product is
+    sold into the market, not into this team. What it does tell us is where the field muscle really comes
+    from. Not one of these people held a client-facing title. It came from consulting, from a fund, from
+    teaching, from running a camp. Our buyer almost certainly has the same thing buried somewhere, and the
+    job is to surface it and name it.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    Sources: 53 job postings pulled verbatim · a requirements recount across 41 unique roles · a sweep of 30 job boards · five layers of pay sourcing · 50 Reddit threads · 6 CVs of working FDEs<br>
+    Full evidence pack, with the counting criterion behind every figure: evidence-pack-2026-08/
+  </div>
+</footer>
+
+</body></html>
