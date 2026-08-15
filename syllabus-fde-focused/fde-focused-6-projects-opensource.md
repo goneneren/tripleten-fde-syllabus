@@ -1,6 +1,6 @@
 # AI Forward Deployed Engineer — Six-Project Open-Source Program
 
-> **Status: candidate proposal, not the program of record.** The canonical program remains `syllabus/` until this proposal is adopted and `AGENTS.md`, the delivery-repository plan, project rubrics, and reviewer guidance are updated.
+> **Status: candidate proposal, not the program of record.** 
 
 ## Executive summary
 
