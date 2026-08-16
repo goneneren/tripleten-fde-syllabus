@@ -30,7 +30,7 @@ The LocalStack grade is capped by its own line 38 (unresolved Hobby-terms confir
 | **Admission gate** | B | B | Added async behavior, unfamiliar-codebase debugging, written communication, preflight. Still no production-history bar despite the market's four-year median and "shipped at scale, verified at intake". |
 | **Portfolio & career value** | A− | A− | Five named artifacts, public index, sanitized repo, reference architecture, playbook. Docked for the reference-code point and the ungraded demo day. |
 | **Marketing-claim safety** | A | A | "Multi-Agent" gone, fine-tuning out of scope, status header present, no placement or salary language. Safe to hand to marketing with the evidence boundary attached. |
-| **Production-authoring readiness** | B− | C+ | Dependencies honestly listed at line 23 — and all of them are unbuilt: scenario-pack contract, asset inventory, six rubrics, FIDELITY set, pinned images, verifier schema, five starter repos with reference solutions. `AGENTS.md` and `executive-overview.md` still describe a 5-project program. |
+| **Production-authoring readiness** | B− | C+ | Dependencies honestly listed at line 23 — and all of them are unbuilt: scenario-pack contract, asset inventory, six rubrics, FIDELITY set, pinned images, verifier schema, five starter repos with reference solutions. `AGENTS.md` and `executive-overview.md` now align to the six-project program of record. |
 
 ## 3. Per-project grades
 
@@ -76,7 +76,7 @@ The LocalStack grade is capped by its own line 38 (unresolved Hobby-terms confir
 7. **6.5 at 6 h for three recordings** and **6.6 at 8 h for five deliverables** are the two tightest allocations left.
 8. **6.2's required real-AWS failure demonstration needs a seeded scenario** — students hold a constrained role and cannot manufacture a policy denial. Add it to the supplied-asset inventory.
 9. **`fde-focused-6-project-tree.md` is stale** against both documents (old hours, old P5 name, GPU language).
-10. **`AGENTS.md` and `executive-overview.md` still describe a 5-project, 452-hour program** with fine-tuning in P5 core.
+10. **Resolved — `AGENTS.md` and `executive-overview.md` now describe the six-project, 440-hour program** with hands-on fine-tuning out of scope.
 
 ## 6. Recommendation
 

@@ -2,7 +2,7 @@
 
 ## 1. Executive Evaluation Summary
 
-Following the latest revisions to [`fde-focused-6-projects-opensource.md`](file:///c:/repos/tripleten-fde-syllabus/syllabus-fde-focused/fde-focused-6-projects-opensource.md) and [`fde-focused-6-projects-localstack.md`](file:///c:/repos/tripleten-fde-syllabus/syllabus-fde-focused/fde-focused-6-projects-localstack.md), both proposals have evolved from conceptual blueprints into **exceptionally mature, enterprise-grade curriculum specifications**.
+Following the latest revisions to [`fde-focused-6-projects-opensource.md`](fde-focused-6-projects-opensource.md) and [`fde-focused-6-projects-localstack.md`](fde-focused-6-projects-localstack.md), the Open-Source program of record and the LocalStack alternative have evolved from conceptual blueprints into **exceptionally mature, enterprise-grade curriculum specifications**.
 
 ### Key Architectural Improvements in this Revision:
 1. **Repository Checkpoint & Reset Model:** Introducing physical starter repositories across Projects 1–5 with TripleTen reference baselines prevents defect cascading while preserving students' client-facing decision artifacts.
@@ -125,6 +125,6 @@ Project 6: AWS Capstone, Adoption and Handback          [Grade: A]   (60 Hours /
 Both syllabi have successfully resolved the prior architectural, workload, and economic risks. The 6-project, 22-week structure is cohesive, academically rigorous, and extraordinarily aligned with enterprise demand for AI Forward Deployed Engineers.
 
 ### Immediate Next Steps for Curriculum Production:
-1. **Promote Open-Source to Program of Record:** Update [`AGENTS.md`](file:///c:/repos/tripleten-fde-syllabus/AGENTS.md) and [`syllabus/README.md`](file:///c:/repos/tripleten-fde-syllabus/syllabus/README.md) to adopt `fde-focused-6-projects-opensource.md` as the canonical curriculum.
+1. **Completed — Open-Source is the Program of Record:** [`AGENTS.md`](../AGENTS.md) and `fde-focused-6-projects-opensource.md` establish the Open-Source edition as the canonical curriculum.
 2. **Build Seed Scaffolds with Strict Ports:** Ensure repository 1 through 5 starter codebases implement the conformance-tested `ObjectStore`, `JobQueue`, `SecretProvider`, and `ModelProvider` interfaces.
 3. **Publish the Scenario-Pack Contract:** Finalize the deterministic role cards, fixed transcripts, and timed injects for all six projects prior to cohort onboarding.

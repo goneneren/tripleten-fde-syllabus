@@ -1,6 +1,6 @@
 # AI Forward Deployed Engineer — Six-Project Open-Source Program
 
-> **Status: candidate proposal, not the program of record.** 
+> **Status: program of record.** This is the canonical 22-week, 440-hour AI FDE curriculum. The LocalStack edition remains an alternative under evaluation.
 
 ## Executive summary
 

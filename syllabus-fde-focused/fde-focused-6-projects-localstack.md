@@ -1,6 +1,6 @@
 # AI Forward Deployed Engineer — Six-Project LocalStack Program
 
-> **Status: candidate proposal, not the program of record.**
+> **Status: alternative under evaluation, not the program of record.** The Open-Source edition is canonical. Do not make LocalStack mandatory until its licensing and delivery constraints are formally resolved.
 
 ## Executive summary
 
